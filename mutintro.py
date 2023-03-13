@@ -160,7 +160,7 @@ def main(*argv):
             os.chdir(file)
             for file2 in os.listdir():
                 if 'foldx' in str(file2):
-                    foldx_exe = '{0}\{1}'.format(str(os.getcwd()), str(file2))
+                    foldx_exe = '{0}/{1}'.format(str(os.getcwd()), str(file2))
     if argv[0] == 'multiple':
         p.simultaneous_introduction(argv[1], argv[2], argv[3])
     if argv[0] == 'single':
