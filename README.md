@@ -94,5 +94,5 @@ The trajana.py script calculates and plots the Root Mean Square Deviation (RMSD)
 For any related queries please contact Mr. Keaghan Brown on 3687524@myuwc.ac.za
 ## Authors
 
-- [@rcloete](https://www.github.com/)
+- [@kbrown3687524](https://www.github.com/kbrown3687524)
 
