@@ -103,7 +103,7 @@ class TrajAna:
         for folder in os.listdir(traj_folder):
             top_file = ''
             traj_file = ''
-            os.chdir('{0}\{1}'.format(str(traj_folder), folder))
+            os.chdir('{0}/{1}'.format(str(traj_folder), folder))
             for file in os.listdir():
                 if file.endswith('.xtc') and 'rmsfit_' not in str(file):
                     traj_file = file
@@ -116,7 +116,7 @@ class TrajAna:
         while counter <= df_len:
             df1 = pd.DataFrame()
             for folder in os.listdir(traj_folder):
-                os.chdir('{0}\{1}'.format(str(traj_folder), folder))
+                os.chdir('{0}/{1}'.format(str(traj_folder), folder))
                 for file in os.listdir():
                     if file.endswith('_rmsf.csv'):
                         df = pd.read_csv(file)
