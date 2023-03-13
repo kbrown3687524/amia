@@ -27,7 +27,7 @@ class FoldXAna:
                 os.chdir(file)
                 for file2 in os.listdir():
                     if 'foldx' in str(file2):
-                        foldx_exe = '{0}\{1}'.format(str(os.getcwd()), str(file2))
+                        foldx_exe = '{0}/{1}'.format(str(os.getcwd()), str(file2))
         os.chdir(os.path.dirname(pdb_file))
         os.system(str(foldx_exe) + ' --command=Stability  --pdb=' + str(os.path.basename(pdb_file)) + ' --output-dir=' + str(output_dir))
         os.chdir(output_dir)
