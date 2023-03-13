@@ -137,7 +137,7 @@ class TrajAna:
                 plt.xlabel('Residue Number')
                 plt.ylabel('RMSF ($\AA$)')
                 plt.legend(df.iloc[:,1:len(df)], bbox_to_anchor=(1.0, 1.0), loc='upper left')
-                plt.savefig('{0}\{1}{2}'.format(str(output_dir), str(file).split('.')[0], '_rmsf.tiff'),
+                plt.savefig('{0}/{1}{2}'.format(str(output_dir), str(file).split('.')[0], '_rmsf.tiff'),
                             bbox_inches='tight', dpi=600)
 
     def radgyr(self, atomgroup, masses, total_mass=None):
@@ -180,7 +180,7 @@ class TrajAna:
         for folder in os.listdir(traj_folder):
             top_file = ''
             traj_file = ''
-            os.chdir('{0}\{1}'.format(str(traj_folder), folder))
+            os.chdir('{0}/{1}'.format(str(traj_folder), folder))
             for file in os.listdir():
                 if file.endswith('.xtc') and 'rmsfit_' not in str(file):
                     traj_file = file
@@ -206,7 +206,7 @@ class TrajAna:
                 plt.xlabel('Time (ns)')
                 plt.ylabel('Rgyr ($\AA$)')
                 plt.legend(df.iloc[:, 1:len(df)], bbox_to_anchor=(1.0, 1.0), loc='upper left')
-                plt.savefig('{0}\{1}{2}'.format(str(output_dir), str(file).split('.')[0], '_rgyr.tiff'), bbox_inches='tight', dpi=600)
+                plt.savefig('{0}/{1}{2}'.format(str(output_dir), str(file).split('.')[0], '_rgyr.tiff'), bbox_inches='tight', dpi=600)
 
 
 def main(systems, output_dir):
