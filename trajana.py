@@ -45,7 +45,7 @@ class TrajAna:
         for folder in os.listdir(traj_folder):
             top_file = ''
             traj_file = ''
-            os.chdir('{0}\{1}'.format(str(traj_folder), folder))
+            os.chdir('{0}/{1}'.format(str(traj_folder), folder))
             for file in os.listdir():
                 if file.endswith('.xtc'):
                     traj_file = file
@@ -71,7 +71,7 @@ class TrajAna:
             df.iloc[:, 1:len(df)].plot(x='Time (ns)', linewidth=0.75)
             plt.legend(bbox_to_anchor=(1.0, 1.0), loc='upper left')
             plt.ylabel('RMSD ($\AA$)')
-            plt.savefig('{0}\{1}{2}'.format(str(output_dir), str(file).split('.')[0], '_rmsd.tiff'), bbox_inches='tight', dpi=600)
+            plt.savefig('{0}/{1}{2}'.format(str(output_dir), str(file).split('.')[0], '_rmsd.tiff'), bbox_inches='tight', dpi=600)
 
 
     def rmsf_calc(self, traj_file, top_file):
