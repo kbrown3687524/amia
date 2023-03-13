@@ -21,7 +21,7 @@ conda activate *ENV_NAME*
 ### AMIA Downlaod and Installation
 Once the environment has been created and activated, the user shoud create a new directory to manage the AMIA package. Move from the current directory into the new folder and clone the AMIA github repository or download and unzip into the directory accordingly.
 
-Change directory to the PyMOL folder and install the PyMOL Open Source wheels:
+Change directory to the PyMOL folder and install the PyMOL Open Source wheels or use the Linux apt commands:
 
 Linux:
 ```
