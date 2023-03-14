@@ -34,7 +34,7 @@ pymol
 
 The user can then change back to the main AMIA directory and  install the amia package for inclusion in other projects as well as ensure that all other dependencies are installed accordingly and accurately:
 
-FoldX(5.0) is a standalone software tool that is required for this package to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow
+FoldX(5.0) is a standalone software tool that is required for this package to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
 |-- AMIA Folder:
   |  
@@ -54,6 +54,7 @@ Successful installation of the package can be confirmed when the user open a pyt
 
 ### Phase 1: Mutation Introduction
 After successful installation, the scripts should now be available to execute individually or imported into other projects. The normal method to execute this workflow involves calling the AMIA script supplied with its respective arguments. The files provided to the workflow are in designated formats - see test files for further clarification on formats: 
+
 * Structure File: Protein Data Bank (.pdb)
 * Mutations File: Comma Separated Variable (.csv)
 
