@@ -1,5 +1,5 @@
 # Automated Mutation Introduction and Analysis (AMIA) Workflow
-This workflow is designed to automatically introduce mutation datasets into a specidied protein model and analyze the resultant effects by comparing the WT and Variant structures as well as to automate some the analyses involved in Molecular Dynamics Simulation Trajectory Statistics. This project was developed in fulfillment of the MSc Project:  Automated computational workflow to prioritize potential resistance variants in HIV Integrase Subtype C and CRF02_AG.
+This workflow is designed to automatically introduce mutation datasets into a specidied protein model and analyze the resultant effects by comparing the WT and Variant structures as well as to automate some the analyses involved in Molecular Dynamics Simulation Trajectory Statistics. This workflow is designed to be installed and executed on a Linux Device. This project was developed in fulfillment of the MSc Project:  Automated computational workflow to prioritize potential resistance variants in HIV Integrase Subtype C and CRF02_AG.
 
 
 
@@ -7,10 +7,9 @@ This workflow is designed to automatically introduce mutation datasets into a sp
 
  * [Installation](#installation)
  * [Usage](#usage)
- * [Contributions](#contributions)
  * [Queries](#queries)
 ## Installation
-This project was developed in a virtual environment on the command line and managed using Anaconda3 for the respective packages and shoud be done accordingly for installation purposes. 
+This project was developed in a virtual environment on the command line and managed using conda for the respective packages and is recommended for installation purposes. 
 
 ### Conda venv Setup
 Open a terminal with conda and create and eneter a new env with python:
@@ -19,9 +18,9 @@ conda create -n *ENV_NAME* python=3.9
 conda activate *ENV_NAME*
 ```
 ### AMIA Downlaod and Installation
-Once the environment has been created and activated, the user shoud create a new directory to manage the AMIA package. Move from the current directory into the new folder and clone the AMIA github repository or download and unzip into the directory accordingly.
+Once the environment has been created and activated, the user shoud create a new folder to download, install and manage the AMIA package. Move from the working directory into the new folder and clone the AMIA github repository or download and unzip into the folder accordingly.
 
-Change directory to the PyMOL folder and install the PyMOL Open Source wheels or use the Linux apt commands:
+The first software dependency that needs to be installed is PyMOL Open Source:
 
 Linux:
 ```
