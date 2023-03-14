@@ -26,7 +26,7 @@ Linux:
 ```
 apt install pymol 
 ```
-Once PyMOL has been sucessfully installed, successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear:
+Once PyMOL has been installed, successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear:
 
 ```
 pymol
