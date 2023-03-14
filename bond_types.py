@@ -56,7 +56,7 @@ class Contacts:
 		for folder in os.listdir(traj_folder):
 			top_file = ''
 			traj_file = ''
-			os.chdir('{0}\{1}'.format(str(traj_folder), folder))
+			os.chdir('{0}/{1}'.format(str(traj_folder), folder))
 			for file in os.listdir():
 				if file.endswith('.xtc') and 'rmsfit_' not in str(file):
 					traj_file = file
@@ -86,7 +86,7 @@ class Contacts:
 					plt.legend(bbox_to_anchor=(1.0, 1.0), loc='upper left')
 					plt.title(
 						'No. of Salt Bridges within ' + str(file).split('.')[0] + ' systems')
-					plt.savefig('{0}\{1}{2}'.format(str(outputs_dir), str(file).split('.')[0], '.tiff'),
+					plt.savefig('{0}/{1}{2}'.format(str(outputs_dir), str(file).split('.')[0], '.tiff'),
 								bbox_inches='tight', dpi=600)
 
 	def multi_sb_plotting(self, outputs_dir):
@@ -103,7 +103,7 @@ class Contacts:
 				plt.legend(bbox_to_anchor=(1.0, 1.0), loc='upper left')
 				plt.title(
 					'No. of Salt Bridges within variant systems')
-				plt.savefig('{0}\{1}{2}'.format(str(outputs_dir), str(file).split('.')[0], '.tiff'),
+				plt.savefig('{0}/{1}{2}'.format(str(outputs_dir), str(file).split('.')[0], '.tiff'),
 							bbox_inches='tight', dpi=600)
 
 
@@ -217,7 +217,7 @@ class Contacts:
 					plt.ylabel(r"$N_{HB}$")
 					plt.title('No. of H-bonds between Protein and ' + str(file).split('.')[0].split('_')[0] +
 							  ' within ' + str(folder))
-					plt.savefig('{0}\{1}_{2}{3}'.format(str(outputs_dir), str(folder), str(file).split('.')[0],
+					plt.savefig('{0}/{1}_{2}{3}'.format(str(outputs_dir), str(folder), str(file).split('.')[0],
 														 '.tiff'),
 								bbox_inches='tight', dpi=600)
 
@@ -238,16 +238,16 @@ class Contacts:
 				plt.ylabel(r"$N_{HB}$")
 				plt.title(
 					'No. of H-bonds within multiple systems')
-				plt.savefig('{0}\{1}{2}'.format(str(outputs_dir), str(file).split('.')[0], '_multi_hbonds.tiff'), bbox_inches='tight', dpi=600)
+				plt.savefig('{0}/{1}{2}'.format(str(outputs_dir), str(file).split('.')[0], '_multi_hbonds.tiff'), bbox_inches='tight', dpi=600)
 
 def main(systems, output_dir):
 	p = Contacts()
-	#p.saltbridges_comp(systems, output_dir)
-	#p.single_sb_plotting(systems, output_dir)
-	#p.multi_sb_plotting(output_dir)
-	#p.hbond_comp(systems, output_dir)
+	p.saltbridges_comp(systems, output_dir)
+	p.single_sb_plotting(systems, output_dir)
+	p.multi_sb_plotting(output_dir)
+	p.hbond_comp(systems, output_dir)
 	p.single_hbonds_plots(systems, output_dir)
-	#p.multi_hbonds_plots(output_dir)
+	p.multi_hbonds_plots(output_dir)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
