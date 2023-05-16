@@ -93,7 +93,7 @@ class TrajStat:
                     df = pd.concat([df, rmsf_df.iloc[:,1]], axis=1)
             df.plot(x='Residue Number', linewidth=0.75)
             plt.title('Multi-system RMSF of ' + str(key) + ' chain')
-            plt.ylabel('RMSD ($\AA$)')
+            plt.ylabel('RMSF ($\AA$)')
             plt.legend(bbox_to_anchor=(1.0, 1.0), loc='upper left')
             plt.savefig('{0}\{1}_{2}'.format(str(output_dir),  str(key),  '_rmsf.tiff'), bbox_inches='tight', dpi=900)
 
