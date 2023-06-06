@@ -34,12 +34,12 @@ pymol
 
 The user can then change back to the main AMIA directory and  install the amia package for inclusion in other projects as well as ensure that all other dependencies are installed accordingly and accurately:
 
-FoldX(5.0) is a standalone software tool that is required for this package to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
+FoldX(4.0) is a standalone software tool that is required for this package to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
 |-- AMIA Folder:
   |  
   |-- foldx:
-      |-- foldx _5
+      |-- foldx_4
       |-- yasaraPlugin.zip
       |-- rotabase.txt
 ```
