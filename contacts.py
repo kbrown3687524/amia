@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
-# Project Title: "Automated computational workflow to prioritize potential resistance variants identified in HIV
-# Integrase Subtype C and CRF02_AG"
+# Project Title: "The development of an automated computational workflow to prioritize potential resistance variants identified in HIV
+# Integrase Subtype C"
 #
 # This script is developed for the fufuillment for Masters at the South African National Bioinformatics Institute at
 # the University of the Western Cape.
