@@ -22,11 +22,11 @@ Once the environment has been created and activated, the user shoud create a new
 
 The first software dependency that needs to be installed is PyMOL Open Source:
 
-Linux:
+Conda Installation:
 ```
-apt install pymol 
+conda install -c schrodinger pymol-bundle
 ```
-Once PyMOL has been installed, successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear:
+Once PyMOL has been installed, successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear requesting a license file. The academic license can be obtaine from the PyMOL webpage:
 
 ```
 pymol
