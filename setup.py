@@ -7,7 +7,7 @@ setup(
     author_email='3687524@myuwc,.ac.za',
     packages=['amia'],
     install_requires=['biopython>=1.79',
-                      'pymol==2.3.0',
+                      'pymol>=2.3.0',
                       'MDAnalysis[analysis]>=2.4.0',
                       'MDAnalysisTests',
                       'pandas>=1.5.1',
