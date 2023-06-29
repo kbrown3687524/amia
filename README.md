@@ -11,6 +11,12 @@ This workflow is designed to automatically introduce mutation datasets into a sp
 ## Installation
 This project was developed in a virtual environment on the command line and managed using conda for the respective packages and is recommended for installation purposes. 
 
+### AMIA Download
+The current release an be downloaded as follows:
+```
+git clone https://github.com/kbrown3687524/amia
+```
+
 ### Conda venv Setup
 Open a terminal with conda and create and eneter a new env with python:
 ```
@@ -26,13 +32,13 @@ Conda Installation:
 ```
 conda install -c schrodinger pymol-bundle
 ```
-Once PyMOL has been installed, successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear requesting a license file. The academic license can be obtaine from the PyMOL webpage:
+Once PyMOL has been installed, a successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear requesting a license file. The academic license can be obtaine from the PyMOL webpage:
 
 ```
 pymol
 ```
 
-The user can then change back to the main AMIA directory and  install the amia package for inclusion in other projects as well as ensure that all other dependencies are installed accordingly and accurately:
+The user can then change back to the main AMIA directory and install the amia package for inclusion in other projects as well as ensure that all other dependencies are installed accordingly and accurately:
 
 FoldX(4.0) is a standalone software tool that is required for this package to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
