@@ -12,7 +12,7 @@ This workflow is designed to automatically introduce mutation datasets into a sp
 This project was developed in a virtual environment on the command line and managed using conda for the respective packages and is recommended for installation purposes. 
 
 ### AMIA Download
-The current release an be downloaded as follows:
+The current release can be downloaded as follows:
 ```
 git clone https://github.com/kbrown3687524/amia
 ```
