@@ -20,22 +20,13 @@ git clone https://github.com/kbrown3687524/amia
 ### Conda venv Setup
 Open a terminal with mamba and create a new env:
 ```
-mamba create -n *ENV_NAME*
-conda activate *ENV_NAME*
+conda env create -f amia_environment.yml
+conda activate amia_main
 ```
-### AMIA Downlaod and Installation
-Once the environment has been created and activated, the user shoud create a new folder to download, install and manage the AMIA package. Move from the working directory into the new folder and clone the AMIA github repository or download and unzip into the folder accordingly.
-
-The first software dependency that needs to be installed is PyMOL Open Source:
-
-Conda Installation:
-```
-mamba install -c conda-forge -c schrodinger pymol-bundle=2.5.6 pymol=2.5.6
-```
-Once PyMOL has been installed, a successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear requesting a license file. The academic license can be obtaine from the PyMOL webpage:
+Once the dependencies have been installed, a successful installation can be tested by using the dataset provided within the test folder. The test can be initialized by providing chmod u+x access to the AMIA.py script and running the following:
 
 ```
-pymol
+./AMiA.py --pdb_file **~/test/HIV-1C_ZA/RLT_Model_Repair.pdb** --mutations **~/test/HIV-1C_ZA/mutations.csv** --output_dir **~/test/variant_outputs** 
 ```
 
 The user can then change back to the main AMIA directory and install the amia package for inclusion in other projects as well as ensure that all other dependencies are installed accordingly and accurately:
