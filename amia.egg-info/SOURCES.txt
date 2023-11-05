@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.py
+amia/__init__.py
+amia/bond_types.py
+amia/contacts.py
+amia/foldxana.py
+amia/get_raw_distances.py
+amia/mutintro.py
+amia/trajstat.py
+amia.egg-info/PKG-INFO
+amia.egg-info/SOURCES.txt
+amia.egg-info/dependency_links.txt
+amia.egg-info/requires.txt
+amia.egg-info/top_level.txt

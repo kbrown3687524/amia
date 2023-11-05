@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: amia
+Version: 0.1.0
+Summary: Automated Mutation Introduction and Analysis
+Author: Keaghan Brown
+Author-email: 3687524@myuwc,.ac.za
+Classifier: Development Status :: 1 - Development
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: 
+Classifier: Operating System :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
