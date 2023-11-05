@@ -74,12 +74,11 @@ Once all the respective output files have been generated from the first phase of
 The trajectory analyses and bond type changes are then calculated automatically using the trajectory file (.xtc) and the associated topology files (.tpr):
 
 ```
-python3 trajana.py --systems *Main Trajectories Folder* --output_dir  *path/to/output_directory*
-python3 bond_types.py --systems *Main Trajectories Folder* --output_dir  *path/to/output_directory*
+python3 trajstat.py --systems *Main Trajectories Folder* --output_dir  *path/to/output_directory*
 ```
-The trajana.py script calculates and plots the Root Mean Square Deviation (RMSD) for the entire protein, Root Mean Square Fluctuation (RMSF) per protein chain and Radius of Gyration (rgyr) for the entire protein while the bond_types.py calculates Hydrogen Bond changes between DNA and Ligands within the system, the changes in ionic bonds (saltbridges) within the protein structure and the changes in hydrophic residue interactions. These outputs are then saved to the specified output directory.
+The trajstat.py script calculates and plots the Root Mean Square Deviation (RMSD) for the entire protein and nuleic acids present, Root Mean Square Fluctuation (RMSF) per protein chain and Radius of Gyration (rgyr) for the entire protein, calculates Hydrogen Bond changes between Protein-Protein, Protein-DNA and Protein-Ligands within each of the systems, the changes in ionic bonds (saltbridges) between Protein-Protein, Protein-DNA and Protein-Ligand structures and generates PCA plots for data dimensionality reduction. These outputs are then saved to the specified output directory.
 ## Queries
-For any related queries please contact Mr. Keaghan Brown on 3687524@myuwc.ac.za
+For any related queries please contact Mr. Keaghan Brown on 3687524@myuwc.ac.za or Dr. Ruben Cloete at ruben@sanbi.ac.za
 ## Authors
 
 - [@kbrown3687524](https://www.github.com/kbrown3687524)
