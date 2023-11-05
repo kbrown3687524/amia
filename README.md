@@ -23,7 +23,7 @@ Open a terminal with mamba and create a new env:
 conda env create -f amia_environment.yml
 conda activate amia_main
 ```
-FoldX(4.0) is a standalone software tool that is required for this package to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
+FoldX(4.0) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
 |-- AMIA Folder:
   |  
