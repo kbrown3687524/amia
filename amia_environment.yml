@@ -158,7 +158,6 @@ dependencies:
   - zlib=1.2.13=hd590300_5
   - zstd=1.5.2=hfc55251_7
   - pip:
-      - amia==0.1.0
       - attrs==23.1.0
       - contourpy==1.1.0
       - cycler==0.11.0
