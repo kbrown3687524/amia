@@ -30,7 +30,7 @@ The first software dependency that needs to be installed is PyMOL Open Source:
 
 Conda Installation:
 ```
-mamba install -c conda-forge -c schrodinger pymol-bundle=2.5.6
+mamba install -c conda-forge -c schrodinger pymol-bundle=2.5.6 pymol=2.5.6
 ```
 Once PyMOL has been installed, a successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear requesting a license file. The academic license can be obtaine from the PyMOL webpage:
 
