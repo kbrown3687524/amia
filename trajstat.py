@@ -580,6 +580,31 @@ class TrajStat:
         plt.title('Multi-system Protein-Nucleic Ionic Interactions')
         plt.savefig('{0}/{1}{2}'.format(outputs_dir, 'Multi-system Protein-Nucleic Ionic Interactions', '.tiff'), bbox_inches='tight', dpi=900)
 
+    def traj_mean(self, systems):
+        os.chdir(systems)
+        for system in os.listdir():
+            print(system)
+            os.chdir(system)
+            stats_file = open(f'{system}_mean_std_stats.txt', 'w')
+            for file in os.listdir():
+                if file.endswith('.csv'):
+                    if 'pca' not in str(file).lower():
+                        df = pd.read_csv(file)
+                        df = df.iloc[:,1:]
+                        columns = list(df)
+                        for i in columns:
+                            if i != "Time (ns)":
+                                if i !="Frame":
+                                    stats_file.write(file)
+                                    stats_file.write('\n')
+                                    stats_file.write(f"Mean {i}: {df[i].mean()/10}")
+                                    stats_file.write('\n')
+                                    stats_file.write(f"Standard deviation: {df[i].std()/10}")
+                                    stats_file.write('\n')
+                                    stats_file.write('\n')
+            stats_file.close()
+            os.chdir(systems)
+
 def main(systems, output_dir, start_fr):
     p = Contacts()
     p.saltbridges_comp(systems, output_dir)
@@ -651,5 +676,5 @@ if __name__ =='__main__':
     p.nucleic_ionic_conts(systems)
     p.ionic_nucleic_plot(systems, output_dir, start_fr)
     main(systems, output_dir, start_fr)
-
+    p.traj_mean(systems)
 
