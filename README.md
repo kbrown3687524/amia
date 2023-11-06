@@ -49,7 +49,7 @@ After successful installation, the scripts should now be available to execute in
 ```
 ./AMIA.py --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory*
 ```
-The ```--mode```  specifies whether the mutations from each subset present withint the mutation file should be introduced individually or together into the supplied protein structure. 
+The ```--mode```  specifies whether the mutations from each subset present within the mutation file should be introduced individually or together into the supplied protein structure. 
 The ```--pdb_file``` specifies the path to the Protein File that the mutations will be introduced to. 
 The ```--mutations``` specifies the path to the Mutations File that the mutations will be introduced to. 
 The ```--output_dir``` specifies the directory that the respective output files will be stored in. 
