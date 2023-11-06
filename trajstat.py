@@ -14,6 +14,7 @@ import multiprocessing
 from MDAnalysis.analysis import pca, align
 import datetime
 import plotly.express as px
+import time
 
 class TrajStat:
     def rmsd_calc(self, top_file, traj_file):
@@ -346,7 +347,7 @@ class TrajStat:
                 hbonds = HydrogenBondAnalysis(universe=u, d_a_cutoff=4.5,  update_selections=False)
                 hbonds.hydrogens_sel = hbonds.guess_hydrogens("protein")
                 hbonds.acceptors_sel = hbonds.guess_acceptors("segid " + str(seg)[1:-1].split(' ')[1])
-                hbonds.run(verbose=True, start=int(start_fr))
+                hbonds.run(verbose=True, start=int(start_fr),  step=5)
                 df1 = pd.DataFrame(hbonds.times, columns=['Time (ns)'])
                 df2 = pd.DataFrame(hbonds.count_by_time(), columns=[str(top_file).split('.')[0]])
                 df = pd.concat([df1, df2], axis=1)
@@ -360,7 +361,7 @@ class TrajStat:
         hbonds = HydrogenBondAnalysis(universe=u, d_a_cutoff=3.5, update_selections=True)
         hbonds.hydrogens_sel = hbonds.guess_hydrogens("protein")
         hbonds.acceptors_sel = hbonds.guess_acceptors("nucleic")
-        hbonds.run(verbose=True, start=int(start_fr))
+        hbonds.run(verbose=True, start=int(start_fr), step=5)
         df1 = pd.DataFrame(hbonds.times, columns=['Time (ns)'])
         df2 = pd.DataFrame(hbonds.count_by_time(), columns= [str(top_file).split('.')[0] +  str(' Nucleic Acid ')])
         nucleic_df = pd.concat([df1, df2], axis=1)
@@ -485,7 +486,7 @@ class TrajStat:
                     hbonds = HydrogenBondAnalysis(universe=u, d_a_cutoff=4.5, update_selections=True)
                     hbonds.hydrogens_sel = hbonds.guess_hydrogens('segid ' + str(mol))
                     hbonds.acceptors_sel = hbonds.guess_acceptors('segid ' + str(mol2))
-                    hbonds.run(verbose=True, start=int(start_fr))
+                    hbonds.run(verbose=True, start=int(start_fr),step=5)
                     df1 = pd.DataFrame(hbonds.times, columns=['Time (ns)'])
                     df2 = pd.DataFrame(hbonds.count_by_time(), columns=[str(top_file).split('.')[0]])
                     df = pd.concat([df1, df2], axis=1)
@@ -605,18 +606,6 @@ class TrajStat:
             stats_file.close()
             os.chdir(systems)
 
-def main(systems, output_dir, start_fr):
-    p = Contacts()
-    p.saltbridges_comp(systems, output_dir)
-    p.multi_sb_plotting(output_dir, start_fr)
-    p.hbond_comp(systems, output_dir, start_fr)
-    p.multi_hbonds_plots(output_dir, start_fr)
-    p.multi_nucleic_hbonds_plots(output_dir, start_fr)
-    p.hetatm_conts(systems, start_fr)
-    p.hetatm_plot(systems, output_dir, start_fr)
-    p.nucleic_ionic_conts(systems)
-    p.ionic_nucleic_plot(systems, output_dir, start_fr)
-
 if __name__ =='__main__':
     p = TrajStat()
     parser = argparse.ArgumentParser()
@@ -675,6 +664,7 @@ if __name__ =='__main__':
     p.hetatm_plot(systems, output_dir, start_fr)
     p.nucleic_ionic_conts(systems)
     p.ionic_nucleic_plot(systems, output_dir, start_fr)
-    main(systems, output_dir, start_fr)
     p.traj_mean(systems)
+    start_time = time.time()
+    print("--- %s seconds ---" % (time.time() - start_time))
 

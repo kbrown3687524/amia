@@ -20,27 +20,10 @@ git clone https://github.com/kbrown3687524/amia
 ### Conda venv Setup
 Open a terminal with mamba and create a new env:
 ```
-mamba create -n *ENV_NAME*
-conda activate *ENV_NAME*
+conda env create -f amia_environment.yml
+conda activate amia_main
 ```
-### AMIA Downlaod and Installation
-Once the environment has been created and activated, the user shoud create a new folder to download, install and manage the AMIA package. Move from the working directory into the new folder and clone the AMIA github repository or download and unzip into the folder accordingly.
-
-The first software dependency that needs to be installed is PyMOL Open Source:
-
-Conda Installation:
-```
-mamba install -c conda-forge -c schrodinger pymol-bundle=2.5.6
-```
-Once PyMOL has been installed, a successful installation can be tested by calling it from within the virtual environment afterwhich a GUI and Consol Window should appear requesting a license file. The academic license can be obtaine from the PyMOL webpage:
-
-```
-pymol
-```
-
-The user can then change back to the main AMIA directory and install the amia package for inclusion in other projects as well as ensure that all other dependencies are installed accordingly and accurately:
-
-FoldX(4.0) is a standalone software tool that is required for this package to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
+FoldX(4.0) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
 |-- AMIA Folder:
   |  
@@ -49,13 +32,12 @@ FoldX(4.0) is a standalone software tool that is required for this package to ru
       |-- yasaraPlugin.zip
       |-- rotabase.txt
 ```
+Once the dependencies have been installed, a successful installation can be tested by using the dataset provided within the /test folder. The test can be initialized by providing chmod u+x access to the AMIA.py script and running the following:
 
-Package Installation:
 ```
-pip install .
-pip install setup.py
+./AMiA.py --pdb_file ~/test/HIV-1C_ZA/RLT_Model_Repair.pdb --mutations ~/test/HIV-1C_ZA/mutations.csv --output_dir ~/test/variant_outputs
 ```
-Successful installation of the package can be confirmed when the user open a python terminal and attempts to import amia without any issues arising.
+
 ## Usage
 
 ### Phase 1: Mutation Introduction
@@ -65,9 +47,9 @@ After successful installation, the scripts should now be available to execute in
 * Mutations File: Comma Separated Variable (.csv)
 
 ```
-python3 AMIA.py --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory*
+./AMIA.py --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory*
 ```
-The ```--mode```  specifies whether the mutations from each subset present withint the mutation file should be introduced individually or together into the supplied protein structure. 
+The ```--mode```  specifies whether the mutations from each subset present within the mutation file should be introduced individually or together into the supplied protein structure. 
 The ```--pdb_file``` specifies the path to the Protein File that the mutations will be introduced to. 
 The ```--mutations``` specifies the path to the Mutations File that the mutations will be introduced to. 
 The ```--output_dir``` specifies the directory that the respective output files will be stored in. 
@@ -92,12 +74,11 @@ Once all the respective output files have been generated from the first phase of
 The trajectory analyses and bond type changes are then calculated automatically using the trajectory file (.xtc) and the associated topology files (.tpr):
 
 ```
-python3 trajana.py --systems *Main Trajectories Folder* --output_dir  *path/to/output_directory*
-python3 bond_types.py --systems *Main Trajectories Folder* --output_dir  *path/to/output_directory*
+python3 trajstat.py --systems *Main Trajectories Folder* --output_dir  *path/to/output_directory*
 ```
-The trajana.py script calculates and plots the Root Mean Square Deviation (RMSD) for the entire protein, Root Mean Square Fluctuation (RMSF) per protein chain and Radius of Gyration (rgyr) for the entire protein while the bond_types.py calculates Hydrogen Bond changes between DNA and Ligands within the system, the changes in ionic bonds (saltbridges) within the protein structure and the changes in hydrophic residue interactions. These outputs are then saved to the specified output directory.
+The trajstat.py script calculates and plots the Root Mean Square Deviation (RMSD) for the entire protein and nuleic acids present, Root Mean Square Fluctuation (RMSF) per protein chain and Radius of Gyration (rgyr) for the entire protein, calculates Hydrogen Bond changes between Protein-Protein, Protein-DNA and Protein-Ligands within each of the systems, the changes in ionic bonds (saltbridges) between Protein-Protein, Protein-DNA and Protein-Ligand structures and generates PCA plots for data dimensionality reduction. These outputs are then saved to the specified output directory.
 ## Queries
-For any related queries please contact Mr. Keaghan Brown on 3687524@myuwc.ac.za
+For any related queries please contact Mr. Keaghan Brown on 3687524@myuwc.ac.za or Dr. Ruben Cloete at ruben@sanbi.ac.za
 ## Authors
 
 - [@kbrown3687524](https://www.github.com/kbrown3687524)
