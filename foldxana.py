@@ -85,7 +85,7 @@ class FoldXAna:
 def folds(*argv):
     print(datetime.datetime.now())
     p = FoldXAna()
-    #p.foldx_stability(argv[0], argv[1])
+    p.foldx_stability(argv[0], argv[1])
     p.stability_changes(argv[0], argv[1])
     print(datetime.datetime.now())
 
