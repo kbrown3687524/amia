@@ -151,7 +151,7 @@ class ContactAnalysis:
                         horizontal_concat = pd.concat([wt_contacts_df, var_contacts_df], axis=1)
                         horizontal_concat['Contact Difference'] = horizontal_concat.apply(
                             lambda x: x['Variant No. of Contacts'] - x['WT No. of Contacts'], axis=1)
-                    variant_df = pd.concat([var_df, horizontal_concat], axis=1)
+                        variant_df = pd.concat([var_df, horizontal_concat], axis=1)
                     df1 = variant_df.replace(np.nan, '', regex=True)
                     variants_dataframe = pd.concat([variants_dataframe, df1], axis=0)
             result = variants_dataframe.to_html(index=False, border=2)
