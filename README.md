@@ -21,7 +21,7 @@ git clone https://github.com/kbrown3687524/amia
 Open a terminal with mamba and create a new env:
 ```
 conda env create -f amia_environment.yml
-conda activate amia_main
+conda activate amia
 ```
 FoldX(4.0) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
