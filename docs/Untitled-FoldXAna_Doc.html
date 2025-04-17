@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>foldxana.py - FoldX Stability Analysis Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2a2a2a;
+        }
+        code, pre {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        pre {
+            padding: 10px;
+            overflow-x: auto;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .toc {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>foldxana.py - FoldX Stability Analysis Documentation</h1>
+
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#project-information">Project Information</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#usage">Usage</a></li>
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#outputs">Outputs</a></li>
+            <li><a href="#main-functionalities">Main Functionalities</a></li>
+            <li><a href="#workflow-summary">Workflow Summary</a></li>
+            <li><a href="#dependencies">Dependencies</a></li>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#notes">Notes</a></li>
+            <li><a href="#error-handling">Error Handling</a></li>
+        </ul>
+    </div>
+
+    <div class="section" id="project-information">
+        <h2>Project Information</h2>
+        <p>
+            <strong>Title:</strong> The development of an automated computational workflow to prioritize potential resistance variants identified in HIV Integrase Subtype C<br>
+            <strong>Author:</strong> Keaghan Brown (3687524) - MSc Bioinformatics Candidate<br>
+            <strong>Supervisor:</strong> Ruben Cloete - Lecturer, SANBI<br>
+            <strong>Institution:</strong> South African National Bioinformatics Institute, University of the Western Cape<br>
+            <strong>Funding:</strong> Poliomyelitis Research Foundation and UWC Ada & Bertie Levenstein Bursary Programme
+        </p>
+    </div>
+
+    <div class="section" id="overview">
+        <h2>Overview</h2>
+        <p>
+            The <code>foldxana.py</code> script is a key component of the automated computational workflow for analyzing structural stability changes in HIV Integrase Subtype C. It utilizes the <strong>FoldX</strong> software to calculate the stability of wild-type and mutant protein structures.
+        </p>
+        <p>
+            The script outputs a detailed HTML report summarizing the ΔΔG changes induced by mutations, which provides insights into the potential impact of mutations on protein stability.
+        </p>
+    </div>
+
+    <div class="section" id="usage">
+        <h2>Usage</h2>
+        <pre><code>python foldxana.py --pdb_file path/to/original.pdb --output_dir path/to/mutants/</code></pre>
+    </div>
+
+    <div class="section" id="arguments">
+        <h2>Arguments</h2>
+        <ul>
+            <li><code>--pdb_file</code>: Path to the wild-type PDB structure.</li>
+            <li><code>--output_dir</code>: Directory containing the mutated PDB files (must end in <code>_auto.pdb</code>).</li>
+        </ul>
+    </div>
+
+    <div class="section" id="outputs">
+        <h2>Outputs</h2>
+        <ul>
+            <li><strong>stability_index.html</strong>: Table showing:
+                <ul>
+                    <li>Wild-type structure energy</li>
+                    <li>Each variant structure energy</li>
+                    <li>Stability difference (ΔΔG)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section" id="main-functionalities">
+        <h2>Main Functionalities</h2>
+        <h3>Class: <code>FoldXAna</code></h3>
+        <h4><code>foldx_stability(output_dir, pdb_file)</code></h4>
+        <p>
+            Automatically locates the FoldX executable and runs stability calculations:
+        </p>
+        <ul>
+            <li>First for the wild-type PDB file</li>
+            <li>Then for each mutant PDB file in the output directory</li>
+        </ul>
+
+        <h4><code>stability_changes(output_dir, pdb_file)</code></h4>
+        <p>
+            Parses the resulting FoldX <code>.fxout</code> files and calculates:
+        </p>
+        <ul>
+            <li>Stability of wild-type system</li>
+            <li>Stability of each variant system</li>
+            <li>ΔΔG = WT Stability - Variant Stability</li>
+        </ul>
+        <p>
+            The results are exported to <code>stability_index.html</code> with HTML table formatting.
+        </p>
+    </div>
+
+    <div class="section" id="workflow-summary">
+        <h2>Workflow Summary</h2>
+        <ol>
+            <li>FoldX executable is located automatically within the current folder.</li>
+            <li>Stability is calculated for WT and each variant using the <code>Stability</code> command.</li>
+            <li>ΔΔG is computed and compiled into an HTML report.</li>
+        </ol>
+    </div>
+
+    <div class="section" id="dependencies">
+        <h2>Dependencies</h2>
+        <ul>
+            <li><code>FoldX</code> (executable must be in current directory)</li>
+            <li><code>Python</code> standard libraries</li>
+            <li><code>pandas, numpy</code></li>
+        </ul>
+    </div>
+
+    <div class="section" id="example">
+        <h2>Example</h2>
+        <pre><code>python foldxana.py --pdb_file HIV_WT.pdb --output_dir ./variants/</code></pre>
+        <p>Output: <code>stability_index.html</code></p>
+    </div>
+
+    <div class="section" id="prerequisites">
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>Ensure Python 3.x is installed and added to your system PATH.</li>
+            <li>Install required libraries using <code>pip install pandas numpy</code>.</li>
+            <li>Download and place the FoldX executable in the script's working directory.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="notes">
+        <h2>Notes</h2>
+        <ul>
+            <li>Ensure FoldX is downloaded and available in the script's working directory.</li>
+            <li>All variant structures must be named using the format: <code>VariantName_auto.pdb</code>.</li>
+            <li>Only the second value (energy) from FoldX output is used.</li>
+            <li>HTML output is styled with basic CSS for readability.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="error-handling">
+        <h2>Error Handling</h2>
+        <p>To improve error handling, consider implementing logging and exception handling in your script. For example:</p>
+        <pre><code>import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+try:
+    # Example subprocess call
+    subprocess.run(["python", "foldxana.py", "--pdb_file", "HIV_WT.pdb", "--output_dir", "./variants"], check=True)
+except subprocess.CalledProcessError as e:
+    logging.error(f"Error occurred: {e}")
+    exit(1)</code></pre>
+    </div>
+
+</body>
+</html>
