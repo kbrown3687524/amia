@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIA Documentation Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f1f1f1;
+            padding: 20px;
+            width: 200px;
+            flex-shrink: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin-bottom: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            margin-left: 220px;
+        }
+        footer {
+            background-color: lightskyblue;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="display: flex; align-items: center;">
+            <a href="index.html">
+            <img src="/imgs/logo-white.png" alt="AMIA Logo" style="height: 240px; margin-right: 15px;"> <!-- Increased size by 2X -->
+            </a>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="https://www.uwc.ac.za/" target="_blank">
+            <img src="/imgs/UWC_logo.svg" alt="UWC Logo" style="height: 90px; margin-right: 15px;">
+            </a>
+            <a href="https://www.sanbi.ac.za/" target="_blank">
+            <img src="/imgs/sanbi.png" alt="SANBI Logo" style="height: 90px;">
+            </a>
+        </div>
+    </header>
+    <div style="display: flex; flex: 1;">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation Guide</a></li>
+                <li><a href="AMIA.html">Main Script Documentation</a></li>
+                <li><a href="MutIntro_Doc.html">Mutation Introduction Documentation</a></li>
+                <li><a href="Contacts_Doc.html">Contact Difference Documentation</a></li>
+                <li><a href="FoldXAna_Doc.html">Stability Impact Documentation</a></li>
+                <li><a href="TrajStat_Doc.html">Trajectory Statistics Documentation</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div class="section" id="overview">
+                <h2>Overview</h2>
+                <p>
+                    This script serves as a controller to automate the mutation and analysis of a protein structure using multiple supporting Python scripts:
+                </p>
+                <ul>
+                    <li><strong>mutintro.py</strong> - Introduces mutations into the provided PDB file.</li>
+                    <li><strong>contacts.py</strong> - Analyzes residue contacts in the mutated PDB structure.</li>
+                    <li><strong>foldxana.py</strong> - Evaluates the energetic effects of mutations using FoldX.</li>
+                </ul>
+                <p>
+                    The script reads user-provided input through command-line arguments, processes the mutation data, and orchestrates the execution of the analysis pipeline.
+                </p>
+            </div>
+
+            <div class="section" id="usage">
+                <h2>Usage</h2>
+                <pre><code>python main_script.py --pdb_file path/to/input.pdb --output_dir path/to/output --mutations path/to/mutations.csv --mode single</code></pre>
+            </div>
+
+            <div class="section" id="arguments">
+                <h2>Arguments</h2>
+                <ul>
+                    <li><code>--pdb_file</code> (required): Path to the input PDB file that the mutations will be introduced into.</li>
+                    <li><code>--output_dir</code> (required): Path to the directory where the variant PDB systems will be saved.</li>
+                    <li><code>--mutations</code> (required): Path to a CSV file containing a list of mutations.</li>
+                    <li><code>--mode</code> (optional): Mutation introduction mode.
+                        <ul>
+                            <li><code>single</code> (default): Introduces mutations one at a time.</li>
+                            <li><code>multiple</code>: Introduces multiple mutations at once.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section" id="workflow">
+                <h2>Workflow</h2>
+                <ol>
+                    <li>The script captures the current working directory with <code>os.getcwd()</code>.</li>
+                    <li>Command-line arguments are parsed using <code>argparse</code>.</li>
+                    <li>The script calls three external Python scripts sequentially using <code>os.system()</code>:
+                        <ol>
+                            <li><code>mutintro.py</code>: Introduces mutations.</li>
+                            <li><code>contacts.py</code>: Analyzes contacts between residues post-mutation.</li>
+                            <li><code>foldxana.py</code>: Performs energetic evaluation of the mutated structures.</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section" id="example">
+                <h2>Example</h2>
+                <p>To run the script in single mutation mode:</p>
+                <pre><code>python main_script.py --pdb_file 1abc.pdb --output_dir ./output --mutations mutations.csv</code></pre>
+                <p>To run in multiple mutation mode:</p>
+                <pre><code>python main_script.py --pdb_file 1abc.pdb --output_dir ./output --mutations mutations.csv --mode multiple</code></pre>
+            </div>
+
+            <div class="section" id="dependencies">
+                <h2>Dependencies</h2>
+                <ul>
+                    <li>Python 3.x</li>
+                    <li>argparse</li>
+                    <li>os (standard library)</li>
+                    <li>External scripts: <code>mutintro.py</code>, <code>contacts.py</code>, <code>foldxana.py</code></li>
+                </ul>
+            </div>
+
+            <div class="section" id="notes">
+                <h2>Notes</h2>
+                <ul>
+                    <li>Ensure that the supporting scripts are in the same directory or accessible via PATH.</li>
+                    <li>The mutation CSV file should follow the expected format required by <code>mutintro.py</code>.</li>
+                    <li>Consider replacing <code>os.system()</code> with <code>subprocess.run()</code> for better error handling and security. For example:
+                        <pre><code>import subprocess
+    subprocess.run(["python", "mutintro.py", "--arg1", "value1"], check=True)</code></pre>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section" id="prerequisites">
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Ensure Python 3.x is installed and added to your system PATH.</li>
+                    <li>Install any required Python libraries using <code>pip install</code>.</li>
+                    <li>Verify that the external scripts (<code>mutintro.py</code>, <code>contacts.py</code>, <code>foldxana.py</code>) are present in the working directory.</li>
+                </ul>
+            </div>
+
+            <div class="section" id="error-handling">
+                <h2>Error Handling</h2>
+                <p>To improve error handling, consider implementing logging and exception handling in your script. For example:</p>
+                <pre><code>import logging
+
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+    try:
+        subprocess.run(["python", "mutintro.py", "--arg1", "value1"], check=True)
+    except subprocess.CalledProcessError as e:
+        logging.error(f"Error occurred: {e}")
+        exit(1)</code></pre>
+            </div>  
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2023 AMIA Documentation. All rights reserved.</p>
+        <p>We acknowledge the use of the following tools in the AMIA pipeline:</p>
+        <div style="margin-top: 10px;">
+            <a href="http://www.charmm.org/" target="_blank">
+                <img src="/imgs/charmm_gui.png" alt="CHARMM Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.python.org/" target="_blank"></a>
+                <img src="/imgs/python-logo.png" alt="Python Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://foldxsuite.crg.eu/" target="_blank">
+                <img src="/imgs/FoldX.png" alt="FoldX Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://pymol.org/2/" target="_blank"></a>
+                <img src="/imgs/PyMOL_logo.png" alt="PyMOL Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.mdanalysis.org/" target="_blank"></a>
+                <img src="/imgs/mda_logo.png" alt="MDAnalysis Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://www.gromacs.org/" target="_blank">
+                <img src="/imgs/gmx_logo.png" alt="GROMACS Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+        </div>
+    </footer>   
+</body>
+</html>
