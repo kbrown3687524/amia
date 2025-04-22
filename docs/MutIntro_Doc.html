@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIA Documentation Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f1f1f1;
+            padding: 20px;
+            width: 200px;
+            flex-shrink: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin-bottom: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            margin-left: 220px;
+        }
+        footer {
+            background-color: lightskyblue;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="display: flex; align-items: center;">
+            <a href="index.html">
+                <img src="/imgs/logo-white.png" alt="AMIA Logo" style="height: 240px; margin-right: 15px;"> <!-- Increased size by 2X -->
+            </a>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="https://www.uwc.ac.za/" target="_blank">
+                <img src="/imgs/UWC_logo.svg" alt="UWC Logo" style="height: 90px; margin-right: 15px;">
+            </a>
+            <a href="https://www.sanbi.ac.za/" target="_blank">
+                <img src="/imgs/sanbi.png" alt="SANBI Logo" style="height: 90px;">
+            </a>
+        </div>
+    </header>
+    <div style="display: flex;">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation Guide</a></li>
+                <li><a href="AMIA.html">Main Script Documentation</a></li>
+                <li><a href="MutIntro_Doc.html">Mutation Introduction Documentation</a></li>
+                <li><a href="Contacts_Doc.html">Contact Difference Documentation</a></li>
+                <li><a href="FoldXAna_Doc.html">Stability Impact Documentation</a></li>
+                <li><a href="TrajStat_Doc.html">Trajectory Statistics Documentation</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>mutintro.py - Mutation Introduction Script Documentation</h1>
+            <div class="toc">
+                <h2>Table of Contents</h2>
+                <ul>
+                    <li><a href="#project-information">Project Information</a></li>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#usage">Usage</a></li>
+                    <li><a href="#arguments">Arguments</a></li>
+                    <li><a href="#mutation-format">Mutation Format</a></li>
+                    <li><a href="#main-functionalities">Main Functionalities</a></li>
+                    <li><a href="#foldx-integration">FoldX Integration</a></li>
+                    <li><a href="#dependencies">Dependencies</a></li>
+                    <li><a href="#example">Example</a></li>
+                    <li><a href="#prerequisites">Prerequisites</a></li>
+                    <li><a href="#notes">Notes</a></li>
+                    <li><a href="#error-handling">Error Handling</a></li>
+                </ul>
+            </div>
+            <div class="section" id="project-information">
+                <h2>Project Information</h2>
+                <p>
+                    <strong>Title:</strong> The development of an automated computational workflow to prioritize potential resistance variants identified in HIV Integrase Subtype C<br>
+                    <strong>Author:</strong> Keaghan Brown (3687524) - MSc Bioinformatics Candidate<br>
+                    <strong>Supervisor:</strong> Ruben Cloete - Lecturer, SANBI<br>
+                    <strong>Institution:</strong> South African National Bioinformatics Institute, University of the Western Cape<br>
+                    <strong>Funding:</strong> Poliomyelitis Research Foundation and UWC Ada & Bertie Levenstein Bursary Programme
+                </p>
+            </div>
+            <div class="section" id="overview">
+                <h2>Overview</h2>
+                <p>
+                    The <code>mutintro.py</code> script is a critical component of the automated computational workflow for introducing mutations into protein structures. It leverages PyMOL’s mutagenesis wizard to introduce mutations individually or simultaneously and optionally applies energy minimization using FoldX.
+                </p>
+                <p>
+                    This script is designed to streamline the mutation introduction process, ensuring consistency and accuracy in preparing mutant structures for downstream analysis.
+                </p>
+            </div>
+            <div class="section" id="usage">
+                <h2>Usage</h2>
+                <pre><code>python mutintro.py --pdb_file path/to/file.pdb --output_dir path/to/output --mutations path/to/mutations.csv --mode [single|multiple]</code></pre>
+            </div>
+            <div class="section" id="arguments">
+                <h2>Arguments</h2>
+                <ul>
+                    <li><code>--pdb_file</code>: Path to the original PDB file that will undergo mutations.</li>
+                    <li><code>--output_dir</code>: Directory where modified PDB files will be saved.</li>
+                    <li><code>--mutations</code>: CSV file with mutation data. Each column represents a system, and each row contains mutations like <code>Q148R</code>.</li>
+                    <li><code>--mode</code>: Mutation mode. Options:
+                        <ul>
+                            <li><code>single</code>: Each mutation is introduced individually.</li>
+                            <li><code>multiple</code>: All mutations for a system are introduced together.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="section" id="mutation-format">
+                <h2>Mutation Format</h2>
+                <p>
+                    Mutations are written in the format <code>OriginalResiduePositionNewResidue</code>, e.g., <code>Q148R</code>, which means:
+                </p>
+                <ul>
+                    <li><strong>Original residue:</strong> Q (Glutamine)</li>
+                    <li><strong>Position:</strong> 148</li>
+                    <li><strong>New residue:</strong> R (Arginine)</li>
+                </ul>
+            </div>
+            <div class="section" id="main-functionalities">
+                <h2>Main Functionalities</h2>
+                <h3>Class: <code>MutationIntro</code></h3>
+
+                <h4><code>mutant_processing(mutant_list)</code></h4>
+                <p>Reads a CSV mutation table and returns dictionaries for both individual and grouped mutations.</p>
+
+                <h4><code>individual_introduction(pdb_file, output_dir, mutant_data)</code></h4>
+                <p>
+                    Introduces each mutation into a separate PDB file using PyMOL’s mutagenesis wizard and saves them to the output directory.
+                </p>
+
+                <h4><code>simultaneous_introduction(pdb_file, output_dir, mutant_data)</code></h4>
+                <p>
+                    Introduces all mutations for a given system into a single structure and saves the final mutated PDB file.
+                </p>
+
+                <h4><code>foldx_emin(foldx_exe, output_dir)</code></h4>
+                <p>
+                    (Optional) Runs FoldX’s "Optimize" command on each mutated structure to minimize energy and resolve potential steric clashes.
+                </p>
+            </div>
+            <div class="section" id="foldx-integration">
+                <h2>FoldX Integration</h2>
+                <p>
+                    The script searches for a folder named <code>foldx</code> in the current working directory and automatically locates the FoldX binary within it.
+                </p>
+                <p>
+                    Example command executed:
+                </p>
+                <pre><code>./foldx --command=Optimize --pdb=Q148R_auto.pdb --output-file=Q148R_auto.pdb</code></pre>
+            </div>
+            <div class="section" id="dependencies">
+                <h2>Dependencies</h2>
+                <ul>
+                    <li><code>pymol</code></li>
+                    <li><code>biopython</code> (PDBParser, PPBuilder)</li>
+                    <li><code>pandas</code></li>
+                    <li><code>argparse, os, sys, warnings</code> (Standard Library)</li>
+                </ul>
+            </div>
+            <div class="section" id="example">
+                <h2>Example</h2>
+                <pre><code>python mutintro.py --pdb_file HIV_Integrase.pdb --output_dir ./output --mutations variant_list.csv --mode multiple</code></pre>
+            </div>
+            <div class="section" id="prerequisites">
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Ensure Python 3.x is installed and added to your system PATH.</li>
+                    <li>Install required libraries using <code>pip install pymol biopython pandas</code>.</li>
+                    <li>Ensure PyMOL is installed and can be invoked in script mode.</li>
+                    <li>Download and place the FoldX executable in a folder named <code>foldx</code>.</li>
+                </ul>
+            </div>
+            <div class="section" id="notes">
+                <h2>Notes</h2>
+                <ul>
+                    <li>The mutation wizard automatically selects the rotamer with the least steric clashes.</li>
+                    <li>Make sure your PDB file matches the expected format (chain and residue numbers must match mutation data).</li>
+                    <li>All output files are saved in the specified output directory.</li>
+                </ul>
+            </div>
+            <div class="section" id="error-handling">
+                <h2>Error Handling</h2>
+                <p>To improve error handling, consider implementing logging and exception handling in your script. For example:</p>
+                <pre><code>import logging
+
+                <p>
+                    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+                try:
+                    # Example subprocess call
+                    subprocess.run(["python", "mutintro.py", "--pdb_file", "HIV_Integrase.pdb", "--output_dir", "./output", "--mutations", "variant_list.csv", "--mode", "multiple"], check=True)
+                except subprocess.CalledProcessError as e:
+                    logging.error(f"Error occurred: {e}")
+                    exit(1)</code></pre>
+                </p>
+                
+            </div>
+        </main> 
+    </div>
+    <footer>
+        <p>&copy; 2023 AMIA Documentation. All rights reserved.</p>
+        <p>We acknowledge the use of the following tools in the AMIA pipeline:</p>
+        <div style="margin-top: 10px;">
+            <a href="http://www.charmm.org/" target="_blank">
+                <img src="/imgs/charmm_gui.png" alt="CHARMM Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.python.org/" target="_blank">
+                <img src="/imgs/python-logo.png" alt="Python Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://foldxsuite.crg.eu/" target="_blank">
+                <img src="/imgs/FoldX.png" alt="FoldX Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://pymol.org/2/" target="_blank">
+                <img src="/imgs/PyMOL_logo.png" alt="PyMOL Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.mdanalysis.org/" target="_blank">
+                <img src="/imgs/mda_logo.png" alt="MDAnalysis Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://www.gromacs.org/" target="_blank">
+                <img src="/imgs/gmx_logo.png" alt="GROMACS Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

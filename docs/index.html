@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIA Documentation Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f1f1f1;
+            padding: 20px;
+            width: 200px;
+            flex-shrink: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin-bottom: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            margin-left: 220px;
+        }
+        footer {
+            background-color: lightskyblue;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="display: flex; align-items: center;">
+            <a href="index.html">
+            <img src="/imgs/logo-white.png" alt="AMIA Logo" style="height: 240px; margin-right: 15px;"> <!-- Increased size by 2X -->
+            </a>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="https://www.uwc.ac.za/" target="_blank">
+            <img src="/imgs/UWC_logo.svg" alt="UWC Logo" style="height: 90px; margin-right: 15px;">
+            </a>
+            <a href="https://www.sanbi.ac.za/" target="_blank">
+            <img src="/imgs/sanbi.png" alt="SANBI Logo" style="height: 90px;">
+            </a>
+        </div>
+            </a>
+        </div>
+    </header>
+    <div style="display: flex;">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation Guide</a></li>
+                <li><a href="AMIA.html">Main Script Documentation</a></li>
+                <li><a href="MutIntro_Doc.html">Mutation Introduction Documentation</a></li>
+                <li><a href="Contacts_Doc.html">Contact Difference Documentation</a></li>
+                <li><a href="FoldXAna_Doc.html">Stability Impact Documentation</a></li>
+                <li><a href="TrajStat_Doc.html">Trajectory Statistics Documentation</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>The AMIA Project</h1>
+            <p>The AMIA Project develops open-source tools for the automated structural and dynamic analysis of protein mutations, helping researchers prioritise potential drug resistance variants efficiently and reproducibly.</p>
+
+            <p>At the heart of the project is <strong>AMIA (Automated Mutation Introduction and Analysis)</strong> — a fully automated bioinformatics pipeline designed to streamline the study of mutation effects on protein structure, stability, and interactions. AMIA enables comprehensive computational analysis by integrating widely used structural biology tools into a single, user-friendly workflow.</p>
+
+            <p>AMIA simplifies complex tasks such as introducing mutations into protein structures, calculating changes in molecular interactions and energy states, and analyzing dynamic behavior through molecular dynamics (MD) simulations. The pipeline includes:</p>
+            <ul>
+                <li><strong>Automated mutation modelling</strong> using PyMOL and custom Python scripts</li>
+                <li><strong>Interaction and stability analysis</strong> with FoldX and contact distance tools</li>
+                <li><strong>Trajectory-based analysis</strong> of MD simulations (e.g., RMSD, RMSF, PCA, hydrogen bonds) via the dedicated <strong>TrajAna</strong> module, built on top of MDAnalysis</li>
+            </ul>
+
+            <p>AMIA supports input from commonly used tools such as PyMOL, FoldX, GROMACS, and leverages libraries like Biopython, Pandas, and Matplotlib to facilitate analysis, data handling, and visualisation.</p>
+
+            <h2>Get Started</h2>
+            <p>If you’re new to AMIA, the following resources will help you get up and running:</p>
+            <ul>
+                <li><a href="installation.html"><strong>Installation Guide</strong></a> — Learn how to set up AMIA and its dependencies</li>
+                <li><a href="Workflow_Execution_Doc.html"><strong>Workflow Tutorial</strong></a> — Walk through a complete AMIA analysis, from mutation input to trajectory insights</li> <!-- Updated link -->
+                <li><a href="documentation.html"><strong>Documentation</strong></a> — Explore detailed API docs and usage examples</li>
+            </ul>
+
+            <h2>Community & Contributions</h2>
+            <p>AMIA is an open-source, community-driven project. Whether you're a computational biologist, structural bioinformatician, or drug resistance researcher, your input helps shape the development of AMIA.</p>
+            <ul>
+                <li><a href="community.html"><strong>Join the Community</strong></a> — Ask questions, request features, or report bugs</li>
+                <li><a href="contribute.html"><strong>Contribute</strong></a> — Help improve the pipeline through code, documentation, or feedback</li>
+                <li><a href="modules.html"><strong>AMIA Modules</strong></a> — Extend AMIA with custom scripts or integrate it into your own research pipelines</li>
+            </ul>
+
+            <h2>Citing AMIA</h2>
+            <p>If you use AMIA in your research, please cite it appropriately. Citation information and badges are available on our <a href="citation.html">Citation page</a>.</p>
+
+            <h2>Funding & Support</h2>
+            <p>AMIA is freely available to the scientific community and designed to run on both high-performance clusters and local machines. To support its continued development, consider contributing code or supporting us through collaborative research initiatives.</p>
+            <p>This project is supported by funding from the Poliomyelitis Research Foundation
+                <a href="https://www.prf.ac.za/" target="_blank">
+                    <img src="/imgs/PRFlogo.png" alt="Poliomyelitis Research Foundation Logo" style="height: 90px; vertical-align: middle; margin-left: 5px;">
+                </a>
+            </p>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2023 AMIA Documentation. All rights reserved.</p>
+        <p>We acknowledge the use of the following tools in the AMIA pipeline:</p>
+        <div style="margin-top: 10px;">
+            <a href="http://www.charmm.org/" target="_blank">
+                <img src="/imgs/charmm_gui.png" alt="CHARMM Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.python.org/" target="_blank">
+                <img src="/imgs/python-logo.png" alt="Python Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://foldxsuite.crg.eu/" target="_blank">
+                <img src="/imgs/FoldX.png" alt="FoldX Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://pymol.org/2/" target="_blank">
+                <img src="/imgs/PyMOL_logo.png" alt="PyMOL Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.mdanalysis.org/" target="_blank">
+                <img src="/imgs/mda_logo.png" alt="MDAnalysis Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://www.gromacs.org/" target="_blank">
+                <img src="/imgs/gmx_logo.png" alt="GROMACS Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
