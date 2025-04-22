@@ -2,190 +2,258 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>contacts.py - Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIA Documentation Index</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
             line-height: 1.6;
-            background-color: #f4f4f4;
+            margin: 0;
+            background-color: #f9f9f9;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        h1, h2, h3 {
-            color: #2a2a2a;
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
         }
-        code, pre {
-            background: #eee;
-            padding: 2px 6px;
-            border-radius: 4px;
+        nav {
+            background-color: #f1f1f1;
+            padding: 20px;
+            width: 200px;
+            flex-shrink: 0;
         }
-        pre {
-            padding: 10px;
-            overflow-x: auto;
+        nav ul {
+            list-style-type: none;
+            padding: 0;
         }
-        .section {
-            margin-bottom: 30px;
+        nav ul li {
+            margin-bottom: 10px;
         }
-        .toc {
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-        }
-        .toc a {
+        nav ul li a {
             text-decoration: none;
             color: #007BFF;
         }
-        .toc a:hover {
+        nav ul li a:hover {
             text-decoration: underline;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            margin-left: 220px;
+        }
+        footer {
+            background-color: lightskyblue;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="display: flex; align-items: center;">
+            <a href="index.html">
+            <img src="/imgs/logo-white.png" alt="AMIA Logo" style="height: 240px; margin-right: 15px;"> <!-- Increased size by 2X -->
+            </a>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="https://www.uwc.ac.za/" target="_blank">
+            <img src="/imgs/UWC_logo.svg" alt="UWC Logo" style="height: 90px; margin-right: 15px;">
+            </a>
+            <a href="https://www.sanbi.ac.za/" target="_blank">
+            <img src="/imgs/sanbi.png" alt="SANBI Logo" style="height: 90px;">
+            </a>
+        </div>
+            </a>
+        </div>
+    </header>
+    <div style="display: flex;">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation Guide</a></li>
+                <li><a href="AMIA.html">Main Script Documentation</a></li>
+                <li><a href="MutIntro_Doc.html">Mutation Introduction Documentation</a></li>
+                <li><a href="Contacts_Doc.html">Contact Difference Documentation</a></li>
+                <li><a href="FoldXAna_Doc.html">Stability Impact Documentation</a></li>
+                <li><a href="TrajStat_Doc.html">Trajectory Statistics Documentation</a></li>
+            </ul>
+        </nav>
+        <main>
+                <h1>contacts.py - Structural Contact Analysis Documentation</h1>
 
-    <h1>contacts.py - Structural Contact Analysis Documentation</h1>
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#project-information">Project Information</a></li>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#arguments">Arguments</a></li>
+                <li><a href="#outputs">Outputs</a></li>
+                <li><a href="#main-functionalities">Main Functionalities</a></li>
+                <li><a href="#contact-analysis-logic">Contact Analysis Logic</a></li>
+                <li><a href="#dependencies">Dependencies</a></li>
+                <li><a href="#example">Example</a></li>
+                <li><a href="#prerequisites">Prerequisites</a></li>
+                <li><a href="#notes">Notes</a></li>
+                <li><a href="#error-handling">Error Handling</a></li>
+            </ul>
+        </div>
 
-    <div class="toc">
-        <h2>Table of Contents</h2>
-        <ul>
-            <li><a href="#project-information">Project Information</a></li>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#usage">Usage</a></li>
-            <li><a href="#arguments">Arguments</a></li>
-            <li><a href="#outputs">Outputs</a></li>
-            <li><a href="#main-functionalities">Main Functionalities</a></li>
-            <li><a href="#contact-analysis-logic">Contact Analysis Logic</a></li>
-            <li><a href="#dependencies">Dependencies</a></li>
-            <li><a href="#example">Example</a></li>
-            <li><a href="#prerequisites">Prerequisites</a></li>
-            <li><a href="#notes">Notes</a></li>
-            <li><a href="#error-handling">Error Handling</a></li>
-        </ul>
-    </div>
+        <div class="section" id="project-information">
+            <h2>Project Information</h2>
+            <p>
+                <strong>Title:</strong> The development of an automated computational workflow to prioritize potential resistance variants identified in HIV Integrase Subtype C<br>
+                <strong>Author:</strong> Keaghan Brown (3687524) - MSc Bioinformatics Candidate<br>
+                <strong>Supervisor:</strong> Ruben Cloete - Lecturer, SANBI<br>
+                <strong>Institution:</strong> South African National Bioinformatics Institute, University of the Western Cape<br>
+                <strong>Funding:</strong> Poliomyelitis Research Foundation and UWC Ada & Bertie Levenstein Bursary Programme
+            </p>
+        </div>
 
-    <div class="section" id="project-information">
-        <h2>Project Information</h2>
-        <p>
-            <strong>Title:</strong> The development of an automated computational workflow to prioritize potential resistance variants identified in HIV Integrase Subtype C<br>
-            <strong>Author:</strong> Keaghan Brown (3687524) - MSc Bioinformatics Candidate<br>
-            <strong>Supervisor:</strong> Ruben Cloete - Lecturer, SANBI<br>
-            <strong>Institution:</strong> South African National Bioinformatics Institute, University of the Western Cape<br>
-            <strong>Funding:</strong> Poliomyelitis Research Foundation and UWC Ada & Bertie Levenstein Bursary Programme
-        </p>
-    </div>
+        <div class="section" id="overview">
+            <h2>Overview</h2>
+            <p>
+                The <code>contacts.py</code> script is a critical component of the automated computational workflow for analyzing structural changes in HIV Integrase Subtype C. It focuses on identifying and quantifying changes in atomic contacts between wild-type and variant protein structures. This analysis provides insights into:
+            </p>
+            <ul>
+                <li>Residue-level contact changes</li>
+                <li>Macromolecule interaction differences</li>
+            </ul>
+            <p>
+                The script leverages PyMOL and Biopython to perform contact calculations and outputs results in HTML format for easy interpretation and visualization.
+            </p>
+        </div>
 
-    <div class="section" id="overview">
-        <h2>Overview</h2>
-        <p>
-            The <code>contacts.py</code> script is a critical component of the automated computational workflow for analyzing structural changes in HIV Integrase Subtype C. It focuses on identifying and quantifying changes in atomic contacts between wild-type and variant protein structures. This analysis provides insights into:
-        </p>
-        <ul>
-            <li>Residue-level contact changes</li>
-            <li>Macromolecule interaction differences</li>
-        </ul>
-        <p>
-            The script leverages PyMOL and Biopython to perform contact calculations and outputs results in HTML format for easy interpretation and visualization.
-        </p>
-    </div>
+        <div class="section" id="usage">
+            <h2>Usage</h2>
+            <pre><code>python contacts.py --pdb_file path/to/original.pdb --output_dir path/to/mutants/</code></pre>
+        </div>
 
-    <div class="section" id="usage">
-        <h2>Usage</h2>
-        <pre><code>python contacts.py --pdb_file path/to/original.pdb --output_dir path/to/mutants/</code></pre>
-    </div>
+        <div class="section" id="arguments">
+            <h2>Arguments</h2>
+            <ul>
+                <li><code>--pdb_file</code>: The original wild-type PDB structure.</li>
+                <li><code>--output_dir</code>: Directory containing variant PDB structures (e.g., generated by <code>mutintro.py</code>).</li>
+            </ul>
+        </div>
 
-    <div class="section" id="arguments">
-        <h2>Arguments</h2>
-        <ul>
-            <li><code>--pdb_file</code>: The original wild-type PDB structure.</li>
-            <li><code>--output_dir</code>: Directory containing variant PDB structures (e.g., generated by <code>mutintro.py</code>).</li>
-        </ul>
-    </div>
+        <div class="section" id="outputs">
+            <h2>Outputs</h2>
+            <ul>
+                <li><strong>mutation_index.html</strong>: Table comparing WT and variant residue contacts.</li>
+                <li><strong>macromolecules_index.html</strong>: Table comparing WT and variant macromolecule interactions.</li>
+            </ul>
+        </div>
 
-    <div class="section" id="outputs">
-        <h2>Outputs</h2>
-        <ul>
-            <li><strong>mutation_index.html</strong>: Table comparing WT and variant residue contacts.</li>
-            <li><strong>macromolecules_index.html</strong>: Table comparing WT and variant macromolecule interactions.</li>
-        </ul>
-    </div>
+        <div class="section" id="main-functionalities">
+            <h2>Main Functionalities</h2>
+            <h3>Class: <code>ContactAnalysis</code></h3>
+            <h4><code>pre_processing(var_sys)</code></h4>
+            <p>Extracts mutations from the filename (e.g., Q148R_auto.pdb → Q148R).</p>
+            <h4><code>macromolecules(var_sys)</code></h4>
+            <p>Identifies non-protein molecules in the structure and calculates contact distances to protein residues using PyMOL and Biopython.</p>
+            <h4><code>contact_calculator(res, res_pos)</code></h4>
+            <p>Calculates the number of contacts a residue forms with surrounding residues (within 6Å).</p>
+            <h4><code>res_contacts(output_dir, pdb_file)</code></h4>
+            <p>Compares residue contacts of wild-type vs. mutant residues and saves the results in <code>mutation_index.html</code>.</p>
+            <h4><code>macromol_contacts(output_dir, pdb_file)</code></h4>
+            <p>Compares contacts between macromolecules and protein structure in WT and mutant systems. Saves results in <code>macromolecules_index.html</code>.</p>
+        </div>
 
-    <div class="section" id="main-functionalities">
-        <h2>Main Functionalities</h2>
-        <h3>Class: <code>ContactAnalysis</code></h3>
-        <h4><code>pre_processing(var_sys)</code></h4>
-        <p>Extracts mutations from the filename (e.g., Q148R_auto.pdb → Q148R).</p>
-        <h4><code>macromolecules(var_sys)</code></h4>
-        <p>Identifies non-protein molecules in the structure and calculates contact distances to protein residues using PyMOL and Biopython.</p>
-        <h4><code>contact_calculator(res, res_pos)</code></h4>
-        <p>Calculates the number of contacts a residue forms with surrounding residues (within 6Å).</p>
-        <h4><code>res_contacts(output_dir, pdb_file)</code></h4>
-        <p>Compares residue contacts of wild-type vs. mutant residues and saves the results in <code>mutation_index.html</code>.</p>
-        <h4><code>macromol_contacts(output_dir, pdb_file)</code></h4>
-        <p>Compares contacts between macromolecules and protein structure in WT and mutant systems. Saves results in <code>macromolecules_index.html</code>.</p>
-    </div>
+        <div class="section" id="contact-analysis-logic">
+            <h2>Contact Analysis Logic</h2>
+            <ul>
+                <li>Residue of interest is selected using PyMOL.</li>
+                <li>Surrounding residues (within 6 Å) are identified.</li>
+                <li>Distances are computed and contact count is stored.</li>
+                <li>Differences in contact number between WT and mutant versions are highlighted.</li>
+            </ul>
+        </div>
 
-    <div class="section" id="contact-analysis-logic">
-        <h2>Contact Analysis Logic</h2>
-        <ul>
-            <li>Residue of interest is selected using PyMOL.</li>
-            <li>Surrounding residues (within 6 Å) are identified.</li>
-            <li>Distances are computed and contact count is stored.</li>
-            <li>Differences in contact number between WT and mutant versions are highlighted.</li>
-        </ul>
-    </div>
+        <div class="section" id="dependencies">
+            <h2>Dependencies</h2>
+            <ul>
+                <li><code>pymol</code></li>
+                <li><code>biopython</code> (PDBParser, PPBuilder)</li>
+                <li><code>pandas, numpy</code></li>
+                <li><code>amia.get_raw_distances</code> (custom function/module)</li>
+            </ul>
+        </div>
 
-    <div class="section" id="dependencies">
-        <h2>Dependencies</h2>
-        <ul>
-            <li><code>pymol</code></li>
-            <li><code>biopython</code> (PDBParser, PPBuilder)</li>
-            <li><code>pandas, numpy</code></li>
-            <li><code>amia.get_raw_distances</code> (custom function/module)</li>
-        </ul>
-    </div>
+        <div class="section" id="example">
+            <h2>Example</h2>
+            <pre><code>python contacts.py --pdb_file HIV_WT.pdb --output_dir ./variants/</code></pre>
+            <p>This will generate:</p>
+            <ul>
+                <li><code>mutation_index.html</code> – Residue contact comparisons</li>
+                <li><code>macromolecules_index.html</code> – Macromolecule contact comparisons</li>
+            </ul>
+        </div>
 
-    <div class="section" id="example">
-        <h2>Example</h2>
-        <pre><code>python contacts.py --pdb_file HIV_WT.pdb --output_dir ./variants/</code></pre>
-        <p>This will generate:</p>
-        <ul>
-            <li><code>mutation_index.html</code> – Residue contact comparisons</li>
-            <li><code>macromolecules_index.html</code> – Macromolecule contact comparisons</li>
-        </ul>
-    </div>
+        <div class="section" id="prerequisites">
+            <h2>Prerequisites</h2>
+            <ul>
+                <li>Ensure Python 3.x is installed and added to your system PATH.</li>
+                <li>Install required libraries using <code>pip install pymol biopython pandas numpy</code>.</li>
+                <li>Ensure PyMOL is script-accessible (PyMOL must be installed).</li>
+            </ul>
+        </div>
 
-    <div class="section" id="prerequisites">
-        <h2>Prerequisites</h2>
-        <ul>
-            <li>Ensure Python 3.x is installed and added to your system PATH.</li>
-            <li>Install required libraries using <code>pip install pymol biopython pandas numpy</code>.</li>
-            <li>Ensure PyMOL is script-accessible (PyMOL must be installed).</li>
-        </ul>
-    </div>
-
-    <div class="section" id="notes">
-        <h2>Notes</h2>
-        <ul>
+        <div class="section" id="notes">
+            <h2>Notes</h2>
+            <ul>
             <li>The <code>get_raw_distances</code> method must be available from <code>amia</code>.</li>
             <li>HTML output includes styling for improved readability.</li>
             <li>Mutant filenames must end in <code>_auto.pdb</code>.</li>
-        </ul>
-    </div>
+            </ul>
+        </div>
 
-    <div class="section" id="error-handling">
-        <h2>Error Handling</h2>
-        <p>To improve error handling, consider implementing logging and exception handling in your script. For example:</p>
-        <pre><code>import logging
+        <div class="section" id="error-handling">
+            <h2>Error Handling</h2>
+            <p>To improve error handling, consider implementing logging and exception handling in your script. For example:</p>
+            <pre><code>import logging
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-try:
-    # Example subprocess call
-    subprocess.run(["python", "contacts.py", "--pdb_file", "HIV_WT.pdb", "--output_dir", "./variants"], check=True)
-except subprocess.CalledProcessError as e:
-    logging.error(f"Error occurred: {e}")
-    exit(1)</code></pre>
-    </div>
-
-</body>
+        try:
+        # Example subprocess call
+        subprocess.run(["python", "contacts.py", "--pdb_file", "HIV_WT.pdb", "--output_dir", "./variants"], check=True)
+        except subprocess.CalledProcessError as e:
+        logging.error(f"Error occurred: {e}")
+        exit(1)</code></pre>
+        </div>
+        </main>
+        </div>
+        <footer>
+        <p>&copy; 2023 AMIA Documentation. All rights reserved.</p>
+        <p>We acknowledge the use of the following tools in the AMIA pipeline:</p>
+        <div style="margin-top: 10px;">
+            <a href="http://www.charmm.org/" target="_blank">
+            <img src="/imgs/charmm_gui.png" alt="CHARMM Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.python.org/" target="_blank">
+            <img src="/imgs/python-logo.png" alt="Python Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://foldxsuite.crg.eu/" target="_blank">
+            <img src="/imgs/FoldX.png" alt="FoldX Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://pymol.org/2/" target="_blank">
+            <img src="/imgs/PyMOL_logo.png" alt="PyMOL Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.mdanalysis.org/" target="_blank">
+            <img src="/imgs/mda_logo.png" alt="MDAnalysis Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://www.gromacs.org/" target="_blank">
+            <img src="/imgs/gmx_logo.png" alt="GROMACS Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+        </div>
+        </footer>
+    </body>
 </html>

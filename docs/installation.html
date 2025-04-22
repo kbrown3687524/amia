@@ -3,74 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMIA Installation Guide</title>
+    <title>AMIA Documentation Index</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 40px;
+            margin: 0;
             background-color: #f9f9f9;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        h1, h2, h3 {
-            color: #2a2a2a;
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
         }
-        code, pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 4px;
-            display: block;
-            overflow-x: auto;
+        nav {
+            background-color: #f1f1f1;
+            padding: 20px;
+            width: 200px;
+            flex-shrink: 0;
         }
-        ul {
+        nav ul {
             list-style-type: none;
             padding: 0;
         }
-        li {
+        nav ul li {
             margin-bottom: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            margin-left: 220px;
+        }
+        footer {
+            background-color: lightskyblue;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: auto;
+        }
+        .content-wrapper {
+            display: flex;
+            flex: 1;
         }
     </style>
 </head>
 <body>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div style="display: flex; align-items: center;">
+            <a href="index.html">
+            <img src="/imgs/logo-white.png" alt="AMIA Logo" style="height: 240px; margin-right: 15px;"> <!-- Increased size by 2X -->
+            </a>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="https://www.uwc.ac.za/" target="_blank">
+            <img src="/imgs/UWC_logo.svg" alt="UWC Logo" style="height: 90px; margin-right: 15px;">
+            </a>
+            <a href="https://www.sanbi.ac.za/" target="_blank">
+            <img src="/imgs/sanbi.png" alt="SANBI Logo" style="height: 90px;">
+            </a>
+        </div>
+    </header>
+    <div class="content-wrapper">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="installation.html">Installation Guide</a></li>
+                <li><a href="AMIA.html">Main Script Documentation</a></li>
+                <li><a href="MutIntro_Doc.html">Mutation Introduction Documentation</a></li>
+                <li><a href="Contacts_Doc.html">Contact Difference Documentation</a></li>
+                <li><a href="FoldXAna_Doc.html">Stability Impact Documentation</a></li>
+                <li><a href="TrajStat_Doc.html">Trajectory Statistics Documentation</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>AMIA Installation Guide</h1>
+            <p>This guide provides step-by-step instructions to install and set up the AMIA workflow on your system.</p>
 
-    <h1>AMIA Installation Guide</h1>
-    <p>This guide provides step-by-step instructions to install and set up the AMIA workflow on your system.</p>
+            <h2>1. Download the AMIA Workflow</h2>
+            <p>Clone the repository from GitHub:</p>
+            <pre><code>git clone https://github.com/kbrown3687524/amia</code></pre>
 
-    <h2>1. Download the AMIA Workflow</h2>
-    <p>Clone the repository from GitHub:</p>
-    <pre><code>git clone https://github.com/kbrown3687524/amia</code></pre>
-
-    <h2>2. Set Up the Conda Virtual Environment</h2>
-    <p>Create and activate a Conda environment using the provided environment file:</p>
-    <pre><code>conda env create -f amia_environment.yml
+            <h2>2. Set Up the Conda Virtual Environment</h2>
+            <p>Create and activate a Conda environment using the provided environment file:</p>
+            <pre><code>conda env create -f amia_environment.yml
 conda activate amia</code></pre>
 
-    <h2>3. Install FoldX</h2>
-    <p>Download and extract FoldX (version 4.0) into the main AMIA directory. Ensure the directory structure looks like this:</p>
-    <pre><code>|-- AMIA Folder:
-  |  
-  |-- foldx:
-      |-- foldx_4
-      |-- yasaraPlugin.zip
-      |-- rotabase.txt</code></pre>
-
-    <h2>4. Test the Installation</h2>
-    <p>Run the provided test dataset to verify the installation:</p>
-    <pre><code>./AMIA.py --pdb_file ~/test/HIV-1C_ZA/RLT_Model_Repair.pdb --mutations ~/test/HIV-1C_ZA/mutations.csv --output_dir ~/test/variant_outputs</code></pre>
-
-    <h2>5. File Formats</h2>
-    <p>Ensure the input files are in the correct formats:</p>
-    <ul>
-        <li><strong>Structure File:</strong> Protein Data Bank (.pdb)</li>
-        <li><strong>Mutations File:</strong> Comma Separated Variable (.csv)</li>
-    </ul>
-
-    <h2>6. Queries</h2>
-    <p>If you encounter any issues, please contact:</p>
-    <ul>
-        <li>Keaghan Brown: <a href="mailto:3687524@myuwc.ac.za">3687524@myuwc.ac.za</a></li>
-        <li>Dr. Ruben Cloete: <a href="mailto:ruben@sanbi.ac.za">ruben@sanbi.ac.za</a></li>
-    </ul>
-
+            <h2>3. Install FoldX</h2>
+            <p>Download and extract FoldX (version 4.0) into the main AMIA directory. Ensure the directory structure looks like this:</p>
+            <pre><code>|-- AMIA Folder:
+|  
+|-- foldx:
+    |-- foldx_4
+    |-- yasaraPlugin.zip
+    |-- rotabase.txt</code></pre>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2023 AMIA Documentation. All rights reserved.</p>
+        <p>We acknowledge the use of the following tools in the AMIA pipeline:</p>
+        <div style="margin-top: 10px;">
+            <a href="http://www.charmm.org/" target="_blank">
+                <img src="/imgs/charmm_gui.png" alt="CHARMM Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.python.org/" target="_blank">
+                <img src="/imgs/python-logo.png" alt="Python Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://foldxsuite.crg.eu/" target="_blank">
+                <img src="/imgs/FoldX.png" alt="FoldX Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://pymol.org/2/" target="_blank">
+                <img src="/imgs/PyMOL_logo.png" alt="PyMOL Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="https://www.mdanalysis.org/" target="_blank">
+                <img src="/imgs/mda_logo.png" alt="MDAnalysis Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+            <a href="http://www.gromacs.org/" target="_blank">
+                <img src="/imgs/gmx_logo.png" alt="GROMACS Logo" style="height: 60px; margin-right: 15px; margin-bottom: 15px;">
+            </a>
+        </div>
+    </footer>
 </body>
 </html>

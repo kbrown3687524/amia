@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIA Workflow Execution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2a2a2a;
+        }
+        code, pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            display: block;
+            overflow-x: auto;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AMIA Workflow Execution</h1>
+    <p>This guide provides instructions for executing the AMIA workflow and verifying the installation.</p>
+
+    <h2> Test the Installation</h2>
+    <p>Run the provided test dataset to verify the installation:</p>
+    <pre><code>./AMIA.py --pdb_file ~/test/HIV-1C_ZA/RLT_Model_Repair.pdb --mutations ~/test/HIV-1C_ZA/mutations.csv --output_dir ~/test/variant_outputs</code></pre>
+
+    <h2>File Formats</h2>
+    <p>Ensure the input files are in the correct formats:</p>
+    <ul>
+        <li><strong>Structure File:</strong> Protein Data Bank (.pdb)</li>
+        <li><strong>Mutations File:</strong> Comma Separated Variable (.csv)</li>
+    </ul>
+    
+</body>
+</html>
