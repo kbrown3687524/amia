@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
-# Project Title: "The development of an automated computational workflow to prioritize potential resistance variants identified in HIV
-# Integrase Subtype C"
+# Project Title: "Automated computational workflow to prioritize potential resistance variants identified in HIV
+# Integrase Subtype C and CRF02_AG"
 #
 # This script is developed for the fufuillment for Masters at the South African National Bioinformatics Institute at
 # the University of the Western Cape.
@@ -96,84 +96,103 @@ class ContactAnalysis:
             return contacts
 
     def res_contacts(self, output_dir, pdb_file):
-        """Each of the variant files generated previously are iterated over and the mutations within the files are
-        extracted and seperated based on the WT residue, residue position and variant residue.
-        The WT structure provided previously is then loaded for each variant and the WT residue and residue position are
-        passed for contact determination. After the contacts for the WT are calculated the environment is completely
-        emptied and the same process is carried out for each variant system and its respective variant residues.
-        Once the WT and variant contacts have been calculated the script stores them as a dataframe which is
-        exported with an HTML extension for comparative analysis"""
-        variants_dataframe = pd.DataFrame()
+        """Generates a comparative table of WT and Variant residue contacts per mutation site,
+        exporting CSV and HTML with table borders, and mutation names without file suffix."""
+        
+        data = []
         os.chdir(output_dir)
+
         for file in os.listdir():
             if file.endswith('.pdb'):
+                mutation_name = file.replace('_auto.pdb', '')  # Strip suffix for cleaner naming
+                first_row = True  # To avoid repeating mutation name in rows
                 for var in self.pre_processing(file):
-                    var_dict = {'Variant': [str(var)]}
-                    var_df = pd.DataFrame(var_dict)
-                    edit_contact = {}
-                    edit_contact2 = {}
                     initial_residue = var[0]
-                    mutated_residue = var[len(var) - 1]
-                    residue_pos = var[1:len(var) - 1]
+                    mutated_residue = var[-1]
+                    residue_pos = var[1:-1]
+
+                    # WT contact calculation
                     cmd.reinitialize()
                     cmd.load(pdb_file)
                     wt_contacts = self.contact_calculator(initial_residue, residue_pos)
+
+                    # Variant contact calculation
                     cmd.reinitialize()
                     cmd.load(file)
                     var_contacts = self.contact_calculator(mutated_residue, residue_pos)
-                    if var_contacts != None and wt_contacts != None:
-                        missing_wt = []
-                        missing_var = []
-                        for key in wt_contacts:
-                            if key not in var_contacts:
-                                missing_wt.append(key)
-                        for key2 in var_contacts:
-                            if key2 not in wt_contacts:
-                                missing_var.append(key2)
-                        for val in missing_wt:
-                            var_contacts[val] = 0
-                        for val2 in missing_var:
-                            wt_contacts[val2] = 0
-                        res1 = {key: val for key, val in
-                                sorted(wt_contacts.items(), key=lambda ele: ele[0], reverse=False)}
-                        res2 = {key: val for key, val in
-                                sorted(var_contacts.items(), key=lambda ele: ele[0], reverse=False)}
-                        for index in res1:
-                            edit_contact.setdefault('WT Chain', []).append(index.split(',')[0])
-                            edit_contact.setdefault('WT Surrounding Residue(s)', []).append(index.split(',')[1])
-                            edit_contact.setdefault('WT No. of Contacts', []).append(res1[index])
-                        for index2 in res2:
-                            edit_contact2.setdefault('Variant Chain', []).append(index2.split(',')[0])
-                            edit_contact2.setdefault('Variant Surrounding Residue(s)', []).append(index2.split(',')[1])
-                            edit_contact2.setdefault('Variant No. of Contacts', []).append(res2[index2])
-                        wt_contacts_df = pd.DataFrame.from_dict(edit_contact)
-                        var_contacts_df = pd.DataFrame.from_dict(edit_contact2)
-                        horizontal_concat = pd.concat([wt_contacts_df, var_contacts_df], axis=1)
-                        horizontal_concat['Contact Difference'] = horizontal_concat.apply(
-                            lambda x: x['Variant No. of Contacts'] - x['WT No. of Contacts'], axis=1)
-                        variant_df = pd.concat([var_df, horizontal_concat], axis=1)
-                    df1 = variant_df.replace(np.nan, '', regex=True)
-                    variants_dataframe = pd.concat([variants_dataframe, df1], axis=0)
-            result = variants_dataframe.to_html(index=False, border=2)
-            text_file = open("mutation_index.html", "w")
-            text_file.write(result)
-        with open("mutation_index.html", 'r', encoding='utf-8') as file:
-            data = file.readlines()
-        data[2] = '    <tr style="text-align: center; background: #1abc9c;">\n'
-        with open("mutation_index.html", 'w', encoding='utf-8') as file:
-            file.writelines(data)
-        text_file.write('\n<style>' +
-                        '\n' + 'table {text-align: center;}' +
-                        '\n' + 'table thead th {text-align: center;}' +
-                        '\n' + 'table, th, td {' +
-                        '\n' + '  border: 1px solid black;' +
-                        '\n' + '  border-collapse: collapse;' +
-                        '\n' + '}' +
-                        '\n' + 'th, td {' +
-                        '\n' + '  border-style: solid;' +
-                        '\n' + '}' +
-                        '\n' + '</style>')
-        file.close()
+
+                    # Parse WT contacts
+                    wt_list = []
+                    if wt_contacts:
+                        for key, value in wt_contacts.items():
+                            chain, residue = key.split(',')
+                            wt_list.append({'WT Chain': chain, 'WT Residue': residue, 'WT Contacts': value})
+                    else:
+                        wt_list.append({'WT Chain': '-', 'WT Residue': '-', 'WT Contacts': 0})
+
+                    # Parse Variant contacts
+                    var_list = []
+                    if var_contacts:
+                        for key, value in var_contacts.items():
+                            chain, residue = key.split(',')
+                            var_list.append({'Variant Chain': chain, 'Variant Residue': residue, 'Variant Contacts': value})
+                    else:
+                        var_list.append({'Variant Chain': '-', 'Variant Residue': '-', 'Variant Contacts': 0})
+
+                    # Align WT and Variant contact lists
+                    max_len = max(len(wt_list), len(var_list))
+                    for i in range(max_len):
+                        wt = wt_list[i] if i < len(wt_list) else {'WT Chain': '-', 'WT Residue': '-', 'WT Contacts': 0}
+                        var = var_list[i] if i < len(var_list) else {'Variant Chain': '-', 'Variant Residue': '-', 'Variant Contacts': 0}
+                        contact_diff = var['Variant Contacts'] - wt['WT Contacts']
+
+                        data.append({
+                            'PDB File': mutation_name if first_row else '',
+                            **wt,
+                            **var,
+                            'Contact Difference': contact_diff
+                        })
+                        first_row = False
+
+        # Create DataFrame
+        df = pd.DataFrame(data)
+
+        # Export to CSV
+        csv_path = os.path.join(output_dir, 'contact_comparison_table.csv')
+        df.to_csv(csv_path, index=False)
+
+        # Export to HTML with borders
+        html_path = os.path.join(output_dir, 'contact_comparison_table.html')
+        html_table = df.to_html(index=False, border=1)
+        styled_html = f"""
+        <html>
+        <head>
+        <style>
+            table {{
+                border-collapse: collapse;
+                width: 100%;
+            }}
+            th, td {{
+                border: 1px solid black;
+                padding: 4px;
+                text-align: left;
+            }}
+            th {{
+                background-color: #f2f2f2;
+            }}
+        </style>
+        </head>
+        <body>
+        {html_table}
+        </body>
+        </html>
+        """
+        with open(html_path, 'w') as f:
+            f.write(styled_html)
+
+        print(f"\n✅ CSV saved to: {csv_path}")
+        print(f"✅ HTML saved to: {html_path}")
+
 
     def macromol_contacts(self, output_dir, pdb_file):
         """Changes in residues within the protein sequence may impact the contacts with other biomolecules within
@@ -240,6 +259,7 @@ class ContactAnalysis:
 
 def conts(*argv):
     print(datetime.datetime.now())
+    print('conts')
     p = ContactAnalysis()
     #pymol.finish_launching(['pymol'])
     p.res_contacts(argv[0], argv[1])
