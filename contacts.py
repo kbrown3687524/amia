@@ -99,13 +99,16 @@ class ContactAnalysis:
         """Generates a comparative table of WT and Variant residue contacts per mutation site,
         exporting CSV and HTML with table borders, and mutation names without file suffix."""
         
+        import os
+        import pandas as pd
+        
         data = []
         os.chdir(output_dir)
 
         for file in os.listdir():
             if file.endswith('.pdb'):
-                mutation_name = file.replace('_auto.pdb', '')  # Strip suffix for cleaner naming
-                first_row = True  # To avoid repeating mutation name in rows
+                mutation_name = file.replace('_auto.pdb', '')  # Clean mutation name
+
                 for var in self.pre_processing(file):
                     initial_residue = var[0]
                     mutated_residue = var[-1]
@@ -114,45 +117,51 @@ class ContactAnalysis:
                     # WT contact calculation
                     cmd.reinitialize()
                     cmd.load(pdb_file)
-                    wt_contacts = self.contact_calculator(initial_residue, residue_pos)
+                    wt_contacts = self.contact_calculator(initial_residue, residue_pos) or {}
 
                     # Variant contact calculation
                     cmd.reinitialize()
                     cmd.load(file)
-                    var_contacts = self.contact_calculator(mutated_residue, residue_pos)
+                    var_contacts = self.contact_calculator(mutated_residue, residue_pos) or {}
 
-                    # Parse WT contacts
-                    wt_list = []
-                    if wt_contacts:
-                        for key, value in wt_contacts.items():
-                            chain, residue = key.split(',')
-                            wt_list.append({'WT Chain': chain, 'WT Residue': residue, 'WT Contacts': value})
-                    else:
-                        wt_list.append({'WT Chain': '-', 'WT Residue': '-', 'WT Contacts': 0})
+                    # Always include the mutated residue position
+                    expected_key = None
+                    for key in set(wt_contacts.keys()).union(var_contacts.keys()):
+                        expected_key = key
+                        break
 
-                    # Parse Variant contacts
-                    var_list = []
-                    if var_contacts:
-                        for key, value in var_contacts.items():
-                            chain, residue = key.split(',')
-                            var_list.append({'Variant Chain': chain, 'Variant Residue': residue, 'Variant Contacts': value})
-                    else:
-                        var_list.append({'Variant Chain': '-', 'Variant Residue': '-', 'Variant Contacts': 0})
+                    # If no contacts were found, try to reconstruct the key using default info
+                    if not expected_key:
+                        # Use PyMOL to extract the chain/residue directly
+                        cmd.reinitialize()
+                        cmd.load(file)
+                        resi_query = f"resi {residue_pos} and resn {mutated_residue}"
+                        sel = cmd.select("mutation_site", resi_query)
+                        chain = cmd.get_model("mutation_site").atom[0].chain if sel else "-"
+                        residue = residue_pos
+                        expected_key = f"{chain},{residue}"
 
-                    # Align WT and Variant contact lists
-                    max_len = max(len(wt_list), len(var_list))
-                    for i in range(max_len):
-                        wt = wt_list[i] if i < len(wt_list) else {'WT Chain': '-', 'WT Residue': '-', 'WT Contacts': 0}
-                        var = var_list[i] if i < len(var_list) else {'Variant Chain': '-', 'Variant Residue': '-', 'Variant Contacts': 0}
-                        contact_diff = var['Variant Contacts'] - wt['WT Contacts']
+                    # Collect all keys, even if WT and Variant have no contacts
+                    all_keys = set(wt_contacts.keys()).union(var_contacts.keys())
+                    if not all_keys:
+                        all_keys = {expected_key}
+
+                    for key in sorted(all_keys):
+                        chain, residue = key.split(',')
+                        wt_value = wt_contacts.get(key, 0)
+                        var_value = var_contacts.get(key, 0)
+                        contact_diff = var_value - wt_value
 
                         data.append({
-                            'PDB File': mutation_name if first_row else '',
-                            **wt,
-                            **var,
+                            'PDB File': mutation_name,
+                            'WT Chain': chain if wt_value else '-',
+                            'WT Residue': residue if wt_value else '-',
+                            'WT Contacts': wt_value,
+                            'Variant Chain': chain if var_value else '-',
+                            'Variant Residue': residue if var_value else '-',
+                            'Variant Contacts': var_value,
                             'Contact Difference': contact_diff
                         })
-                        first_row = False
 
         # Create DataFrame
         df = pd.DataFrame(data)
@@ -161,7 +170,7 @@ class ContactAnalysis:
         csv_path = os.path.join(output_dir, 'contact_comparison_table.csv')
         df.to_csv(csv_path, index=False)
 
-        # Export to HTML with borders
+        # Export to HTML with borders and styling
         html_path = os.path.join(output_dir, 'contact_comparison_table.html')
         html_table = df.to_html(index=False, border=1)
         styled_html = f"""
@@ -259,7 +268,6 @@ class ContactAnalysis:
 
 def conts(*argv):
     print(datetime.datetime.now())
-    print('conts')
     p = ContactAnalysis()
     #pymol.finish_launching(['pymol'])
     p.res_contacts(argv[0], argv[1])
