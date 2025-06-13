@@ -29,8 +29,8 @@ def run_pipeline(pdb_file, output_dir, mutations, mode):
 
     script_dir = os.path.dirname(os.path.realpath(__file__))
     scripts = [
-        #os.path.join(script_dir, "mutintro.py"),
-        #os.path.join(script_dir, "contacts.py"),
+        os.path.join(script_dir, "mutintro.py"),
+        os.path.join(script_dir, "contacts.py"),
         os.path.join(script_dir, "foldxana.py")
     ]
 
