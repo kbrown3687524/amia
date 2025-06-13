@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
-# Project Title: "Automated computational workflow to prioritize potential resistance variants identified in HIV
-# Integrase Subtype C and CRF02_AG"
+# Project Title: "The development of an automated computational workflow to prioritize potential resistance variants identified in HIV
+# Integrase Subtype C"
 #
 # This script is developed for the fufuillment for Masters at the South African National Bioinformatics Institute at
 # the University of the Western Cape.
@@ -16,37 +16,59 @@ import os, logging, argparse, sys
 import pandas as pd
 import numpy as np
 import datetime
-
+from pathlib import Path
 
 class FoldXAna:
+
+    from pathlib import Path
+import os
+
+class FoldXAna:
+
     def foldx_stability(self, output_dir, pdb_file):
-        print(os.getcwd())
-        foldx_exe = ''
-        for file in os.listdir(os.getcwd()):
-            if 'foldx' == str(file):
-                os.chdir(file)
-                for file2 in os.listdir():
-                    if 'foldx' in str(file2):
-                        foldx_exe = '{0}{1}{2}'.format(str(os.getcwd()), str('/'), str(file2))
-        print(foldx_exe)
-        os.chdir(os.path.dirname(pdb_file))
-        os.system(str(foldx_exe) + ' --command=Stability  --pdb=' + str(os.path.basename(pdb_file)) + ' --output-dir=' + str(output_dir))
+        # Get parent directory of this script (amia/)
+        script_dir = Path(__file__).resolve().parent
+
+        # FoldX lives in amia_project/foldx/
+        foldx_dir = script_dir.parent / "foldx"
+
+        # Try to find the foldx binary
+        foldx_exe = None
+        for file in foldx_dir.iterdir():
+            if file.is_file() and "foldx" in file.name.lower():
+                foldx_exe = file.resolve()
+                break
+
+        if not foldx_exe:
+            print(f"❌ FoldX executable not found in: {foldx_dir}")
+            return
+
+        print(f"✅ Using FoldX executable at: {foldx_exe}")
+
+        # Run WT stability
+        os.chdir(Path(pdb_file).parent)
+        os.system(f"{foldx_exe} --command=Stability --pdb={Path(pdb_file).name} --output-dir={output_dir}")
+
+        # Run variant stability
         os.chdir(output_dir)
         for var_file in os.listdir(output_dir):
             if var_file.endswith('_auto.pdb'):
-                os.system(str(foldx_exe) + ' --command=Stability  --pdb=' + str(var_file))
+                os.system(f"{foldx_exe} --command=Stability --pdb={var_file}")
+
 
     def stability_changes(self, output_dir, pdb_file):
         os.chdir(output_dir)
         var_stability = []
         wt_stability = []
         stability_diff = []
+        files = []
         os.chdir(output_dir)
         for file in os.listdir(output_dir):
             if file.endswith('.fxout'):
                 if str(os.path.basename(pdb_file)).split('.')[0] in str(file):
                     wt_stability.append(float(open(file).read().split('\t')[1]))
                 elif str(os.path.basename(pdb_file)).split('.')[0] not in str(file):
+                    files.append(str(file).split('_auto')[0])
                     var_stability.append(float(open(file).read().split('\t')[1]))
         for i in var_stability:
             for j in wt_stability:
@@ -55,8 +77,9 @@ class FoldXAna:
         wt_stability_df = pd.DataFrame(wt_stability)
         var_stability_df = pd.DataFrame(var_stability)
         stability_diff_df = pd.DataFrame(stability_diff)
-        hortizontal_concat = pd.concat([wt_stability_df, var_stability_df, stability_diff_df],ignore_index=True, axis=1)
-        hortizontal_concat.columns =["WT System Stability", "Variant System Stability", "System Stability Difference"]
+        files_df = pd.DataFrame(files)
+        hortizontal_concat = pd.concat([wt_stability_df, files_df, var_stability_df, stability_diff_df],ignore_index=True, axis=1)
+        hortizontal_concat.columns =["WT System Stability", "Variant System", "Variant System Stability", "System Stability Difference"]
         df1 = hortizontal_concat.replace(np.nan, '', regex=True)
         result = df1.to_html(index=False, border=2)
         text_file = open("stability_index.html", "w")
@@ -80,19 +103,21 @@ class FoldXAna:
             file.writelines(data)
         file.close()
 
-
-def folds(*argv):
-    print(datetime.datetime.now())
-    p = FoldXAna()
-    p.foldx_stability(argv[0], argv[1])
-    p.stability_changes(argv[0], argv[1])
-    print(datetime.datetime.now())
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--pdb_file", help="Path to the PDB file that the mutations will be introduced into")
-    parser.add_argument("--output_dir", help="Path to the directory that the variant PDB systems will be stored in")
+def main():
+    parser = argparse.ArgumentParser(description="Analyze FoldX stability changes for mutations")
+    parser.add_argument("--pdb_file", required=True, help="Path to the PDB file that the mutations will be introduced into")
+    parser.add_argument("--output_dir", required=True, help="Directory to store stability analysis results")
     args = parser.parse_args()
-    pdb_file = str(args.pdb_file)
-    output_dir = str(args.output_dir)
-    folds(output_dir, pdb_file)
+
+    print("🕒 Start time:", datetime.datetime.now())
+
+    analyzer = FoldXAna()
+
+    # Call methods with correct order: (pdb_file, output_dir)
+    analyzer.foldx_stability(args.output_dir, args.pdb_file)
+    analyzer.stability_changes(args.output_dir, args.pdb_file)
+
+    print("✅ Finished at:", datetime.datetime.now())
+
+if __name__ == "__main__":
+    main()

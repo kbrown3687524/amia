@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
-# Project Title: "Automated computational workflow to prioritize potential resistance variants identified in HIV
-# Integrase Subtype C and CRF02_AG"
+# Project Title: "The development of an automated computational workflow to prioritize potential resistance variants identified in HIV
+# Integrase Subtype C"
 #
 # This script is developed for the fufuillment for Masters at the South African National Bioinformatics Institute at
 # the University of the Western Cape.
@@ -24,6 +24,11 @@ import pandas as pd
 import datetime
 
 class MutationIntro:
+
+    def run(mode, pdb_file, output_dir, mutations):
+        # your existing logic goes here
+        print("Running Mutation Intro step...")
+
     def __int__(self):
         path = os.getcwd()
         return path
@@ -48,6 +53,7 @@ class MutationIntro:
                         single_list.setdefault(system, []).append(mutation)
                         multi_list.setdefault(system, []).append(mutation)
         return single_list, multi_list
+        print(single_list, multi_list)
 
     def individual_introduction(self, pdb_file, output_dir, mutant_data):
         """The mutations are individually separated and introduced within a single structure afterwhich,
@@ -66,6 +72,8 @@ class MutationIntro:
         parser = PDBParser(PERMISSIVE=1)
         structure = parser.get_structure(structure_id, file_name)
         ppbuilder = PPBuilder()
+        mutation_subset = self.mutant_processing(mutant_data)[0]
+        pdb_path = os.path.dirname(pdb_file)
         for key in mutation_subset:
             os.chdir(pdb_path)
             for mutant in mutation_subset[str(key)]:
@@ -152,33 +160,28 @@ class MutationIntro:
             if var_sys.endswith('_auto.pdb'):
                 os.system(str(foldx_exe) + ' --command=Optimize --pdb=' + str(var_sys) + ' --output-file=' + str(var_sys))
 
-def main(*argv):
-    print(datetime.datetime.now())
-    print('mutintro')
-    p = MutationIntro()
-    for file in os.listdir(os.getcwd()):
-        if 'foldx' in str(file):
-            os.chdir(file)
-            for file2 in os.listdir():
-                if 'foldx' in str(file2):
-                    foldx_exe = '{0}\{1}'.format(str(os.getcwd()), str(file2))
-    if argv[0] == 'multiple':
-        p.simultaneous_introduction(argv[1], argv[2], argv[3])
-    if argv[0] == 'single':
-        p.individual_introduction(argv[1], argv[2], argv[3])
-    #p.foldx_emin(foldx_exe, argv[2])
-    print(datetime.datetime.now())
+def main():
+    parser = argparse.ArgumentParser(description="Introduce mutations into PDB file using PyMOL")
+    parser.add_argument("--pdb_file", required=True, help="Path to the input PDB file")
+    parser.add_argument("--output_dir", required=True, help="Directory to write output PDBs")
+    parser.add_argument("--mutations", required=True, help="CSV file with mutation list")
+    parser.add_argument("--mode", choices=["single", "multiple"], default="single", help="Mutation mode")
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--pdb_file", required=True, help="Path to the PDB file that the mutations will be introduced into")
-    parser.add_argument("--output_dir", required=True, help="Path to the directory that the variant PDB systems will be stored in")
-    parser.add_argument("--mutations", required=True, help="Path to the csv file containing the variant residues that need to be analysed")
-    parser.add_argument('--mode', choices=['single', 'multiple'], required=False, default='single')
     args = parser.parse_args()
-    pdb_file = str(args.pdb_file)
-    output_dir = str(args.output_dir)
-    mutant_data = str(args.mutations)
-    mode = str(args.mode)
-    main(mode, pdb_file, output_dir, mutant_data)
 
+    print("🕒 Start time:", datetime.datetime.now())
+
+    mutator = MutationIntro()
+
+    if args.mode == "multiple":
+        mutator.simultaneous_introduction(args.pdb_file, args.output_dir, args.mutations)
+    else:
+        mutator.individual_introduction(args.pdb_file, args.output_dir, args.mutations)
+
+    # Optional: Energy minimization
+    # mutator.foldx_emin(foldx_exe, args.output_dir)
+
+    print("✅ Finished at:", datetime.datetime.now())
+
+if __name__ == "__main__":
+    main()
