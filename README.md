@@ -34,7 +34,7 @@ FoldX(4.0) is a standalone software tool that is required for this pipeline to r
 Once the dependencies have been installed, a successful installation can be tested by using the dataset provided within the /test folder. The test can be initialized by providing chmod u+x access to the AMIA.py script and running the following:
 
 ```
-./AMIA.py --pdb_file *path/to/mutations_file*/test/HIV-1C_ZA/RLT_Model_Repair.pdb --mutations *path/to/mutations_file*/test/HIV-1C_ZA/mutations.csv --output_dir *path/to/mutations_file*/test/variant_outputs
+amia --pdb_file *path/to/mutations_file*/test/HIV-1C_ZA/RLT_Model_Repair.pdb --mutations *path/to/mutations_file*/test/HIV-1C_ZA/mutations.csv --output_dir *path/to/mutations_file*/test/variant_outputs
 ```
 
 ## Usage
