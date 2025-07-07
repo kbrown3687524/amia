@@ -33,7 +33,7 @@ MAESTR(1.2.35) is a standalone software tool that is required for this pipeline 
 Once the dependencies have been installed, a successful installation can be tested by using the dataset provided within the /test folder. The test can be initialized by providing chmod u+x access to the AMIA.py script and running the following:
 
 ```
-amia --pdb_file *path/to/mutations_file*/test/HIV-1C_ZA/RLT_Model_Repair.pdb --mutations *path/to/mutations_file*/test/HIV-1C_ZA/mutations.csv --output_dir *path/to/mutations_file*/test/variant_outputs
+amia --pdb_file *path/to/mutations_file/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --mutations *path/to/mutations_file*/test/HIV-1C_ZA/mutations.csv --output_dir *path/to/mutations_file*/test/variant_outputs --smiles *SMILES String* --center X Y Z
 ```
 
 ## Usage
@@ -51,8 +51,11 @@ The ```--mode```  specifies whether the mutations from each subset present withi
 The ```--pdb_file``` specifies the path to the Protein File that the mutations will be introduced to. 
 The ```--mutations``` specifies the path to the Mutations File that the mutations will be introduced to. 
 The ```--output_dir``` specifies the directory that the respective output files will be stored in. 
+The ``--smiles``  specifies the SMILES string for the specific ligan to bind to the structure.
+The ``--center X Y Z`` specifies the exact X, Y and Z coordinates as a float for the center of the box.
 
-This will automatically introduce the mutations from each subset into the protein file and store the respective outputs in the defined directory. From there the changes in contacts before and after mutation introductuin as well as the stability of the systems will be tabulated and stored for the user to visualize (.html).
+
+This will automatically introduce the mutations from each subset into the protein file and store the respective outputs in the defined directory. From there the changes in contacts before and after mutation introductuin as well as the stability of the systems will be tabulated and stored for the user to visualize (.html). Once complete the Ligand is docked to the protein using AutoDock Vina after which the stability impact of each system is determined accordingly.
 
 ### Phase 2: Trajectory Analyses
 Once all the respective output files have been generated from the first phase of the workflow, the WT and Variant systems should then undergo Molecular Dynamis Simulations, afterwhich the repaired trajecotry and topology files shoudl be stored in a new directory under their respective subfolders. See below for simulation storage:
