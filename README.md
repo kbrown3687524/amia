@@ -21,15 +21,14 @@ Open a terminal with mamba and create a new env:
 ```
 conda env create -f amia_environment.yml
 conda activate amia
+cd amia
+pip install .
 ```
-FoldX(4.0) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
+MAESTR(1.2.35) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
 |-- AMIA Folder:
-  |  
-  |-- foldx:
-      |-- foldx_4
-      |-- yasaraPlugin.zip
-      |-- rotabase.txt
+  |-- MAESTRO_linux_x64:
+    |-- maestro
 ```
 Once the dependencies have been installed, a successful installation can be tested by using the dataset provided within the /test folder. The test can be initialized by providing chmod u+x access to the AMIA.py script and running the following:
 
