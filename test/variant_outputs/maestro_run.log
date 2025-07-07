@@ -1,0 +1,2 @@
+2025-07-07 13:23:24,742 - INFO - 📄 Logging output to: /home/cloetes-lab/amia/test/variant_outputs/maestro_run.log
+2025-07-07 13:23:24,742 - INFO - ❌ Could not infer base_dir because 'amia_testing' not found in pdb_file or mutations file path.

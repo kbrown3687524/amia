@@ -167,9 +167,6 @@ def main():
     else:
         mutator.individual_introduction(args.pdb_file, args.output_dir, args.mutations)
 
-    # Optional: Energy minimization
-    # mutator.foldx_emin(foldx_exe, args.output_dir)
-
     print("✅ Finished at:", datetime.datetime.now())
 
 if __name__ == "__main__":

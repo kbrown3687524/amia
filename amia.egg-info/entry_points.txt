@@ -1,0 +1,2 @@
+[console_scripts]
+amia = amia.AMIA:run_pipeline

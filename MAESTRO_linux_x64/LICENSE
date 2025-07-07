@@ -1,0 +1,151 @@
+LICENSE AGREEMENT
+
+License Agreement for MAESTRO Version 1.x
+=========================================
+
+By using this software, the individual or entity licensing the software 
+("Licensee") is consenting to be bound by and is becoming a party to this 
+agreement. If Licensee does not agree to all of the terms of this agreement the 
+Licensee must not install or use the software. 
+
+
+1. LICENSE AGREEMENT
+--------------------
+
+This is a license between you ("Licensee") and the Licensor (Josef Laimer and 
+Peter Lackner, University of Salzburg). The software is owned by the Licensor 
+and protected by copyright laws, and some elements are protected by laws 
+governing trademarks, trade dress and trade secrets, and may be protected 
+by patent laws. 
+
+
+2. LICENSE GRANT 
+----------------
+
+The Licensor grants you, and you hereby accept, a non-exclusive license to 
+install and use the MAESTRO software together with any associated media, printed
+materials, and on-line or electronic documentation (if any) provided by the 
+Licensor (collectively, the "Software"), subject to the following terms and 
+conditions:
+
+The Software will be used solely for educational purposes or for research 
+intended to advance scientific knowledge. MAESTRO will not be used for any other
+purpose, including without limitations,
+
+ 1) in research for the purpose of developing a commercial product,
+ 2) in research sponsored directly or indirectly by a commercial institution, or
+ 3) to provide consulting services.
+
+If the above does not apply to you, you are providing consulting services to 
+commercial institutions or you belong to a commercial institution, please 
+inquire about other licensing options.  
+
+
+3. PROPRIETARY RIGHTS
+---------------------
+
+Title, ownership rights, and intellectual property rights in the Software shall 
+remain with the Licensor. Licensee acknowledges such ownership and intellectual 
+property rights and will not take any action to jeopardize, limit or interfere 
+in any manner with the Licensor's ownership of or rights with respect to the 
+Software. The Software is protected by copyright and other intellectual property
+laws and by international treaties. Title and related rights in the content 
+accessed through the Software is the property of the applicable content owner 
+and is protected by applicable law. The license granted under this Agreement 
+gives Licensee no rights to such content. 
+
+
+4. DISCLAIMER OF WARRANTY 
+-------------------------
+
+THE SOFTWARE IS PROVIDED BY THE LICENSOR ON AN "AS IS" BASIS, WITHOUT WARRANTY 
+OF ANY KIND, INCLUDING WITHOUT LIMITATION THE WARRANTIES THAT IT IS FREE OF 
+DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE 
+ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS BORNE BY 
+LICENSEE. SHOULD THE SOFTWARE PROVE DEFECTIVE IN ANY RESPECT, THE LICENSEE AND 
+NOT LICENSOR ASSUMES THE ENTIRE COST OF ANY SERVICE AND REPAIR. THIS DISCLAIMER 
+OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS AGREEMENT. NO USE OF THE 
+PRODUCT IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER. 
+
+
+5. LIMITATION OF LIABILITY
+--------------------------
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL THE 
+LICENSOR BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL 
+DAMAGES ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, INCLUDING, 
+WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER 
+FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER COMMERCIAL DAMAGES OR LOSSES, EVEN 
+IF ADVISED OF THE POSSIBILITY THEREOF. 
+
+
+6. THIRD PARTY LICENSES
+-----------------------
+
+Some parts of MAESTRO may based on software libraries developed by third-
+parties. All of these libraries are open source, free of any charges and are 
+used without any modification. The corresponding licenses are available in the 
+subfolder LICENSES.  
+
+A) MAESTRO includes software developed by 
+   Roberto Lopez
+   Licensed under the GNU Lesser General Public License, Version 2.1
+   
+   See ./LICENSES/openNN/opennn/License.pdf
+   
+   Used library: openNN version 0.9
+   WWW: http://www.cimne.com/flood/
+   
+   The source code of openNN is available either at 
+   http://sourceforge.net/projects/opennn/ or 
+   http://biwww.che.sbg.ac.at/maestro/libs/opennn.zip
+   
+B) MAESTRO includes software developed by 
+   Lee Thomason
+   Licensed under zlib/libpng
+   
+   See ./LICENSES/openNN/tinyxml/tinyxml_license.txt
+   
+   Used library: TinyXML (as part of openNN)
+   WWW: http://sourceforge.net/projects/tinyxml/
+   
+C) MAESTRO includes software developed by
+   Jean-loup Gailly and Mark Adler
+   Licensed under zlib license
+   
+   See ./LICENSES/zlib/license.txt
+   
+   Used library: zlib
+   WWW: http://zlib.net/
+   
+D) MAESTRO includes software developed by
+   Chih-Chung Chang and Chih-Jen Lin
+   Licensed under a modified BSD license
+   
+   See ./LICENSES/libsvm/license.txt
+   
+   Used library: libSVM
+   WWW: http://www.csie.ntu.edu.tw/~cjlin/libsvm/
+
+
+7. CONTACT
+----------
+Peter Lackner
+Department of Biosciences
+University of Salzburg
+
+Hellbrunnerstraße 34
+5020 Salzburg
+
+e-mail: peter.lackner(at)sbg.ac.at
+web:    biwww.che.sbg.ac.at
+
+Josef Laimer
+Department of Biosciences
+University of Salzburg
+
+Hellbrunnerstraße 34
+5020 Salzburg
+
+e-mail: josef.laimer(at)sbg.ac.at
+web:    biwww.che.sbg.ac.at
