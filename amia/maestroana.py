@@ -24,8 +24,8 @@ class MaestroRunner:
         self.maestro_exe = self.find_and_prepare_maestro()
 
     def find_and_prepare_maestro(self):
-        """Locate maestro executable in amia_testing/MAESTRO_linux_x64, chmod u+x"""
-        maestro_dir = self.base_dir / "amia_testing" / "MAESTRO_linux_x64"
+        """Locate maestro executable in amia/MAESTRO_linux_x64, chmod u+x"""
+        maestro_dir = self.base_dir / "amia" / "MAESTRO_linux_x64"
         if not maestro_dir.exists():
             raise FileNotFoundError(f"Directory not found: {maestro_dir}")
 
@@ -164,12 +164,12 @@ def plot_variant_ddG(csv_path, sort_by_ddG=True, figsize=(14, 6), save_path=None
         plt.show()
 
 
-def infer_base_dir(path_with_amia_testing):
-    """Extract base directory path before 'amia_testing' folder"""
-    parts = Path(path_with_amia_testing).parts
-    if 'amia_testing' not in parts:
-        raise ValueError("Path does not contain 'amia_testing' directory.")
-    idx = parts.index('amia_testing')
+def infer_base_dir(path_with_amia):
+    """Extract base directory path before 'amia' folder"""
+    parts = Path(path_with_amia).parts
+    if 'amia' not in parts:
+        raise ValueError("Path does not contain 'amia' directory.")
+    idx = parts.index('amia')
     base_parts = parts[:idx]
     return Path(*base_parts)
 
@@ -218,10 +218,10 @@ def main():
         try:
             base_dir = infer_base_dir(mutations_file)
         except ValueError:
-            print("❌ Could not infer base_dir because 'amia_testing' not found in pdb_file or mutations file path.")
+            print("❌ Could not infer base_dir because 'amia' not found in pdb_file or mutations file path.")
             exit(1)
 
-    config_file = base_dir / "amia_testing" / "MAESTRO_linux_x64" / "config.xml"
+    config_file = base_dir / "amia" / "MAESTRO_linux_x64" / "config.xml"
     if not config_file.exists():
         print(f"❌ Config file not found: {config_file}")
         exit(1)
