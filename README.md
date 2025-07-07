@@ -1,5 +1,5 @@
 # Automated Mutation Introduction and Analysis (AMIA) Workflow
-The AMIA bioinformatics pipeline is an **automated computational workflow** designed for the **effective prioritisation of potential drug resistance mutations** by analysing their impact on protein folding and interactions, which is crucial for treatment success. To address this need, AMIA **integrates a variety of structural analysis tools into a simplified and fully automated workflow**, thereby optimising computational resources through automated data transformations to enhance scalability and reproducibility. This **open-source pipeline** automates key steps such as **mutation introduction into protein structures, calculation of polar interaction changes, and analysis of protein fold energy** using pre-established software tools. Furthermore, AMIA includes **automated molecular dynamics analysis**, which reduces the need for constant user input and output management often required by standalone tools. By facilitating the **visualisation of mutation effects on protein structure and dynamic states**, AMIA aids in prioritising variants for experimental validation and contributes to the development of improved treatment regimens against drug-resistant mutations. Detailed documentation can be found at: https://kbrown3687524.github.io/amia/.
+The AMIA bioinformatics pipeline is an **automated computational workflow** designed for the **effective prioritisation of potential drug resistance mutations** by analysing their impact on protein folding and interactions, which is crucial for treatment success. To address this need, AMIA **integrates a variety of structural analysis tools into a simplified and fully automated workflow**, thereby optimising computational resources through automated data transformations to enhance scalability and reproducibility. This **open-source pipeline** automates key steps such as **mutation introduction into protein structures, calculation of polar interaction changes, docking of ligand to WT and variant structures and analysis of protein fold energy** using pre-established software tools. Furthermore, AMIA includes **automated molecular dynamics analysis**, which reduces the need for constant user input and output management often required by standalone tools. By facilitating the **visualisation of mutation effects on protein structure and dynamic states**, AMIA aids in prioritising variants for experimental validation and contributes to the development of improved treatment regimens against drug-resistant mutations. Detailed documentation can be found at: https://kbrown3687524.github.io/amia/.
 
 
 ## Table of Contents
@@ -21,20 +21,19 @@ Open a terminal with mamba and create a new env:
 ```
 conda env create -f amia_environment.yml
 conda activate amia
+cd amia
+pip install .
 ```
-FoldX(4.0) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
+MAESTR(1.2.35) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
 ```
 |-- AMIA Folder:
-  |  
-  |-- foldx:
-      |-- foldx_4
-      |-- yasaraPlugin.zip
-      |-- rotabase.txt
+  |-- MAESTRO_linux_x64:
+    |-- maestro
 ```
 Once the dependencies have been installed, a successful installation can be tested by using the dataset provided within the /test folder. The test can be initialized by providing chmod u+x access to the AMIA.py script and running the following:
 
 ```
-amia --pdb_file *path/to/mutations_file*/test/HIV-1C_ZA/RLT_Model_Repair.pdb --mutations *path/to/mutations_file*/test/HIV-1C_ZA/mutations.csv --output_dir *path/to/mutations_file*/test/variant_outputs
+amia --pdb_file *path/to/mutations_file/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --mutations *path/to/mutations_file*/test/HIV-1C_ZA/mutations.csv --output_dir *path/to/mutations_file*/test/variant_outputs --smiles *SMILES String* --center X Y Z
 ```
 
 ## Usage
@@ -46,14 +45,17 @@ After successful installation, the scripts should now be available to execute in
 * Mutations File: Comma Separated Variable (.csv)
 
 ```
-amia --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory*
+amia --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory* --smiles *SMILES String* --center X Y Z
 ```
 The ```--mode```  specifies whether the mutations from each subset present within the mutation file should be introduced individually or together into the supplied protein structure. 
 The ```--pdb_file``` specifies the path to the Protein File that the mutations will be introduced to. 
 The ```--mutations``` specifies the path to the Mutations File that the mutations will be introduced to. 
 The ```--output_dir``` specifies the directory that the respective output files will be stored in. 
+The ``--smiles``  specifies the SMILES string for the specific ligan to bind to the structure.
+The ``--center X Y Z`` specifies the exact X, Y and Z coordinates as a float for the center of the box.
 
-This will automatically introduce the mutations from each subset into the protein file and store the respective outputs in the defined directory. From there the changes in contacts before and after mutation introductuin as well as the stability of the systems will be tabulated and stored for the user to visualize (.html).
+
+This will automatically introduce the mutations from each subset into the protein file and store the respective outputs in the defined directory. From there the changes in contacts before and after mutation introductuin as well as the stability of the systems will be tabulated and stored for the user to visualize (.html). Once complete the Ligand is docked to the protein using AutoDock Vina after which the stability impact of each system is determined accordingly.
 
 ### Phase 2: Trajectory Analyses
 Once all the respective output files have been generated from the first phase of the workflow, the WT and Variant systems should then undergo Molecular Dynamis Simulations, afterwhich the repaired trajecotry and topology files shoudl be stored in a new directory under their respective subfolders. See below for simulation storage:
