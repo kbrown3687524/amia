@@ -1,4 +1,4 @@
-name: amia-test
+name: amia
 channels:
   - bioconda
   - schrodinger
