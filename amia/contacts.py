@@ -74,10 +74,8 @@ class ContactAnalysis:
                         'H': 'HIS', 'W': 'TRP', 'F': 'PHE', 'Y': 'TYR', 'R': 'ARG', 'K': 'LYS', 'S': 'SER',
                         'T': 'THR', 'M': 'MET', 'A': 'ALA', 'G': 'GLY', 'P': 'PRO', 'C': 'CYS'}
         for i in cmd.get_chains():
-            cmd.select('init_' + str(res) + '_' + str(i), 'resn ' + three_letter[res] +
-                       ' and resi ' + str(res_pos) + ' and chain ' + str(i) + ' and not resn A+C+G+T')
-            cmd.select('init_' + str(res) + '_' + str(i) + '_a', 'resn ' + three_letter[res] +
-                       ' and resi ' + str(res_pos) + ' and chain ' + str(i) + ' around 6 and not resn A+C+G+T')
+            cmd.select('init_' + str(res) + '_' + str(i), 'resn ' + three_letter[res] + ' and resi ' + str(res_pos) + ' and chain ' + str(i) + ' and not resn DA+DC+DG+DT+A+C+G+T')
+            cmd.select('init_' + str(res) + '_' + str(i) + '_a', 'resn ' + three_letter[res] + ' and resi ' + str(res_pos) + ' and chain ' + str(i) + ' around 6 and not resn DA+DC+DG+DT+A+C+G+T')
             seq = cmd.get_fastastr('init_' + str(res) + '_' + str(i) + '_a')
             seq3 = []
             if len(seq.split(str('\n'))) > 1:
