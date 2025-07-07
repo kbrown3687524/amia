@@ -149,17 +149,6 @@ class MutationIntro:
             cmd.save('{0}_{1}.pdb'.format(str(mutant_list[:-1]), str('auto')))
         cmd.set_wizard("done")
 
-    def foldx_emin(self, foldx_exe ,output_dir):
-        """Once mutations have been successfully introduced, it is necessary to optimize the structures as the change
-        of residues may result in increased sterich classhes that are not necessarily present within the biological
-        structure. Here FoldX software is implemented through the command line to optimize each of the resultant variant
-        structures. Please ensure that the appropriate FoldX for the OS has been downlaoded and unzipped within amia
-        folder"""
-        os.chdir(output_dir)
-        for var_sys in os.listdir(output_dir):
-            if var_sys.endswith('_auto.pdb'):
-                os.system(str(foldx_exe) + ' --command=Optimize --pdb=' + str(var_sys) + ' --output-file=' + str(var_sys))
-
 def main():
     parser = argparse.ArgumentParser(description="Introduce mutations into PDB file using PyMOL")
     parser.add_argument("--pdb_file", required=True, help="Path to the input PDB file")
