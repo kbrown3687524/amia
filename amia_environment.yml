@@ -296,4 +296,4 @@ dependencies:
       - tqdm==4.67.1
       - tzdata==2025.2
       - waterdynamics==1.2.0
-prefix: /home/kbrownpha4ge/miniforge3/envs/amia-test
+prefix: /home/kbrownpha4ge/miniforge3/envs/amia
