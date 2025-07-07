@@ -45,7 +45,7 @@ After successful installation, the scripts should now be available to execute in
 * Mutations File: Comma Separated Variable (.csv)
 
 ```
-amia --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory*
+amia --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory* --smiles *SMILES String* --center X Y Z
 ```
 The ```--mode```  specifies whether the mutations from each subset present within the mutation file should be introduced individually or together into the supplied protein structure. 
 The ```--pdb_file``` specifies the path to the Protein File that the mutations will be introduced to. 
