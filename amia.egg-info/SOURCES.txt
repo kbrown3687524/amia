@@ -3,6 +3,7 @@ README.md
 setup.py
 amia/AMIA.py
 amia/__init__.py
+amia/autoallo.py
 amia/autodock.py
 amia/bond_types.py
 amia/contacts.py

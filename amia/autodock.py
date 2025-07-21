@@ -114,7 +114,9 @@ class DockingPipeline:
 
             print(f"[INFO] Created config: {conf_filename}")
 
-    def smiles_to_3d_structure(self, smiles, output_path, output_format="pdbqt"):
+
+
+    def smiles_to_3d_structure(self, smiles, output_path, output_format="pdbqt", compound_name="Ligand"):
         """
         Convert a SMILES string into a 3D structure file using Open Babel.
 
@@ -122,6 +124,7 @@ class DockingPipeline:
             smiles (str): The SMILES string.
             output_path (str): Full path to the output file (should match format).
             output_format (str): Output format (e.g., "pdbqt", "pdb", "mol2").
+            compound_name (str): Name to assign to the compound (used as title in output).
         
         Returns:
             bool: True if successful, False otherwise.
@@ -137,12 +140,13 @@ class DockingPipeline:
             "obabel",
             f"-:{smiles}",
             "--gen3d",
+            f"--title", compound_name,
             f"-o{output_format}",
             f"-O{output_path}"
         ]
 
         try:
-            print(f"[INFO] Generating 3D structure at: {output_path}")
+            print(f"[INFO] Generating 3D structure at: {output_path} with name '{compound_name}'")
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
             print(f"[SUCCESS] 3D structure written to {output_path}")
             return True
@@ -151,6 +155,7 @@ class DockingPipeline:
             print(e.stdout)
             print(e.stderr)
             return False
+
 
     def run_vina_docking(self, target_dir, ligand_path, vina_path="vina"):
         receptor_files = [
@@ -346,7 +351,7 @@ def main():
                         help="SMILES string of ligand (optional, default = Dolutegravir)")
     parser.add_argument("--center", nargs=3, type=float, required=True,
                         help="Center coordinates for docking box (x y z)")
-
+    parser.add_argument("--compound_name", type=str, default="Ligand", help="Name to assign to the compound (used as title in output structure)")
     args = parser.parse_args()
     pdb_file = args.pdb_file
     output_dir = args.output_dir
@@ -374,8 +379,9 @@ def main():
 
     # Step 4: Generate ligand from SMILES
     ligand_path = os.path.join(output_dir, "ligand_from_smiles.pdbqt")
+    compound_name = "Ligand_from_SMILES"  # You can customize or generate this dynamically if needed
     print("🧪 Generating ligand structure from SMILES...")
-    ligand_success = pipeline.smiles_to_3d_structure(smiles, ligand_path)
+    ligand_success = pipeline.smiles_to_3d_structure(smiles, ligand_path, output_format="pdbqt", compound_name=compound_name)
     if not ligand_success:
         print("❌ Ligand generation failed.")
         return

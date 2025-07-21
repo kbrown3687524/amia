@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+#
+# Project Title: "Automated computational workflow to prioritize potential resistance variants identified in HIV
+# Integrase Subtype C and CRF02_AG"
+#
+# This script is developed for the fufuillment for Masters at the South African National Bioinformatics Institute at
+# the University of the Western Cape.
+#
+# The project is funded by the Poliomyelitis Research Foundation and the UWC Ada & Bertie Levenstein Bursary Programme
+# Currently any licensing and usage of this software is governed under the regulations of the afore mentioned parties
+#
+#Author:	Keaghan Brown (3687524) - MSc Bioinformatics Candidate (3687524@myuwc.ac.za)
+#Author:	Ruben Cloete (Supervisor) - Lecturer at South African National Bioinformatics Institute (ruben@sanbi.ac.za)
 
 import os
 import argparse

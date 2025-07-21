@@ -1,2 +1,94 @@
-2025-07-07 13:23:24,742 - INFO - 📄 Logging output to: /home/cloetes-lab/amia/test/variant_outputs/maestro_run.log
-2025-07-07 13:23:24,742 - INFO - ❌ Could not infer base_dir because 'amia_testing' not found in pdb_file or mutations file path.
+2025-07-19 22:25:29,832 - INFO - 📄 Logging output to: /home/cloetes-lab/amia/test/variant_outputs/maestro_run.log
+2025-07-19 22:25:29,833 - INFO - 🕒 Start time:
+2025-07-19 22:25:29,833 - INFO - 2025-07-19 22:25:29.833117
+2025-07-19 22:25:29,833 - INFO - ℹ️ Base directory inferred as: /home/cloetes-lab
+2025-07-19 22:25:29,833 - INFO - ℹ️ Using config file: /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml
+2025-07-19 22:25:29,833 - INFO - ✅ Maestro executable prepared: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro
+2025-07-19 22:25:29,833 - INFO - 🔍 Parsed mutations: ['S39C', 'I84M', 'K215N', 'I84V', 'S24N', 'L63I', 'S24N', 'I84M', 'E96D', 'S119P', 'G134N', 'K211Q', 'V75M', 'S195C', 'I113V', 'T206S', 'I135V', 'I220V', 'G134N', 'K211R', 'T210A', 'V150A', 'I135V', 'S255G', 'K215N', 'M154I', 'T206S', 'Y143R', 'Y143R', 'Y143R']
+2025-07-19 22:25:29,833 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S39{C} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/S39C_result.txt
+2025-07-19 22:25:30,754 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/S39C_result.txt
+2025-07-19 22:25:30,754 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I84{M} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/I84M_result.txt
+2025-07-19 22:25:31,722 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/I84M_result.txt
+2025-07-19 22:25:31,722 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=K215{N} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/K215N_result.txt
+2025-07-19 22:25:32,691 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/K215N_result.txt
+2025-07-19 22:25:32,691 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I84{V} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/I84V_result.txt
+2025-07-19 22:25:33,624 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/I84V_result.txt
+2025-07-19 22:25:33,624 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S24{N} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/S24N_result.txt
+2025-07-19 22:25:34,562 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/S24N_result.txt
+2025-07-19 22:25:34,562 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=L63{I} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/L63I_result.txt
+2025-07-19 22:25:35,493 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/L63I_result.txt
+2025-07-19 22:25:35,493 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S24{N} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/S24N_result.txt
+2025-07-19 22:25:36,463 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/S24N_result.txt
+2025-07-19 22:25:36,463 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I84{M} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/I84M_result.txt
+2025-07-19 22:25:37,451 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/I84M_result.txt
+2025-07-19 22:25:37,451 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=E96{D} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/E96D_result.txt
+2025-07-19 22:25:38,430 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/E96D_result.txt
+2025-07-19 22:25:38,430 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S119{P} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/S119P_result.txt
+2025-07-19 22:25:39,369 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/S119P_result.txt
+2025-07-19 22:25:39,369 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=G134{N} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/G134N_result.txt
+2025-07-19 22:25:40,321 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/G134N_result.txt
+2025-07-19 22:25:40,321 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=K211{Q} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/K211Q_result.txt
+2025-07-19 22:25:41,315 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/K211Q_result.txt
+2025-07-19 22:25:41,315 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=V75{M} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/V75M_result.txt
+2025-07-19 22:25:42,309 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/V75M_result.txt
+2025-07-19 22:25:42,310 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S195{C} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/S195C_result.txt
+2025-07-19 22:25:43,253 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/S195C_result.txt
+2025-07-19 22:25:43,253 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I113{V} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/I113V_result.txt
+2025-07-19 22:25:44,202 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/I113V_result.txt
+2025-07-19 22:25:44,202 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=T206{S} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/T206S_result.txt
+2025-07-19 22:25:45,149 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/T206S_result.txt
+2025-07-19 22:25:45,149 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I135{V} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/I135V_result.txt
+2025-07-19 22:25:46,104 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/I135V_result.txt
+2025-07-19 22:25:46,104 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I220{V} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/I220V_result.txt
+2025-07-19 22:25:47,080 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/I220V_result.txt
+2025-07-19 22:25:47,081 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=G134{N} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/G134N_result.txt
+2025-07-19 22:25:48,060 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/G134N_result.txt
+2025-07-19 22:25:48,060 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=K211{R} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/K211R_result.txt
+2025-07-19 22:25:49,035 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/K211R_result.txt
+2025-07-19 22:25:49,035 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=T210{A} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/T210A_result.txt
+2025-07-19 22:25:50,019 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/T210A_result.txt
+2025-07-19 22:25:50,020 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=V150{A} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/V150A_result.txt
+2025-07-19 22:25:50,994 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/V150A_result.txt
+2025-07-19 22:25:50,994 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I135{V} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/I135V_result.txt
+2025-07-19 22:25:51,970 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/I135V_result.txt
+2025-07-19 22:25:51,971 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S255{G} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/S255G_result.txt
+2025-07-19 22:25:52,896 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/S255G_result.txt
+2025-07-19 22:25:52,896 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=K215{N} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/K215N_result.txt
+2025-07-19 22:25:53,860 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/K215N_result.txt
+2025-07-19 22:25:53,860 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=M154{I} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/M154I_result.txt
+2025-07-19 22:25:54,780 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/M154I_result.txt
+2025-07-19 22:25:54,781 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=T206{S} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/T206S_result.txt
+2025-07-19 22:25:55,741 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/T206S_result.txt
+2025-07-19 22:25:55,741 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=Y143{R} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/Y143R_result.txt
+2025-07-19 22:25:56,669 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/Y143R_result.txt
+2025-07-19 22:25:56,669 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=Y143{R} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/Y143R_result.txt
+2025-07-19 22:25:57,625 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/Y143R_result.txt
+2025-07-19 22:25:57,625 - INFO - 🚀 Running: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=Y143{R} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs/Y143R_result.txt
+2025-07-19 22:25:58,545 - INFO - ✅ Result saved to: /home/cloetes-lab/amia/test/variant_outputs/Y143R_result.txt
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/S119P_result.txt as variant S119P
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/S24N_result.txt as variant S24N
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/I84V_result.txt as variant I84V
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/Y143R_result.txt as variant Y143R
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/E96D_result.txt as variant E96D
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/I220V_result.txt as variant I220V
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/K211Q_result.txt as variant K211Q
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/V75M_result.txt as variant V75M
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/S39C_result.txt as variant S39C
+2025-07-19 22:25:58,545 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/T210A_result.txt as variant T210A
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/I135V_result.txt as variant I135V
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/K215N_result.txt as variant K215N
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/L63I_result.txt as variant L63I
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/S255G_result.txt as variant S255G
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/M154I_result.txt as variant M154I
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/I84M_result.txt as variant I84M
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/T206S_result.txt as variant T206S
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/S195C_result.txt as variant S195C
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/G134N_result.txt as variant G134N
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/K211R_result.txt as variant K211R
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/I113V_result.txt as variant I113V
+2025-07-19 22:25:58,546 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs/V150A_result.txt as variant V150A
+2025-07-19 22:25:58,546 - INFO - ✅ Parsed 44 result entries from /home/cloetes-lab/amia/test/variant_outputs
+2025-07-19 22:25:58,548 - INFO - 💾 Results summary saved to: /home/cloetes-lab/amia/test/variant_outputs/maestro_results_summary.csv
+2025-07-19 22:26:01,449 - INFO - Plot saved to: /home/cloetes-lab/amia/test/variant_outputs/ddG_plot.png
+2025-07-19 22:26:01,449 - INFO - ✅ Finished at:
+2025-07-19 22:26:01,449 - INFO - 2025-07-19 22:26:01.449879
