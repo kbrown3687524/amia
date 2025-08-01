@@ -1,16 +1,4 @@
 #!/usr/bin/env python3
-#
-# Project Title: "Automated computational workflow to prioritize potential resistance variants identified in HIV
-# Integrase Subtype C and CRF02_AG"
-#
-# This script is developed for the fufuillment for Masters at the South African National Bioinformatics Institute at
-# the University of the Western Cape.
-#
-# The project is funded by the Poliomyelitis Research Foundation and the UWC Ada & Bertie Levenstein Bursary Programme
-# Currently any licensing and usage of this software is governed under the regulations of the afore mentioned parties
-#
-#Author:	Keaghan Brown (3687524) - MSc Bioinformatics Candidate (3687524@myuwc.ac.za)
-#Author:	Ruben Cloete (Supervisor) - Lecturer at South African National Bioinformatics Institute (ruben@sanbi.ac.za)
 
 import os
 import argparse
@@ -23,6 +11,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import logging
 import sys
+import csv
+import pandas as pd
+
 
 class MaestroRunner:
 
@@ -36,87 +27,82 @@ class MaestroRunner:
         self.maestro_exe = self.find_and_prepare_maestro()
 
     def find_and_prepare_maestro(self):
-        """Locate maestro executable in amia/MAESTRO_linux_x64, chmod u+x"""
         maestro_dir = self.base_dir / "amia" / "MAESTRO_linux_x64"
         if not maestro_dir.exists():
             raise FileNotFoundError(f"Directory not found: {maestro_dir}")
-
         for file in maestro_dir.iterdir():
             if file.is_file() and "maestro" in file.name.lower():
-                st = file.stat()
-                os.chmod(file, st.st_mode | stat.S_IXUSR)
+                os.chmod(file, file.stat().st_mode | stat.S_IXUSR)
                 print(f"✅ Maestro executable prepared: {file}")
                 return file.resolve()
-
         raise FileNotFoundError(f"Maestro executable not found in: {maestro_dir}")
 
     def parse_mutations(self, mutation_lines):
-        """
-        Parse your special CSV mutation format,
-        skipping header, flatten mutations,
-        and validate format WTres + position + Mutres (e.g., I84M)
-        """
         mutations = []
-
         if not mutation_lines:
             return mutations
-
-        # Skip header line (assumed first line)
         data_lines = mutation_lines[1:]
-
         for line in data_lines:
             cells = line.strip().split(',')
             for cell in cells:
                 cell = cell.strip()
                 if cell:
-                    # Validate format like I84M: WT residue uppercase letter, digits, Mut residue uppercase letter
                     if re.match(r'^[A-Z]\d+[A-Z]$', cell):
                         mutations.append(cell)
                     else:
                         print(f"⚠️ Skipping invalid mutation format: {cell}")
-
         return mutations
 
     def run_maestro_for_mutations(self, mutations):
         for mut in mutations:
-            wt_res = mut[0]                             # e.g., I
-            pos = ''.join(filter(str.isdigit, mut))    # e.g., 84
-            mutant_res = mut[-1]                       # e.g., M
+            wt_res = mut[0]
+            pos = ''.join(filter(str.isdigit, mut))
+            mutant_res = mut[-1]
             evalmut_str = f'{wt_res}{pos}{{{mutant_res}}}'
-
-            # Construct result file path under output_dir
             resultfile = self.output_dir / f"{wt_res}{pos}{mutant_res}_result.txt"
-
             cmd = [
                 str(self.maestro_exe),
                 str(self.config_file),
                 str(self.pdb_file),
                 f'--evalmut={evalmut_str}',
                 '--bu',
-                f'--resultfile={resultfile}'  # Use = syntax here
+                f'--resultfile={resultfile}'
             ]
-
             print(f"🚀 Running: {' '.join(cmd)}")
             subprocess.run(cmd, cwd=self.output_dir, check=True)
             print(f"✅ Result saved to: {resultfile}")
 
+    def run_maestro_combined_mutations(self, mutations, label="combined"):
+        if not mutations:
+            print("⚠️ No mutations provided for combined evaluation.")
+            return
+        evalmut_parts = []
+        for mut in mutations:
+            wt_res = mut[0]
+            pos = ''.join(filter(str.isdigit, mut))
+            mutant_res = mut[-1]
+            evalmut_parts.append(f'{wt_res}{pos}{{{mutant_res}}}')
+        combined_evalmut = ','.join(evalmut_parts)
+        resultfile = self.output_dir / f"{label}_result.txt"
+        cmd = [
+            str(self.maestro_exe),
+            str(self.config_file),
+            str(self.pdb_file),
+            f'--evalmut={combined_evalmut}',
+            '--bu',
+            f'--resultfile={resultfile}'
+        ]
+        print(f"🚀 Running combined mutation set: {' '.join(cmd)}")
+        subprocess.run(cmd, cwd=self.output_dir, check=True)
+        print(f"✅ Combined result saved to: {resultfile}")
+
     def parse_maestro_results(self):
-    
-    #Parse newly created result files in output_dir and extract structured MAESTRO results,
-    #explicitly mapping each entry to its mutation (variant) in the 'structure' column.
-    #Returns:
-    #    results_list: List of dictionaries with fields:
-    #        structure, seqlength, pH, mutation, score, delta_score, ddG, ddG_confidence
-    
         results_list = []
         headers = ['structure', 'seqlength', 'pH', 'mutation', 'score', 'delta_score', 'ddG', 'ddG_confidence']
-
         for file in self.output_dir.iterdir():
             if file.is_file() and file.name.endswith("_result.txt"):
-                # Extract variant name from filename
                 variant_name = file.stem.replace("_result", "")
                 print(f"📂 Parsing: {file} as variant {variant_name}")
-
                 with open(file) as f:
                     lines = [line.strip() for line in f if line.strip()]
                     for line in lines:
@@ -126,39 +112,41 @@ class MaestroRunner:
                         if len(parts) != len(headers):
                             print(f"⚠️ Unexpected line format in {file.name}: {line}")
                             continue
-
                         record = dict(zip(headers, parts))
-
-                        # Overwrite 'structure' with the variant name for clarity
                         record['structure'] = variant_name
-
                         results_list.append(record)
-
         print(f"✅ Parsed {len(results_list)} result entries from {self.output_dir}")
         return results_list
 
+    def parse_combined_maestro_results(self):
+        resultfile = self.output_dir / "combined_result.txt"
+        if not resultfile.exists():
+            print(f"⚠️ Combined result file not found: {resultfile}")
+            return []
+        headers = ['structure', 'seqlength', 'pH', 'mutation', 'score', 'delta_score', 'ddG', 'ddG_confidence']
+        results_list = []
+        print(f"📂 Parsing combined results from {resultfile}")
+        with open(resultfile) as f:
+            lines = [line.strip() for line in f if line.strip()]
+            for line in lines:
+                if line.startswith("#") or line.startswith("structure"):
+                    continue
+                parts = re.split(r'\s+', line)
+                if len(parts) != len(headers):
+                    print(f"⚠️ Unexpected line format in {resultfile.name}: {line}")
+                    continue
+                record = dict(zip(headers, parts))
+                record['structure'] = "combined_variant"
+                results_list.append(record)
+        print(f"✅ Parsed {len(results_list)} entries from combined results")
+        return results_list
+
+
 def plot_variant_ddG(csv_path, sort_by_ddG=True, figsize=(14, 6), save_path=None):
-    """
-    Parses a CSV with mutation and ddG data, filters out wildtype, 
-    and plots ddG values for variants.
-
-    Parameters:
-        csv_path (str): Path to the input CSV file.
-        sort_by_ddG (bool): Whether to sort variants by ddG before plotting.
-        figsize (tuple): Size of the plot (width, height).
-        save_path (str or None): If provided, saves the plot to this path.
-    """
-    # Load CSV
     df = pd.read_csv(csv_path)
-
-    # Filter out wildtype entries
     variants = df[df['ddG'] != 0.00000].copy()
-
-    # Optional sorting
     if sort_by_ddG:
         variants.sort_values(by='ddG', ascending=False, inplace=True)
-
-    # Plot
     plt.figure(figsize=figsize)
     plt.bar(variants['mutation'], variants['ddG'], color='steelblue', edgecolor='black')
     plt.xticks(rotation=90, ha='right')
@@ -167,55 +155,71 @@ def plot_variant_ddG(csv_path, sort_by_ddG=True, figsize=(14, 6), save_path=None
     plt.xlabel('Mutation')
     plt.title('ddG Values for Protein Variants Compared to Wildtype')
     plt.tight_layout()
-
-    # Save or show
     if save_path:
-        plt.savefig(save_path,  dpi=1200)
-        print(f"Plot saved to: {save_path}")
+        plt.savefig(save_path, dpi=1200)
+        print(f"📊 Plot saved to: {save_path}")
     else:
         plt.show()
 
 
+def plot_combined_ddG(csv_path, figsize=(10, 6), save_path=None):
+    df = pd.read_csv(csv_path)
+
+    # Filter out zero ddG entries
+    variants = df[df['ddG'].astype(float) != 0.00000].copy()
+
+    # Convert ddG to float if not already
+    variants['ddG'] = variants['ddG'].astype(float)
+
+    # Sort by ddG (optional)
+    variants.sort_values(by='ddG', ascending=False, inplace=True)
+
+    plt.figure(figsize=figsize)
+    plt.bar(variants['structure'], variants['ddG'], color='darkorange', edgecolor='black')
+    plt.xticks(rotation=45, ha='right')
+    plt.axhline(0, color='gray', linestyle='--')
+    plt.ylabel('ddG')
+    plt.xlabel('System/Group')
+    plt.title('ddG Values for Combined Mutation Sets by System')
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=1200)
+        print(f"📊 Combined ddG plot saved to: {save_path}")
+    else:
+        plt.show()
+
+
+
 def infer_base_dir(path_with_amia):
-    """Extract base directory path before 'amia' folder"""
     parts = Path(path_with_amia).parts
     if 'amia' not in parts:
         raise ValueError("Path does not contain 'amia' directory.")
-    idx = parts.index('amia')
-    base_parts = parts[:idx]
-    return Path(*base_parts)
+    return Path(*parts[:parts.index('amia')])
+
 
 def main():
     parser = argparse.ArgumentParser(description="Run Maestro with automatic base_dir and config detection")
     parser.add_argument("--pdb_file", required=True, help="PDB file for mutation")
     parser.add_argument("--output_dir", required=True, help="Directory to store output")
     parser.add_argument("--mutations", required=True, help="CSV file with mutation lines, comma-separated")
+    parser.add_argument("--mode", choices=["single", "multiple"], default="single", help="Mutation mode: single or multiple (simultaneous mutations)")
     args = parser.parse_args()
 
     pdb_path = Path(args.pdb_file).resolve()
     output_dir = Path(args.output_dir).resolve()
     mutations_file = Path(args.mutations).resolve()
+    mode = args.mode.lower()
 
-    # Ensure output directory exists
     output_dir.mkdir(parents=True, exist_ok=True)
-
-    # Setup logging
     log_file = output_dir / "maestro_run.log"
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        handlers=[
-            logging.FileHandler(log_file, mode='w'),
-            logging.StreamHandler(sys.stdout)
-        ]
-    )
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s",
+                        handlers=[logging.FileHandler(log_file, mode='w'), logging.StreamHandler(sys.stdout)])
 
     class LoggerWriter:
-        def __init__(self, level):
-            self.level = level
-        def write(self, message):
-            if message.strip():  # Avoid blank lines
-                self.level(message.strip())
+        def __init__(self, level): self.level = level
+        def write(self, message): 
+            if message.strip(): self.level(message.strip())
         def flush(self): pass
 
     sys.stdout = LoggerWriter(logging.info)
@@ -223,7 +227,6 @@ def main():
 
     print(f"📄 Logging output to: {log_file}")
 
-    # Infer base_dir from pdb_file path or fallback to mutations file path
     try:
         base_dir = infer_base_dir(pdb_path)
     except ValueError:
@@ -241,32 +244,52 @@ def main():
     print("🕒 Start time:", datetime.datetime.now())
     print(f"ℹ️ Base directory inferred as: {base_dir}")
     print(f"ℹ️ Using config file: {config_file}")
+    print(f"🧬 Mode: {mode}")
 
+    # Load mutations BEFORE runner
     with open(mutations_file) as f:
         mutation_lines = f.readlines()
 
+    # Initialize runner AFTER paths are resolved and mutation lines are loaded
     runner = MaestroRunner(base_dir, config_file, pdb_path, output_dir)
     mutations = runner.parse_mutations(mutation_lines)
     print(f"🔍 Parsed mutations: {mutations}")
 
-    runner.run_maestro_for_mutations(mutations)
+    if mode == "multiple":
+        df = pd.read_csv(mutations_file)
+        for col in df.columns:
+            mutations = df[col].dropna().astype(str).str.strip()
+            mutations = [m for m in mutations if m]
+            if not mutations:
+                print(f"⚠️ Skipping column {col}: no valid mutations.")
+                continue
+            group_id = col.strip().replace(" ", "_").replace(":", "")
+            print(f"🔄 Running group {group_id} with mutations: {mutations}")
+            runner.run_maestro_combined_mutations(mutations, label=group_id)
 
-    # Parse and save results
-    results = runner.parse_maestro_results()
+        # Parse all *_result.txt files (group files included)
+        results = runner.parse_maestro_results()
+
+        csv_path = output_dir / "maestro_multiple_results_summary.csv"
+    else:
+        runner.run_maestro_for_mutations(mutations)
+        results = runner.parse_maestro_results()
+        csv_path = output_dir / "maestro_results_summary.csv"
 
     if results:
         df = pd.DataFrame(results)
-        csv_path = output_dir / "maestro_results_summary.csv"
         df.to_csv(csv_path, index=False)
         print(f"💾 Results summary saved to: {csv_path}")
-
-        # Generate high-resolution ddG plot
-        plot_path = output_dir / "ddG_plot.png"
-        plot_variant_ddG(csv_path, save_path=plot_path)
+        plot_path = output_dir / ("multiple_ddG_plot.png" if mode == "multiple" else "ddG_plot.png")
+        if mode == "multiple":
+            plot_combined_ddG(csv_path, save_path=plot_path)
+        else:
+            plot_variant_ddG(csv_path, save_path=plot_path)
     else:
         print("⚠️ No results parsed, CSV not created.")
 
     print("✅ Finished at:", datetime.datetime.now())
+
 
 if __name__ == "__main__":
     main()

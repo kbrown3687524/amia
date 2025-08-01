@@ -1,15 +1,18 @@
 pdb_file: "/home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
-output_dir: "/home/cloetes-lab/amia/test/variant_outputs/"
+output_dir: "/home/cloetes-lab/amia/test/variant_outputs2/"
 mutations: "/home/cloetes-lab/amia/test/HIV-1C_ZA/mutations.csv"
-mode: "single"
+mode: "multiple"
 
 run_passer: true
+
+passer_dir: "/home/cloetes-lab/amia/test/variant_outputs2"
+passer_txt: "/home/cloetes-lab/amia/test/variant_outputs2/passer_all_results.txt"
+passer_html: "/home/cloetes-lab/amia/test/variant_outputs2/passer_summary.html"
+
 run_docking: true
 
 smiles: "CC1=NN=C(O1)C(=O)NC(C)(C)C2=NC(=C(C(=O)N2C)O)C(=O)NCC3=CC=C(C=C3)F"
 compound_name: "Aspirin"
 center: [116.516, 139.229, 142.900]
 
-passer_dir: "/home/cloetes-lab/amia/test/variant_outputs"
-passer_txt: "/home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt"
-passer_html: "/home/cloetes-lab/amia/test/variant_outputs/passer_summary.html"
+

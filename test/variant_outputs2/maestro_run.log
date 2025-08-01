@@ -1,0 +1,49 @@
+2025-08-01 14:04:13,041 - INFO - 📄 Logging output to: /home/cloetes-lab/amia/test/variant_outputs2/maestro_run.log
+2025-08-01 14:04:13,041 - INFO - 🕒 Start time:
+2025-08-01 14:04:13,042 - INFO - 2025-08-01 14:04:13.041901
+2025-08-01 14:04:13,042 - INFO - ℹ️ Base directory inferred as: /home/cloetes-lab
+2025-08-01 14:04:13,042 - INFO - ℹ️ Using config file: /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml
+2025-08-01 14:04:13,042 - INFO - 🧬 Mode: multiple
+2025-08-01 14:04:13,042 - INFO - ✅ Maestro executable prepared: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro
+2025-08-01 14:04:13,042 - INFO - 🔍 Parsed mutations: ['S39C', 'I84M', 'K215N', 'I84V', 'S24N', 'L63I', 'S24N', 'I84M', 'E96D', 'S119P', 'G134N', 'K211Q', 'V75M', 'S195C', 'I113V', 'T206S', 'I135V', 'I220V', 'G134N', 'K211R', 'T210A', 'V150A', 'I135V', 'S255G', 'K215N', 'M154I', 'T206S', 'Y143R', 'Y143R', 'Y143R']
+2025-08-01 14:04:13,046 - INFO - 🔄 Running group Rumbie_P1_System with mutations: ['S39C']
+2025-08-01 14:04:13,047 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S39{C} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P1_System_result.txt
+2025-08-01 14:04:14,894 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P1_System_result.txt
+2025-08-01 14:04:14,895 - INFO - 🔄 Running group Rumbie_P2_System with mutations: ['I84M', 'S119P', 'T206S', 'T210A', 'K215N', 'Y143R']
+2025-08-01 14:04:14,895 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I84{M},S119{P},T206{S},T210{A},K215{N},Y143{R} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P2_System_result.txt
+2025-08-01 14:04:16,755 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P2_System_result.txt
+2025-08-01 14:04:16,756 - INFO - 🔄 Running group Rumbie_P3_System with mutations: ['K215N']
+2025-08-01 14:04:16,756 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=K215{N} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P3_System_result.txt
+2025-08-01 14:04:18,611 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P3_System_result.txt
+2025-08-01 14:04:18,612 - INFO - 🔄 Running group Rumbie_P4_System with mutations: ['I84V', 'G134N', 'I135V', 'V150A', 'M154I']
+2025-08-01 14:04:18,612 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I84{V},G134{N},I135{V},V150{A},M154{I} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P4_System_result.txt
+2025-08-01 14:04:20,489 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P4_System_result.txt
+2025-08-01 14:04:20,490 - INFO - 🔄 Running group Rumbie_P5_System with mutations: ['S24N', 'K211Q', 'I220V']
+2025-08-01 14:04:20,490 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S24{N},K211{Q},I220{V} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P5_System_result.txt
+2025-08-01 14:04:22,369 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P5_System_result.txt
+2025-08-01 14:04:22,370 - INFO - 🔄 Running group Rumbie_P6_System with mutations: ['L63I', 'V75M', 'G134N', 'I135V', 'T206S', 'Y143R']
+2025-08-01 14:04:22,370 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=L63{I},V75{M},G134{N},I135{V},T206{S},Y143{R} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P6_System_result.txt
+2025-08-01 14:04:24,236 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P6_System_result.txt
+2025-08-01 14:04:24,238 - INFO - 🔄 Running group Rumbie_P8_System with mutations: ['S24N', 'S195C']
+2025-08-01 14:04:24,238 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=S24{N},S195{C} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P8_System_result.txt
+2025-08-01 14:04:26,107 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P8_System_result.txt
+2025-08-01 14:04:26,108 - INFO - 🔄 Running group Rumbie_P9_System with mutations: ['I84M', 'I113V', 'K211R', 'S255G', 'Y143R']
+2025-08-01 14:04:26,108 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=I84{M},I113{V},K211{R},S255{G},Y143{R} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P9_System_result.txt
+2025-08-01 14:04:27,977 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P9_System_result.txt
+2025-08-01 14:04:27,978 - INFO - 🔄 Running group Rumbie_P10_System with mutations: ['E96D']
+2025-08-01 14:04:27,979 - INFO - 🚀 Running combined mutation set: /home/cloetes-lab/amia/MAESTRO_linux_x64/maestro /home/cloetes-lab/amia/MAESTRO_linux_x64/config.xml /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --evalmut=E96{D} --bu --resultfile=/home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P10_System_result.txt
+2025-08-01 14:04:29,842 - INFO - ✅ Combined result saved to: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P10_System_result.txt
+2025-08-01 14:04:29,842 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P5_System_result.txt as variant Rumbie_P5_System
+2025-08-01 14:04:29,842 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P9_System_result.txt as variant Rumbie_P9_System
+2025-08-01 14:04:29,843 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P1_System_result.txt as variant Rumbie_P1_System
+2025-08-01 14:04:29,843 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P3_System_result.txt as variant Rumbie_P3_System
+2025-08-01 14:04:29,843 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P10_System_result.txt as variant Rumbie_P10_System
+2025-08-01 14:04:29,843 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P4_System_result.txt as variant Rumbie_P4_System
+2025-08-01 14:04:29,843 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P2_System_result.txt as variant Rumbie_P2_System
+2025-08-01 14:04:29,843 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P6_System_result.txt as variant Rumbie_P6_System
+2025-08-01 14:04:29,843 - INFO - 📂 Parsing: /home/cloetes-lab/amia/test/variant_outputs2/Rumbie_P8_System_result.txt as variant Rumbie_P8_System
+2025-08-01 14:04:29,843 - INFO - ✅ Parsed 18 result entries from /home/cloetes-lab/amia/test/variant_outputs2
+2025-08-01 14:04:29,846 - INFO - 💾 Results summary saved to: /home/cloetes-lab/amia/test/variant_outputs2/maestro_multiple_results_summary.csv
+2025-08-01 14:04:34,007 - INFO - 📊 Combined ddG plot saved to: /home/cloetes-lab/amia/test/variant_outputs2/multiple_ddG_plot.png
+2025-08-01 14:04:34,007 - INFO - ✅ Finished at:
+2025-08-01 14:04:34,007 - INFO - 2025-08-01 14:04:34.007214

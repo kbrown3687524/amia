@@ -90,7 +90,7 @@ def run_pipeline(config, force):
         if step_name == "mutintro":
             cmd += ["--mutations", mutations, "--mode", mode]
         elif step_name == "maestroana":
-            cmd += ["--mutations", mutations]
+            cmd += ["--mutations", mutations, "--mode", mode]
         elif step_name == "passer":
             cmd += [
                 "--pdb_dir", passer_dir,

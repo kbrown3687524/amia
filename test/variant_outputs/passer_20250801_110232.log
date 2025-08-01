@@ -9,3 +9,341 @@
 2025-08-01 11:02:46,883 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K215N_auto.pdb to PASSer with model 'automl'
 2025-08-01 11:02:49,098 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K215N_auto_ensemble.zip
 2025-08-01 11:02:49,098 - INFO - 📦 Requesting ZIP for K215N_auto.pdb (automl)
+2025-08-01 11:03:17,020 - INFO - ✅ Received response for K215N_auto.pdb (automl)
+2025-08-01 11:03:17,022 - INFO - 📝 Written results for K215N_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:03:17,022 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K215N_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:03:19,960 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K215N_auto_automl.zip
+2025-08-01 11:03:19,960 - INFO - 📦 Requesting ZIP for K215N_auto.pdb (rank)
+2025-08-01 11:03:28,388 - INFO - ✅ Received response for K215N_auto.pdb (rank)
+2025-08-01 11:03:28,390 - INFO - 📝 Written results for K215N_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:03:28,390 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I84M_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:03:33,004 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K215N_auto_rank.zip
+2025-08-01 11:03:33,004 - INFO - 📦 Requesting ZIP for I84M_auto.pdb (ensemble)
+2025-08-01 11:03:41,549 - INFO - ✅ Received response for I84M_auto.pdb (ensemble)
+2025-08-01 11:03:41,550 - INFO - 📝 Written results for I84M_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:03:41,550 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I84M_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:03:47,175 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I84M_auto_ensemble.zip
+2025-08-01 11:03:47,176 - INFO - 📦 Requesting ZIP for I84M_auto.pdb (automl)
+2025-08-01 11:04:06,281 - INFO - ✅ Received response for I84M_auto.pdb (automl)
+2025-08-01 11:04:06,283 - INFO - 📝 Written results for I84M_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:04:06,283 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I84M_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:04:13,885 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I84M_auto_automl.zip
+2025-08-01 11:04:13,885 - INFO - 📦 Requesting ZIP for I84M_auto.pdb (rank)
+2025-08-01 11:04:17,345 - INFO - ✅ Received response for I84M_auto.pdb (rank)
+2025-08-01 11:04:17,346 - INFO - 📝 Written results for I84M_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:04:17,346 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/T210A_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:04:26,792 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I84M_auto_rank.zip
+2025-08-01 11:04:26,793 - INFO - 📦 Requesting ZIP for T210A_auto.pdb (ensemble)
+2025-08-01 11:04:32,322 - INFO - ✅ Received response for T210A_auto.pdb (ensemble)
+2025-08-01 11:04:32,325 - INFO - 📝 Written results for T210A_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:04:32,325 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/T210A_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:04:42,016 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/T210A_auto_ensemble.zip
+2025-08-01 11:04:42,017 - INFO - 📦 Requesting ZIP for T210A_auto.pdb (automl)
+2025-08-01 11:04:53,263 - INFO - ✅ Received response for T210A_auto.pdb (automl)
+2025-08-01 11:04:53,265 - INFO - 📝 Written results for T210A_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:04:53,266 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/T210A_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:05:04,438 - INFO - ✅ Received response for T210A_auto.pdb (rank)
+2025-08-01 11:05:04,439 - INFO - 📝 Written results for T210A_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:05:04,440 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I113V_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:05:04,728 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/T210A_auto_automl.zip
+2025-08-01 11:05:04,729 - INFO - 📦 Requesting ZIP for T210A_auto.pdb (rank)
+2025-08-01 11:05:17,144 - INFO - ✅ Received response for I113V_auto.pdb (ensemble)
+2025-08-01 11:05:17,146 - INFO - 📝 Written results for I113V_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:05:17,147 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I113V_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:05:18,015 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/T210A_auto_rank.zip
+2025-08-01 11:05:18,016 - INFO - 📦 Requesting ZIP for I113V_auto.pdb (ensemble)
+2025-08-01 11:05:36,234 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I113V_auto_ensemble.zip
+2025-08-01 11:05:36,234 - INFO - 📦 Requesting ZIP for I113V_auto.pdb (automl)
+2025-08-01 11:05:38,934 - INFO - ✅ Received response for I113V_auto.pdb (automl)
+2025-08-01 11:05:38,936 - INFO - 📝 Written results for I113V_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:05:38,936 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I113V_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:05:52,283 - INFO - ✅ Received response for I113V_auto.pdb (rank)
+2025-08-01 11:05:52,284 - INFO - 📝 Written results for I113V_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:05:52,285 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/V150A_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:05:59,720 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I113V_auto_automl.zip
+2025-08-01 11:05:59,721 - INFO - 📦 Requesting ZIP for I113V_auto.pdb (rank)
+2025-08-01 11:06:05,761 - INFO - ✅ Received response for V150A_auto.pdb (ensemble)
+2025-08-01 11:06:05,764 - INFO - 📝 Written results for V150A_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:06:05,765 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/V150A_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:06:13,604 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I113V_auto_rank.zip
+2025-08-01 11:06:13,604 - INFO - 📦 Requesting ZIP for V150A_auto.pdb (ensemble)
+2025-08-01 11:06:27,847 - INFO - ✅ Received response for V150A_auto.pdb (automl)
+2025-08-01 11:06:27,849 - INFO - 📝 Written results for V150A_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:06:27,849 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/V150A_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:06:29,839 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/V150A_auto_ensemble.zip
+2025-08-01 11:06:29,839 - INFO - 📦 Requesting ZIP for V150A_auto.pdb (automl)
+2025-08-01 11:06:39,038 - INFO - ✅ Received response for V150A_auto.pdb (rank)
+2025-08-01 11:06:39,039 - INFO - 📝 Written results for V150A_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:06:39,040 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/M154I_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:06:52,033 - INFO - ✅ Received response for M154I_auto.pdb (ensemble)
+2025-08-01 11:06:52,035 - INFO - 📝 Written results for M154I_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:06:52,036 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/M154I_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:06:52,968 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/V150A_auto_automl.zip
+2025-08-01 11:06:52,969 - INFO - 📦 Requesting ZIP for V150A_auto.pdb (rank)
+2025-08-01 11:07:07,128 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/V150A_auto_rank.zip
+2025-08-01 11:07:07,128 - INFO - 📦 Requesting ZIP for M154I_auto.pdb (ensemble)
+2025-08-01 11:07:13,202 - INFO - ✅ Received response for M154I_auto.pdb (automl)
+2025-08-01 11:07:13,204 - INFO - 📝 Written results for M154I_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:07:13,204 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/M154I_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:07:22,637 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/M154I_auto_ensemble.zip
+2025-08-01 11:07:22,637 - INFO - 📦 Requesting ZIP for M154I_auto.pdb (automl)
+2025-08-01 11:07:24,624 - INFO - ✅ Received response for M154I_auto.pdb (rank)
+2025-08-01 11:07:24,626 - INFO - 📝 Written results for M154I_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:07:24,626 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S119P_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:07:41,527 - INFO - ✅ Received response for S119P_auto.pdb (ensemble)
+2025-08-01 11:07:41,529 - INFO - 📝 Written results for S119P_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:07:41,529 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S119P_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:07:46,224 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/M154I_auto_automl.zip
+2025-08-01 11:07:46,224 - INFO - 📦 Requesting ZIP for M154I_auto.pdb (rank)
+2025-08-01 11:08:01,070 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/M154I_auto_rank.zip
+2025-08-01 11:08:01,070 - INFO - 📦 Requesting ZIP for S119P_auto.pdb (ensemble)
+2025-08-01 11:08:02,682 - INFO - ✅ Received response for S119P_auto.pdb (automl)
+2025-08-01 11:08:02,684 - INFO - 📝 Written results for S119P_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:08:02,684 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S119P_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:08:14,271 - INFO - ✅ Received response for S119P_auto.pdb (rank)
+2025-08-01 11:08:14,273 - INFO - 📝 Written results for S119P_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:08:14,273 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K211R_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:08:16,122 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S119P_auto_ensemble.zip
+2025-08-01 11:08:16,122 - INFO - 📦 Requesting ZIP for S119P_auto.pdb (automl)
+2025-08-01 11:08:27,512 - INFO - ✅ Received response for K211R_auto.pdb (ensemble)
+2025-08-01 11:08:27,514 - INFO - 📝 Written results for K211R_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:08:27,515 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K211R_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:08:39,370 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S119P_auto_automl.zip
+2025-08-01 11:08:39,371 - INFO - 📦 Requesting ZIP for S119P_auto.pdb (rank)
+2025-08-01 11:08:48,690 - INFO - ✅ Received response for K211R_auto.pdb (automl)
+2025-08-01 11:08:48,692 - INFO - 📝 Written results for K211R_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:08:48,693 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K211R_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:08:52,094 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S119P_auto_rank.zip
+2025-08-01 11:08:52,094 - INFO - 📦 Requesting ZIP for K211R_auto.pdb (ensemble)
+2025-08-01 11:09:00,152 - INFO - ✅ Received response for K211R_auto.pdb (rank)
+2025-08-01 11:09:00,153 - INFO - 📝 Written results for K211R_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:09:00,154 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I84V_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:09:07,466 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K211R_auto_ensemble.zip
+2025-08-01 11:09:07,466 - INFO - 📦 Requesting ZIP for K211R_auto.pdb (automl)
+2025-08-01 11:09:13,469 - INFO - ✅ Received response for I84V_auto.pdb (ensemble)
+2025-08-01 11:09:13,470 - INFO - 📝 Written results for I84V_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:09:13,470 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I84V_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:09:33,347 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K211R_auto_automl.zip
+2025-08-01 11:09:33,348 - INFO - 📦 Requesting ZIP for K211R_auto.pdb (rank)
+2025-08-01 11:09:37,916 - INFO - ✅ Received response for I84V_auto.pdb (automl)
+2025-08-01 11:09:37,917 - INFO - 📝 Written results for I84V_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:09:37,917 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I84V_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:09:46,362 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K211R_auto_rank.zip
+2025-08-01 11:09:46,362 - INFO - 📦 Requesting ZIP for I84V_auto.pdb (ensemble)
+2025-08-01 11:09:49,728 - INFO - ✅ Received response for I84V_auto.pdb (rank)
+2025-08-01 11:09:49,729 - INFO - 📝 Written results for I84V_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:09:49,729 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/Y143R_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:10:03,454 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I84V_auto_ensemble.zip
+2025-08-01 11:10:03,455 - INFO - 📦 Requesting ZIP for I84V_auto.pdb (automl)
+2025-08-01 11:10:03,814 - INFO - ✅ Received response for Y143R_auto.pdb (ensemble)
+2025-08-01 11:10:03,816 - INFO - 📝 Written results for Y143R_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:10:03,816 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/Y143R_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:10:33,174 - INFO - ✅ Received response for Y143R_auto.pdb (automl)
+2025-08-01 11:10:33,175 - INFO - 📝 Written results for Y143R_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:10:33,175 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/Y143R_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:10:34,054 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I84V_auto_automl.zip
+2025-08-01 11:10:34,054 - INFO - 📦 Requesting ZIP for I84V_auto.pdb (rank)
+2025-08-01 11:10:44,644 - INFO - ✅ Received response for Y143R_auto.pdb (rank)
+2025-08-01 11:10:44,645 - INFO - 📝 Written results for Y143R_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:10:44,645 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/E96D_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:10:47,981 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I84V_auto_rank.zip
+2025-08-01 11:10:47,981 - INFO - 📦 Requesting ZIP for Y143R_auto.pdb (ensemble)
+2025-08-01 11:10:58,008 - INFO - ✅ Received response for E96D_auto.pdb (ensemble)
+2025-08-01 11:10:58,010 - INFO - 📝 Written results for E96D_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:10:58,010 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/E96D_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:11:02,691 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/Y143R_auto_ensemble.zip
+2025-08-01 11:11:02,691 - INFO - 📦 Requesting ZIP for Y143R_auto.pdb (automl)
+2025-08-01 11:11:23,161 - INFO - ✅ Received response for E96D_auto.pdb (automl)
+2025-08-01 11:11:23,163 - INFO - 📝 Written results for E96D_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:11:23,163 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/E96D_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:11:30,887 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/Y143R_auto_automl.zip
+2025-08-01 11:11:30,887 - INFO - 📦 Requesting ZIP for Y143R_auto.pdb (rank)
+2025-08-01 11:11:34,912 - INFO - ✅ Received response for E96D_auto.pdb (rank)
+2025-08-01 11:11:34,914 - INFO - 📝 Written results for E96D_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:11:34,915 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S255G_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:11:44,003 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/Y143R_auto_rank.zip
+2025-08-01 11:11:44,004 - INFO - 📦 Requesting ZIP for E96D_auto.pdb (ensemble)
+2025-08-01 11:11:47,548 - INFO - ✅ Received response for S255G_auto.pdb (ensemble)
+2025-08-01 11:11:47,549 - INFO - 📝 Written results for S255G_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:11:47,549 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S255G_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:11:59,275 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/E96D_auto_ensemble.zip
+2025-08-01 11:11:59,275 - INFO - 📦 Requesting ZIP for E96D_auto.pdb (automl)
+2025-08-01 11:12:08,488 - INFO - ✅ Received response for S255G_auto.pdb (automl)
+2025-08-01 11:12:08,489 - INFO - 📝 Written results for S255G_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:12:08,489 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S255G_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:12:20,327 - INFO - ✅ Received response for S255G_auto.pdb (rank)
+2025-08-01 11:12:20,328 - INFO - 📝 Written results for S255G_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:12:20,329 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I220V_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:12:21,796 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/E96D_auto_automl.zip
+2025-08-01 11:12:21,796 - INFO - 📦 Requesting ZIP for E96D_auto.pdb (rank)
+2025-08-01 11:12:33,330 - INFO - ✅ Received response for I220V_auto.pdb (ensemble)
+2025-08-01 11:12:33,332 - INFO - 📝 Written results for I220V_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:12:33,332 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I220V_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:12:35,090 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/E96D_auto_rank.zip
+2025-08-01 11:12:35,090 - INFO - 📦 Requesting ZIP for S255G_auto.pdb (ensemble)
+2025-08-01 11:12:54,950 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S255G_auto_ensemble.zip
+2025-08-01 11:12:54,951 - INFO - 📦 Requesting ZIP for S255G_auto.pdb (automl)
+2025-08-01 11:12:55,364 - INFO - ✅ Received response for I220V_auto.pdb (automl)
+2025-08-01 11:12:55,366 - INFO - 📝 Written results for I220V_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:12:55,366 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I220V_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:13:07,166 - INFO - ✅ Received response for I220V_auto.pdb (rank)
+2025-08-01 11:13:07,168 - INFO - 📝 Written results for I220V_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:13:07,168 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/G134N_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:13:17,890 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S255G_auto_automl.zip
+2025-08-01 11:13:17,891 - INFO - 📦 Requesting ZIP for S255G_auto.pdb (rank)
+2025-08-01 11:13:20,035 - INFO - ✅ Received response for G134N_auto.pdb (ensemble)
+2025-08-01 11:13:20,036 - INFO - 📝 Written results for G134N_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:13:20,037 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/G134N_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:13:31,484 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S255G_auto_rank.zip
+2025-08-01 11:13:31,485 - INFO - 📦 Requesting ZIP for I220V_auto.pdb (ensemble)
+2025-08-01 11:13:41,205 - INFO - ✅ Received response for G134N_auto.pdb (automl)
+2025-08-01 11:13:41,206 - INFO - 📝 Written results for G134N_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:13:41,207 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/G134N_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:13:45,835 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I220V_auto_ensemble.zip
+2025-08-01 11:13:45,836 - INFO - 📦 Requesting ZIP for I220V_auto.pdb (automl)
+2025-08-01 11:13:52,890 - INFO - ✅ Received response for G134N_auto.pdb (rank)
+2025-08-01 11:13:52,892 - INFO - 📝 Written results for G134N_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:13:52,892 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S39C_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:14:07,701 - INFO - ✅ Received response for S39C_auto.pdb (ensemble)
+2025-08-01 11:14:07,702 - INFO - 📝 Written results for S39C_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:14:07,702 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S39C_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:14:09,081 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I220V_auto_automl.zip
+2025-08-01 11:14:09,081 - INFO - 📦 Requesting ZIP for I220V_auto.pdb (rank)
+2025-08-01 11:14:24,762 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I220V_auto_rank.zip
+2025-08-01 11:14:24,763 - INFO - 📦 Requesting ZIP for G134N_auto.pdb (ensemble)
+2025-08-01 11:14:28,930 - INFO - ✅ Received response for S39C_auto.pdb (automl)
+2025-08-01 11:14:28,931 - INFO - 📝 Written results for S39C_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:14:28,931 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S39C_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:14:40,520 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/G134N_auto_ensemble.zip
+2025-08-01 11:14:40,520 - INFO - 📦 Requesting ZIP for G134N_auto.pdb (automl)
+2025-08-01 11:14:40,561 - INFO - ✅ Received response for S39C_auto.pdb (rank)
+2025-08-01 11:14:40,562 - INFO - 📝 Written results for S39C_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:14:40,563 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S195C_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:14:58,539 - INFO - ✅ Received response for S195C_auto.pdb (ensemble)
+2025-08-01 11:14:58,540 - INFO - 📝 Written results for S195C_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:14:58,540 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S195C_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:15:05,064 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/G134N_auto_automl.zip
+2025-08-01 11:15:05,064 - INFO - 📦 Requesting ZIP for G134N_auto.pdb (rank)
+2025-08-01 11:15:19,518 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/G134N_auto_rank.zip
+2025-08-01 11:15:19,519 - INFO - 📦 Requesting ZIP for S39C_auto.pdb (ensemble)
+2025-08-01 11:15:20,030 - INFO - ✅ Received response for S195C_auto.pdb (automl)
+2025-08-01 11:15:20,031 - INFO - 📝 Written results for S195C_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:15:20,031 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S195C_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:15:31,494 - INFO - ✅ Received response for S195C_auto.pdb (rank)
+2025-08-01 11:15:31,495 - INFO - 📝 Written results for S195C_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:15:31,495 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/L63I_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:15:34,344 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S39C_auto_ensemble.zip
+2025-08-01 11:15:34,344 - INFO - 📦 Requesting ZIP for S39C_auto.pdb (automl)
+2025-08-01 11:15:44,607 - INFO - ✅ Received response for L63I_auto.pdb (ensemble)
+2025-08-01 11:15:44,608 - INFO - 📝 Written results for L63I_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:15:44,608 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/L63I_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:15:57,180 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S39C_auto_automl.zip
+2025-08-01 11:15:57,180 - INFO - 📦 Requesting ZIP for S39C_auto.pdb (rank)
+2025-08-01 11:16:07,206 - INFO - ✅ Received response for L63I_auto.pdb (automl)
+2025-08-01 11:16:07,208 - INFO - 📝 Written results for L63I_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:16:07,209 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/L63I_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:16:10,025 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S39C_auto_rank.zip
+2025-08-01 11:16:10,025 - INFO - 📦 Requesting ZIP for S195C_auto.pdb (ensemble)
+2025-08-01 11:16:18,403 - INFO - ✅ Received response for L63I_auto.pdb (rank)
+2025-08-01 11:16:18,404 - INFO - 📝 Written results for L63I_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:16:18,405 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I135V_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:16:28,131 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S195C_auto_ensemble.zip
+2025-08-01 11:16:28,131 - INFO - 📦 Requesting ZIP for S195C_auto.pdb (automl)
+2025-08-01 11:16:30,924 - INFO - ✅ Received response for I135V_auto.pdb (ensemble)
+2025-08-01 11:16:30,925 - INFO - 📝 Written results for I135V_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:16:30,925 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I135V_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:16:56,779 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S195C_auto_automl.zip
+2025-08-01 11:16:56,779 - INFO - 📦 Requesting ZIP for S195C_auto.pdb (rank)
+2025-08-01 11:16:58,544 - INFO - ✅ Received response for I135V_auto.pdb (automl)
+2025-08-01 11:16:58,546 - INFO - 📝 Written results for I135V_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:16:58,547 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/I135V_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:17:10,408 - INFO - ✅ Received response for I135V_auto.pdb (rank)
+2025-08-01 11:17:10,409 - INFO - 📝 Written results for I135V_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:17:10,410 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K211Q_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:17:10,440 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S195C_auto_rank.zip
+2025-08-01 11:17:10,441 - INFO - 📦 Requesting ZIP for L63I_auto.pdb (ensemble)
+2025-08-01 11:17:24,161 - INFO - ✅ Received response for K211Q_auto.pdb (ensemble)
+2025-08-01 11:17:24,164 - INFO - 📝 Written results for K211Q_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:17:24,164 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K211Q_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:17:26,002 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/L63I_auto_ensemble.zip
+2025-08-01 11:17:26,002 - INFO - 📦 Requesting ZIP for L63I_auto.pdb (automl)
+2025-08-01 11:17:51,495 - INFO - ✅ Received response for K211Q_auto.pdb (automl)
+2025-08-01 11:17:51,497 - INFO - 📝 Written results for K211Q_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:17:51,497 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K211Q_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:17:56,537 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/L63I_auto_automl.zip
+2025-08-01 11:17:56,537 - INFO - 📦 Requesting ZIP for L63I_auto.pdb (rank)
+2025-08-01 11:18:02,612 - INFO - ✅ Received response for K211Q_auto.pdb (rank)
+2025-08-01 11:18:02,614 - INFO - 📝 Written results for K211Q_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:18:02,614 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/V75M_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:18:13,204 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/L63I_auto_rank.zip
+2025-08-01 11:18:13,204 - INFO - 📦 Requesting ZIP for I135V_auto.pdb (ensemble)
+2025-08-01 11:18:14,966 - INFO - ✅ Received response for V75M_auto.pdb (ensemble)
+2025-08-01 11:18:14,968 - INFO - 📝 Written results for V75M_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:18:14,968 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/V75M_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:18:28,166 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I135V_auto_ensemble.zip
+2025-08-01 11:18:28,167 - INFO - 📦 Requesting ZIP for I135V_auto.pdb (automl)
+2025-08-01 11:18:35,946 - INFO - ✅ Received response for V75M_auto.pdb (automl)
+2025-08-01 11:18:35,947 - INFO - 📝 Written results for V75M_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:18:35,948 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/V75M_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:18:48,434 - INFO - ✅ Received response for V75M_auto.pdb (rank)
+2025-08-01 11:18:48,435 - INFO - 📝 Written results for V75M_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:18:48,435 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/T206S_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:18:51,248 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I135V_auto_automl.zip
+2025-08-01 11:18:51,248 - INFO - 📦 Requesting ZIP for I135V_auto.pdb (rank)
+2025-08-01 11:19:01,676 - INFO - ✅ Received response for T206S_auto.pdb (ensemble)
+2025-08-01 11:19:01,678 - INFO - 📝 Written results for T206S_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:19:01,678 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/T206S_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:19:04,784 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/I135V_auto_rank.zip
+2025-08-01 11:19:04,784 - INFO - 📦 Requesting ZIP for K211Q_auto.pdb (ensemble)
+2025-08-01 11:19:23,201 - INFO - ✅ Received response for T206S_auto.pdb (automl)
+2025-08-01 11:19:23,202 - INFO - 📝 Written results for T206S_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:19:23,202 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/T206S_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:19:23,883 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K211Q_auto_ensemble.zip
+2025-08-01 11:19:23,883 - INFO - 📦 Requesting ZIP for K211Q_auto.pdb (automl)
+2025-08-01 11:19:34,419 - INFO - ✅ Received response for T206S_auto.pdb (rank)
+2025-08-01 11:19:34,420 - INFO - 📝 Written results for T206S_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:19:34,420 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S24N_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:19:46,508 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K211Q_auto_automl.zip
+2025-08-01 11:19:46,508 - INFO - 📦 Requesting ZIP for K211Q_auto.pdb (rank)
+2025-08-01 11:19:46,906 - INFO - ✅ Received response for S24N_auto.pdb (ensemble)
+2025-08-01 11:19:46,908 - INFO - 📝 Written results for S24N_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:19:46,908 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S24N_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:19:59,506 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K211Q_auto_rank.zip
+2025-08-01 11:19:59,506 - INFO - 📦 Requesting ZIP for V75M_auto.pdb (ensemble)
+2025-08-01 11:20:08,273 - INFO - ✅ Received response for S24N_auto.pdb (automl)
+2025-08-01 11:20:08,274 - INFO - 📝 Written results for S24N_auto.pdb (automl) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:20:08,274 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/S24N_auto.pdb to PASSer with model 'rank'
+2025-08-01 11:20:13,366 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/V75M_auto_ensemble.zip
+2025-08-01 11:20:13,366 - INFO - 📦 Requesting ZIP for V75M_auto.pdb (automl)
+2025-08-01 11:20:19,706 - INFO - ✅ Received response for S24N_auto.pdb (rank)
+2025-08-01 11:20:19,708 - INFO - 📝 Written results for S24N_auto.pdb (rank) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:20:35,758 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/V75M_auto_automl.zip
+2025-08-01 11:20:35,758 - INFO - 📦 Requesting ZIP for V75M_auto.pdb (rank)
+2025-08-01 11:20:48,911 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/V75M_auto_rank.zip
+2025-08-01 11:20:48,912 - INFO - 📦 Requesting ZIP for T206S_auto.pdb (ensemble)
+2025-08-01 11:21:04,116 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/T206S_auto_ensemble.zip
+2025-08-01 11:21:04,116 - INFO - 📦 Requesting ZIP for T206S_auto.pdb (automl)
+2025-08-01 11:21:26,548 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/T206S_auto_automl.zip
+2025-08-01 11:21:26,548 - INFO - 📦 Requesting ZIP for T206S_auto.pdb (rank)
+2025-08-01 11:21:40,009 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/T206S_auto_rank.zip
+2025-08-01 11:21:40,009 - INFO - 📦 Requesting ZIP for S24N_auto.pdb (ensemble)
+2025-08-01 11:21:53,985 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S24N_auto_ensemble.zip
+2025-08-01 11:21:53,985 - INFO - 📦 Requesting ZIP for S24N_auto.pdb (automl)
+2025-08-01 11:22:16,795 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S24N_auto_automl.zip
+2025-08-01 11:22:16,796 - INFO - 📦 Requesting ZIP for S24N_auto.pdb (rank)
+2025-08-01 11:22:30,143 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/S24N_auto_rank.zip
+2025-08-01 11:22:30,148 - INFO - 📄 Processing single PDB file: /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb
+2025-08-01 11:22:30,149 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb to PASSer with model 'ensemble'
+2025-08-01 11:22:44,167 - INFO - ✅ Received response for HIV_IN_1C_ZA_5U1C_model.pdb (ensemble)
+2025-08-01 11:22:44,168 - INFO - 📝 Added ensemble results to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:22:58,839 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/HIV_IN_1C_ZA_5U1C_model_ensemble.zip
+2025-08-01 11:22:58,840 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb to PASSer with model 'automl'
+2025-08-01 11:23:20,414 - INFO - ✅ Received response for HIV_IN_1C_ZA_5U1C_model.pdb (automl)
+2025-08-01 11:23:20,415 - INFO - 📝 Added automl results to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:23:43,618 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/HIV_IN_1C_ZA_5U1C_model_automl.zip
+2025-08-01 11:23:43,619 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb to PASSer with model 'rank'
+2025-08-01 11:23:54,963 - INFO - ✅ Received response for HIV_IN_1C_ZA_5U1C_model.pdb (rank)
+2025-08-01 11:23:54,964 - INFO - 📝 Added rank results to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:24:08,384 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/HIV_IN_1C_ZA_5U1C_model_rank.zip
+2025-08-01 11:24:08,387 - INFO - 🖥️ Generated HTML summary: /home/cloetes-lab/amia/test/variant_outputs/passer_summary.html
+2025-08-01 11:24:08,387 - INFO - ✅ Workflow complete.

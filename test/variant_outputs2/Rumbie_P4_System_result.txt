@@ -1,0 +1,3 @@
+#structure	seqlength	pH	mutation	score	delta_score	ddG	ddG_confidence
+/ho...IN_1C_ZA_5U1C_model.pdb,ABFG,bu	   966	  7.0	wildtype	     -11.95979	       0.00000	       0.00000	       1.00000	
+/ho...IN_1C_ZA_5U1C_model.pdb,ABFG,bu	   966	  7.0	I84.ABFG{V},G134.ABFG{N},I135.ABFG{V},V150.ABFG{A},M154.ABFG{I}	     -11.69585	       0.26394	       0.46778	       0.71222	
