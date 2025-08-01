@@ -1,22 +1,16 @@
 #!/usr/bin/env python3
-#
-# Project Title: "The development of an automated computational workflow to prioritize potential resistance variants identified in HIV
-# Integrase Subtype C"
-#
-# This script is developed for the fulfillment of a Master's degree at the South African National Bioinformatics Institute,
-# the University of the Western Cape.
-#
-# The project is funded by the Poliomyelitis Research Foundation and the UWC Ada & Bertie Levenstein Bursary Programme.
-# Licensing and usage are governed by these organizations.
-#
-# Author: Keaghan Brown (3687524) - MSc Bioinformatics Candidate (3687524@myuwc.ac.za)
-# Author: Ruben Cloete (Supervisor) - Lecturer at SANBI (ruben@sanbi.ac.za)
 
 import os
 import subprocess
 import click
 import yaml
 from pathlib import Path
+
+def checkpoint_exists(checkpoint_dir, name):
+    return (checkpoint_dir / f"{name}.done").exists()
+
+def mark_checkpoint(checkpoint_dir, name):
+    (checkpoint_dir / f"{name}.done").touch()
 
 @click.command()
 @click.option('--config', type=click.Path(exists=True), required=True, help="Path to YAML configuration file")
@@ -29,7 +23,7 @@ def run_pipeline(config):
         cfg = yaml.safe_load(f)
 
     pdb_file = cfg['pdb_file']
-    output_dir = cfg['output_dir']
+    output_dir = Path(cfg['output_dir'])
     mutations = cfg['mutations']
     mode = cfg.get('mode', 'single')
     smiles = cfg.get('smiles', '')
@@ -39,89 +33,97 @@ def run_pipeline(config):
     run_docking = cfg.get('run_docking', False)
     run_passer = cfg.get('run_passer', False)
 
-    passer_dir = cfg.get('passer_dir', output_dir)
+    passer_dir = cfg.get('passer_dir', str(output_dir))
     passer_txt = cfg.get('passer_txt', 'passer_all_results.txt')
     passer_html = cfg.get('passer_html', 'passer_summary.html')
     passer_file = cfg.get('passer_file', '')
 
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
-    script_dir = os.path.dirname(os.path.realpath(__file__))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    checkpoint_dir = output_dir / ".checkpoints"
+    checkpoint_dir.mkdir(exist_ok=True)
+
+    script_dir = Path(__file__).resolve().parent
 
     scripts = [
-        #os.path.join(script_dir, "mutintro.py"),
-        #os.path.join(script_dir, "contacts.py"),
-        #os.path.join(script_dir, "maestroana.py"),
+        ("mutintro", script_dir / "mutintro.py"),
+        ("contacts", script_dir / "contacts.py"),
+        ("maestroana", script_dir / "maestroana.py"),
     ]
 
-    for i, script in enumerate(scripts, start=1):
-        script_name = os.path.basename(script)
-        click.echo(f"\n🔹 Running Script {i}: {script_name}")
+    for step_name, script in scripts:
+        if checkpoint_exists(checkpoint_dir, step_name):
+            click.echo(f"✅ Skipping {step_name} (checkpoint exists)")
+            continue
 
-        cmd = ["python", script, "--pdb_file", pdb_file, "--output_dir", output_dir]
+        click.echo(f"\n🔹 Running Script: {script.name}")
 
-        if "mutintro.py" in script:
+        cmd = ["python", str(script), "--pdb_file", pdb_file, "--output_dir", str(output_dir)]
+
+        if step_name == "mutintro":
             cmd.extend(["--mutations", mutations, "--mode", mode])
-        elif "maestroana.py" in script:
+        elif step_name == "maestroana":
             cmd.extend(["--mutations", mutations])
 
         result = subprocess.run(cmd)
         if result.returncode != 0:
-            click.echo(f"❌ Script failed: {script_name}")
+            click.echo(f"❌ Script failed: {script.name}")
             exit(1)
+
+        mark_checkpoint(checkpoint_dir, step_name)
+        click.echo(f"✅ Checkpoint created for {step_name}")
 
     if run_passer:
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
-        passer_script = os.path.join(script_dir, "autoallo.py")
-        passer_dir = passer_dir or output_dir
+        step_name = "passer"
+        if checkpoint_exists(checkpoint_dir, step_name):
+            click.echo(f"✅ Skipping PASSer (checkpoint exists)")
+        else:
+            passer_script = script_dir / "autoallo.py"
+            click.echo(f"\n🔹 Running PASSer on directory: {passer_dir}")
 
-        click.echo(f"\n🔹 Running PASSer on directory: {passer_dir}")
-        passer_cmd = [
-            "python", passer_script,
-            "--pdb_file", pdb_file,
-            "--pdb_dir", passer_dir,
-            "--output_dir", output_dir,
-            "--text_output", os.path.join(output_dir, passer_txt),
-            "--html_output", os.path.join(output_dir, passer_html)
-        ]
+            passer_cmd = [
+                "python", str(passer_script),
+                "--pdb_file", pdb_file,
+                "--pdb_dir", passer_dir,
+                "--output_dir", str(output_dir),
+                "--text_output", str(output_dir / passer_txt),
+                "--html_output", str(output_dir / passer_html)
+            ]
 
-        
-        result = subprocess.run(passer_cmd)
-        if result.returncode != 0:
-            click.echo("❌ PASSer script failed.")
-            exit(1)
+            if passer_file:
+                passer_cmd.extend(["--pdb_file", passer_file])
 
-        click.echo("✅ PASSer API submission complete.")
+            result = subprocess.run(passer_cmd)
+            if result.returncode != 0:
+                click.echo("❌ PASSer script failed.")
+                exit(1)
 
-        
+            mark_checkpoint(checkpoint_dir, step_name)
+            click.echo("✅ PASSer API submission complete.")
+
     if run_docking:
-        autodock_script = os.path.join(script_dir, "autodock.py")
-        click.echo(f"\n🔹 Running AutoDock: {autodock_script}")
-        dock_cmd = [
-            "python", autodock_script,
-            "--pdb_file", pdb_file,
-            "--output_dir", output_dir,
-            "--smiles", smiles,
-            "--compound_name", compound_name,
-            "--center"
-        ] + [str(c) for c in center]
+        step_name = "docking"
+        if checkpoint_exists(checkpoint_dir, step_name):
+            click.echo(f"✅ Skipping docking (checkpoint exists)")
+        else:
+            autodock_script = script_dir / "autodock.py"
+            click.echo(f"\n🔹 Running AutoDock: {autodock_script.name}")
 
-        result = subprocess.run(dock_cmd)
-        if result.returncode != 0:
-            click.echo("❌ AutoDock script failed.")
-            exit(1)
-        click.echo("✅ Docking complete.")
+            dock_cmd = [
+                "python", str(autodock_script),
+                "--pdb_file", pdb_file,
+                "--output_dir", str(output_dir),
+                "--smiles", smiles,
+                "--compound_name", compound_name,
+                "--center"
+            ] + [str(c) for c in center]
 
-    
+            result = subprocess.run(dock_cmd)
+            if result.returncode != 0:
+                click.echo("❌ AutoDock script failed.")
+                exit(1)
 
-        if passer_file:
-            passer_cmd.extend(["--pdb_file", passer_file])
-
-        result = subprocess.run(passer_cmd)
-        if result.returncode != 0:
-            click.echo("❌ PASSer script failed.")
-            exit(1)
-
-        click.echo("✅ PASSer API submission complete.")
+            mark_checkpoint(checkpoint_dir, step_name)
+            click.echo("✅ Docking complete.")
 
     click.echo("\n✅ AMIA pipeline complete.")
 
