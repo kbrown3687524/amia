@@ -1,0 +1,11 @@
+2025-08-01 11:02:32,342 - INFO - 🚀 Logger initialized.
+2025-08-01 11:02:32,342 - INFO - 📁 Logs will be saved to /home/cloetes-lab/amia/test/variant_outputs/passer_20250801_110232.log
+2025-08-01 11:02:32,342 - INFO - 🔄 PASSer submission workflow started.
+2025-08-01 11:02:32,342 - INFO - 📂 Processing directory: /home/cloetes-lab/amia/test/variant_outputs
+2025-08-01 11:02:32,348 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K215N_auto.pdb to PASSer with model 'ensemble'
+2025-08-01 11:02:32,349 - INFO - 📦 Requesting ZIP for K215N_auto.pdb (ensemble)
+2025-08-01 11:02:46,881 - INFO - ✅ Received response for K215N_auto.pdb (ensemble)
+2025-08-01 11:02:46,883 - INFO - 📝 Written results for K215N_auto.pdb (ensemble) to /home/cloetes-lab/amia/test/variant_outputs/passer_all_results.txt
+2025-08-01 11:02:46,883 - INFO - 📤 Submitting /home/cloetes-lab/amia/test/variant_outputs/K215N_auto.pdb to PASSer with model 'automl'
+2025-08-01 11:02:49,098 - INFO - ✅ Saved ZIP to /home/cloetes-lab/amia/test/variant_outputs/K215N_auto_ensemble.zip
+2025-08-01 11:02:49,098 - INFO - 📦 Requesting ZIP for K215N_auto.pdb (automl)

@@ -4,7 +4,7 @@ mutations: "/home/cloetes-lab/amia/test/HIV-1C_ZA/mutations.csv"
 mode: "single"
 
 run_passer: true
-run_docking: false
+run_docking: true
 
 smiles: "CC1=NN=C(O1)C(=O)NC(C)(C)C2=NC(=C(C(=O)N2C)O)C(=O)NCC3=CC=C(C=C3)F"
 compound_name: "Aspirin"

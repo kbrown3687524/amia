@@ -8,7 +8,6 @@ from multiprocessing import Process
 
 class AutoAllosteric:
 
-    @staticmethod
     def submit_to_passer(pdb_path, model):
         url = "https://passer.smu.edu/api"
         with open(pdb_path, 'rb') as pdb_file:

@@ -3,13 +3,4 @@ PASSer batch submission results
 
 
 === Results for K215N_auto.pdb (ensemble) ===
-{'error': '*****Your inputs seem to be fine. It might be some internal errors from our server. Wait for some time and try again. If you still have problems, please get in touch with us. ', 'original_error': '[Errno 2] No such file or directory'}
-
-=== Results for K215N_auto.pdb (automl) ===
-{'error': '*****Your inputs seem to be fine. It might be some internal errors from our server. Wait for some time and try again. If you still have problems, please get in touch with us. ', 'original_error': '[Errno 2] No such file or directory'}
-
-=== Results for K215N_auto.pdb (rank) ===
-{'error': '*****Your inputs seem to be fine. It might be some internal errors from our server. Wait for some time and try again. If you still have problems, please get in touch with us. ', 'original_error': '[Errno 2] No such file or directory'}
-
-=== Results for I84M_auto.pdb (ensemble) ===
-{'error': '*****Your inputs seem to be fine. It might be some internal errors from our server. Wait for some time and try again. If you still have problems, please get in touch with us. ', 'original_error': '[Errno 2] No such file or directory'}
+{'1': {'prob': '62.04%', 'residues': '(chain A and resid 216 218 244 50 215 213 262 246 48 245 49) or (chain F and resid 3 4 1 2 6 5) or (chain I and resid 6) or (chain E and resid 4 8 3 5 7 6) or (chain B and resid 230 231)'}, '2': {'prob': '46.74%', 'residues': '(chain F and resid 157 159 156 160 9 8 0 163 7) or (chain A and resid 233 46 47 234 49 235 263 228 45) or (chain E and resid 1 2)'}, '3': {'prob': '46.63%', 'residues': '(chain J and resid 0 9 7 8) or (chain F and resid 49 234 47 233 45 235 263 46 228) or (chain A and resid 159 156 157 163 160) or (chain I and resid 1 2)'}}
