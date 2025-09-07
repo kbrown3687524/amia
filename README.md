@@ -53,7 +53,30 @@ AMIA/
 
 AMIA is executed using a **YAML configuration file** instead of passing long command-line arguments.  
 
-### Configuration File
+### 🔧 Configuration Parameters (`config.yaml`)
+
+Below is a description of each parameter used in the configuration file:
+
+- **`pdb_file`**: Path to the input protein structure file in **PDB format**. Mutations will be introduced into this structure.  
+- **`output_dir`**: Directory where all workflow results and output files will be stored.  
+- **`mutations`**: Path to the **CSV file** listing the mutations to introduce (format must match test files).  
+- **`mode`**: How to apply mutations:  
+  - `"single"` = introduce each mutation individually.  
+  - `"multiple"` = introduce all mutations in a set simultaneously.  
+
+---
+
+- **`run_passer`**: Boolean (`true/false`). Whether to run **PASSER analysis** to evaluate protein fold stability and contacts.  
+- **`passer_dir`**: Output directory for PASSER results.  
+- **`passer_txt`**: Path to the PASSER results text file (tabulated format).  
+- **`passer_html`**: Path to the PASSER summary HTML file (visualisation report).  
+
+---
+
+- **`run_docking`**: Boolean (`true/false`). Whether to perform **ligand docking** using AutoDock Vina.  
+- **`smiles`**: The **SMILES string** representation of the ligand molecule to dock.  
+- **`compound_name`**: Descriptive name of the ligand compound (used in output labels).  
+- **`center`**: List of three floats `[X, Y, Z]` defining the **center coordinates** of the docking grid box.  
 
 A typical `config.yaml` looks like this:  
 
@@ -86,19 +109,19 @@ amia --config config.yaml
 
 ### Test Case
 
-A ready-to-use test case is provided. Create a file called `config.yaml` with the following content:
+A ready-to-use test case is provided. Create a file called `config.yaml` with the following content replacing the respective pathways as needed and switching the allosteric site determinatoon or docking on and off as needed:
 
 ```yaml
 pdb_file: "/home/user/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
-output_dir: "/home/user/amia/test/variant_outputs/"
+output_dir: "/home/user/variant_outputs/"
 mutations: "/home/user/amia/test/HIV-1C_ZA/mutations.csv"
 mode: "multiple"
 
 run_passer: true
 
-passer_dir: "/home/user/amia/test/variant_outputs2"
-passer_txt: "/home/user/amia/test/variant_outputs/passer_all_results.txt"
-passer_html: "/home/user/amia/test/variant_outputs/passer_summary.html"
+passer_dir: "/home/user//variant_outputs"
+passer_txt: "/home/user/variant_outputs/passer_all_results.txt"
+passer_html: "/home/user/variant_outputs/passer_summary.html"
 
 run_docking: true
 
@@ -138,9 +161,11 @@ python3 trajstat.py --systems path/to/Trajectories                     --output_
 ```
 
 Outputs include:
-- RMSD, RMSF, Radius of Gyration  
+- RMSD, RMSF
+- Radius of Gyration  
 - H-bond and salt bridge changes  
-- PCA plots  
+- PCA plots
+- Future Updates hope to include SASA & MM-GBSA/ MM-PBSA
 
 ---
 
