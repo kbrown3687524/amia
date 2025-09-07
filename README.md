@@ -119,7 +119,7 @@ mode: "multiple"
 
 run_passer: true
 
-passer_dir: "/home/user//variant_outputs"
+passer_dir: "/home/user/variant_outputs"
 passer_txt: "/home/user/variant_outputs/passer_all_results.txt"
 passer_html: "/home/user/variant_outputs/passer_summary.html"
 
