@@ -89,16 +89,16 @@ amia --config config.yaml
 A ready-to-use test case is provided. Create a file called `config.yaml` with the following content:
 
 ```yaml
-pdb_file: "/home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
-output_dir: "/home/cloetes-lab/amia/test/variant_outputs2/"
-mutations: "/home/cloetes-lab/amia/test/HIV-1C_ZA/mutations.csv"
+pdb_file: "/home/user/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
+output_dir: "/home/user/amia/test/variant_outputs/"
+mutations: "/home/user/amia/test/HIV-1C_ZA/mutations.csv"
 mode: "multiple"
 
 run_passer: true
 
-passer_dir: "/home/cloetes-lab/amia/test/variant_outputs2"
-passer_txt: "/home/cloetes-lab/amia/test/variant_outputs2/passer_all_results.txt"
-passer_html: "/home/cloetes-lab/amia/test/variant_outputs2/passer_summary.html"
+passer_dir: "/home/user/amia/test/variant_outputs2"
+passer_txt: "/home/user/amia/test/variant_outputs/passer_all_results.txt"
+passer_html: "/home/user/amia/test/variant_outputs/passer_summary.html"
 
 run_docking: true
 
