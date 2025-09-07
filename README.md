@@ -39,7 +39,7 @@ pip install .
 ```
 
 ### 4. Install MAESTRO
-[MAESTRO (v1.2.35)](https://maestro-url-here) is a required standalone tool. Download and extract it into the main AMIA directory:
+MAESTRO (v1.2.35) is a required standalone tool. Download and extract it into the main AMIA directory:
 
 ```
 AMIA/
