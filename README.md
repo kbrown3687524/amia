@@ -157,7 +157,7 @@ Trajectories/
 Run trajectory statistics:
 
 ```bash
-python3 trajstat.py --systems path/to/Trajectories                     --output_dir path/to/output_directory
+python3 trajstat.py --systems path/to/Trajectories --output_dir path/to/output_directory
 ```
 
 Outputs include:
