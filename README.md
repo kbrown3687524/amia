@@ -1,86 +1,155 @@
 # Automated Mutation Introduction and Analysis (AMIA) Workflow
-The AMIA bioinformatics pipeline is an **automated computational workflow** designed for the **effective prioritisation of potential drug resistance mutations** by analysing their impact on protein folding and interactions, which is crucial for treatment success. To address this need, AMIA **integrates a variety of structural analysis tools into a simplified and fully automated workflow**, thereby optimising computational resources through automated data transformations to enhance scalability and reproducibility. This **open-source pipeline** automates key steps such as **mutation introduction into protein structures, calculation of polar interaction changes, docking of ligand to WT and variant structures and analysis of protein fold energy** using pre-established software tools. Furthermore, AMIA includes **automated molecular dynamics analysis**, which reduces the need for constant user input and output management often required by standalone tools. By facilitating the **visualisation of mutation effects on protein structure and dynamic states**, AMIA aids in prioritising variants for experimental validation and contributes to the development of improved treatment regimens against drug-resistant mutations. Detailed documentation can be found at: https://kbrown3687524.github.io/amia/.
 
+The AMIA bioinformatics pipeline is an automated computational workflow designed for the effective prioritisation of potential drug resistance mutations by analysing their impact on protein folding and interactions, which is crucial for treatment success. To address this need, AMIA integrates a variety of structural analysis tools into a simplified and fully automated workflow, thereby optimising computational resources through automated data transformations to enhance scalability and reproducibility. This open-source pipeline automates key steps such as mutation introduction into protein structures, calculation of polar interaction changes, docking of ligand to WT and variant structures and analysis of protein fold energy using pre-established software tools. Furthermore, AMIA includes automated molecular dynamics analysis, which reduces the need for constant user input and output management often required by standalone tools. By facilitating the visualisation of mutation effects on protein structure and dynamic states, AMIA aids in prioritising variants for experimental validation and contributes to the development of improved treatment regimens against drug-resistant mutations.  
+
+Detailed documentation can be found at: [https://kbrown3687524.github.io/amia/](https://kbrown3687524.github.io/amia/)
+
+---
 
 ## Table of Contents
+- [Installation](#installation)  
+- [Usage](#usage)  
+  - [Configuration File](#configuration-file)  
+  - [Test Case](#test-case)  
+- [Trajectory Analyses](#trajectory-analyses)  
+- [Queries](#queries)  
+- [Authors](#authors)  
 
- * [Installation](#installation)
- * [Usage](#usage)
- * [Queries](#queries)
+---
+
 ## Installation
-This project was developed in a virtual environment on the command line and managed using conda for the respective packages and is recommended for installation purposes. 
 
-### AMIA Download
-The current release an be downloaded as follows:
-```
+AMIA is installed via the command line using **conda** for environment management.  
+
+### 1. Clone Repository
+```bash
 git clone https://github.com/kbrown3687524/amia
+cd amia
 ```
 
-### Conda venv Setup
-Open a terminal with mamba and create a new env:
-```
+### 2. Create Environment
+```bash
 conda env create -f amia_environment.yml
 conda activate amia
-cd amia
+```
+
+### 3. Install Package
+```bash
 pip install .
 ```
-MAESTR(1.2.35) is a standalone software tool that is required for this pipeline to run successfully. It should be downloaded and extracted within the main AMIA direcotry to ensure successful integration with the workflow.
-```
-|-- AMIA Folder:
-  |-- MAESTRO_linux_x64:
-    |-- maestro
-```
-Once the dependencies have been installed, a successful installation can be tested by using the dataset provided within the /test folder. The test can be initialized by providing chmod u+x access to the AMIA.py script and running the following:
+
+### 4. Install MAESTRO
+[MAESTRO (v1.2.35)](https://maestro-url-here) is a required standalone tool. Download and extract it into the main AMIA directory:
 
 ```
-amia --pdb_file *path/to/mutations_file/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb --mutations *path/to/mutations_file*/test/HIV-1C_ZA/mutations.csv --output_dir *path/to/mutations_file*/test/variant_outputs --smiles *SMILES String* --center X Y Z
+AMIA/
+ ├─ MAESTRO_linux_x64/
+ │   └─ maestro
 ```
+
+---
 
 ## Usage
 
-### Phase 1: Mutation Introduction
-After successful installation, the scripts should now be available to execute individually or imported into other projects. The normal method to execute this workflow involves calling the AMIA script supplied with its respective arguments. The files provided to the workflow are in designated formats - see test files for further clarification on formats: 
+AMIA is executed using a **YAML configuration file** instead of passing long command-line arguments.  
 
-* Structure File: Protein Data Bank (.pdb)
-* Mutations File: Comma Separated Variable (.csv)
+### Configuration File
+
+A typical `config.yaml` looks like this:  
+
+```yaml
+pdb_file: "/path/to/structure.pdb"
+output_dir: "/path/to/output/"
+mutations: "/path/to/mutations.csv"
+mode: "multiple"
+
+run_passer: true
+
+passer_dir: "/path/to/output/"
+passer_txt: "/path/to/output/passer_all_results.txt"
+passer_html: "/path/to/output/passer_summary.html"
+
+run_docking: true
+
+smiles: "SMILES_STRING"
+compound_name: "LigandName"
+center: [X, Y, Z]
+```
+
+Run the workflow:
+
+```bash
+amia --config config.yaml
+```
+
+---
+
+### Test Case
+
+A ready-to-use test case is provided. Create a file called `config.yaml` with the following content:
+
+```yaml
+pdb_file: "/home/cloetes-lab/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
+output_dir: "/home/cloetes-lab/amia/test/variant_outputs2/"
+mutations: "/home/cloetes-lab/amia/test/HIV-1C_ZA/mutations.csv"
+mode: "multiple"
+
+run_passer: true
+
+passer_dir: "/home/cloetes-lab/amia/test/variant_outputs2"
+passer_txt: "/home/cloetes-lab/amia/test/variant_outputs2/passer_all_results.txt"
+passer_html: "/home/cloetes-lab/amia/test/variant_outputs2/passer_summary.html"
+
+run_docking: true
+
+smiles: "CC1=NN=C(O1)C(=O)NC(C)(C)C2=NC(=C(C(=O)N2C)O)C(=O)NCC3=CC=C(C=C3)F"
+compound_name: "Aspirin"
+center: [116.516, 139.229, 142.900]
+```
+
+Run with:
+
+```bash
+amia --config config.yaml
+```
+
+Outputs will be written to the directory specified under `output_dir`.
+
+---
+
+## Trajectory Analyses
+
+After Phase 1 is complete, Molecular Dynamics (MD) simulations of WT and variant systems can be performed externally. Store repaired trajectories in this structure:
 
 ```
-amia --mode *single or multiple* --pdb_file *path/to/pdb_structure* --mutations *path/to/mutations_file* --output_dir *path/to/output_directory* --smiles *SMILES String* --center X Y Z
+Trajectories/
+ ├─ System1/
+ │   ├─ System1.xtc (repaired)
+ │   └─ System1.tpr
+ ├─ System2/
+     ├─ System2.xtc (repaired)
+     └─ System2.tpr
 ```
-The ```--mode```  specifies whether the mutations from each subset present within the mutation file should be introduced individually or together into the supplied protein structure. 
-The ```--pdb_file``` specifies the path to the Protein File that the mutations will be introduced to. 
-The ```--mutations``` specifies the path to the Mutations File that the mutations will be introduced to. 
-The ```--output_dir``` specifies the directory that the respective output files will be stored in. 
-The ``--smiles``  specifies the SMILES string for the specific ligan to bind to the structure.
-The ``--center X Y Z`` specifies the exact X, Y and Z coordinates as a float for the center of the box.
 
+Run trajectory statistics:
 
-This will automatically introduce the mutations from each subset into the protein file and store the respective outputs in the defined directory. From there the changes in contacts before and after mutation introductuin as well as the stability of the systems will be tabulated and stored for the user to visualize (.html). Once complete the Ligand is docked to the protein using AutoDock Vina after which the stability impact of each system is determined accordingly.
-
-### Phase 2: Trajectory Analyses
-Once all the respective output files have been generated from the first phase of the workflow, the WT and Variant systems should then undergo Molecular Dynamis Simulations, afterwhich the repaired trajecotry and topology files shoudl be stored in a new directory under their respective subfolders. See below for simulation storage:
-
+```bash
+python3 trajstat.py --systems path/to/Trajectories                     --output_dir path/to/output_directory
 ```
-|-- Trajectories Folder:
-  |
-  |-- System 1:
-  |   |-- System1.xtc (repaired)
-  |   |-- System1.tpr
-  |
-  |-- System 2:
-      |-- System2.xtc (repaired)
-      |-- System2.tpr
 
-``` 
-The trajectory analyses and bond type changes are then calculated automatically using the trajectory file (.xtc) and the associated topology files (.tpr):
+Outputs include:
+- RMSD, RMSF, Radius of Gyration  
+- H-bond and salt bridge changes  
+- PCA plots  
 
-```
-python3 trajstat.py --systems *Main Trajectories Folder* --output_dir  *path/to/output_directory*
-```
-The trajstat.py script calculates and plots the Root Mean Square Deviation (RMSD) for the entire protein and nuleic acids present, Root Mean Square Fluctuation (RMSF) per protein chain and Radius of Gyration (rgyr) for the entire protein, calculates Hydrogen Bond changes between Protein-Protein, Protein-DNA and Protein-Ligands within each of the systems, the changes in ionic bonds (saltbridges) between Protein-Protein, Protein-DNA and Protein-Ligand structures and generates PCA plots for data dimensionality reduction. These outputs are then saved to the specified output directory.
+---
+
 ## Queries
-For any related queries please contact Mr. Keaghan Brown on 3687524@myuwc.ac.za or Dr. Ruben Cloete at ruben@sanbi.ac.za
+For questions or support, contact:  
+- **Keaghan Brown** — 3687524@myuwc.ac.za  
+- **Dr. Ruben Cloete** — ruben@sanbi.ac.za  
+
+---
+
 ## Authors
-
-- [@kbrown3687524](https://www.github.com/kbrown3687524)
-
+Keaghan Brown & Ruben Cloete  
