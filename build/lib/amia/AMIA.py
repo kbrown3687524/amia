@@ -59,10 +59,13 @@ def run_pipeline(config, force):
     pipeline_steps = [
         ("mutintro", "mutintro.py"),
         ("contacts", "contacts.py"),
-        ("maestroana", "maestroana.py"),
     ]
 
     # Add optional steps based on config
+    run_maestroana = cfg.get('run_maestroana', False)
+    if run_maestroana:
+        pipeline_steps.append(("maestroana", "maestroana.py"))
+
     if run_passer:
         pipeline_steps.append(("passer", "autoallo.py"))
     if run_docking:
