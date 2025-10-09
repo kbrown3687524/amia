@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='amia',
-    version='1.3.1',    
+    version='1.1.3',    
     description='Automated Mutation Introduction and Analysis',
     author='Keaghan Brown',
     author_email='3687524@myuwc.ac.za',
