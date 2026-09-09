@@ -1,0 +1,24 @@
+pdb_file: "/home/ingwe/amia/test/ebov_gp/Ebov-gp_monomeric.pdb"
+output_dir: "/home/ingwe/amia/test/ebov_gp/outputs"
+mutations: "/home/ingwe/amia/test/ebov_gp/mutations.csv"
+mode: "single"
+
+run_maestroana: false
+
+run_passer: false
+
+passer_dir: "/home/ingwe/amia/test/ebov_gp"
+passer_txt: "/home/ingwe/amia/test/ebov_gp"
+passer_html: "/home/ingwe/amia/test/ebov_gp"
+
+run_docking: false
+
+run_trajstat: false
+trajstat_systems: "/home/ingwe/amia/test/ebov_gp/outputs"
+trajstat_start_fr: 0
+
+smiles: "CC1=NN=C(O1)C(=O)NC(C)(C)C2=NC(=C(C(=O)N2C)O)C(=O)NCC3=CC=C(C=C3)F"
+compound_name: "Aspirin"
+center: [116.516, 139.229, 142.900]
+
+

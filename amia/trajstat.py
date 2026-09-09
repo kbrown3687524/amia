@@ -263,6 +263,53 @@ class TrajStat:
             timeseries.append([ts.frame, n_contacts])
         return np.array(timeseries)
 
+    def _ionic_interaction_metrics(self, u, group_a, group_b, file_name,
+                                   radius=4.5):
+        """Measure atom contacts and unique residue pairs within a cutoff."""
+        timeseries = []
+        pair_distances = {}
+        n_frames = 0
+        for ts in u.trajectory:
+            n_frames += 1
+            distances = contacts.distance_array(group_a.positions, group_b.positions)
+            n_contacts = contacts.contact_matrix(distances, radius).sum()
+            present_pairs = set()
+            for group_a_index, group_b_index in np.argwhere(distances <= radius):
+                cation = group_a[group_a_index]
+                anion = group_b[group_b_index]
+                pair = (
+                    int(cation.resid), str(cation.resname),
+                    int(anion.resid), str(anion.resname),
+                )
+                distance = float(distances[group_a_index, group_b_index])
+                present_pairs.add(pair)
+                pair_distances.setdefault(pair, []).append(distance)
+            timeseries.append([ts.frame, ts.time / 1000.0, n_contacts])
+
+        ca_df = pd.DataFrame(
+            timeseries,
+            columns=['Frame', 'Time (ns)', 'Ionic contacts (<4.5 A)'],
+        )
+        ca_df.to_csv(file_name + '_ionic_interactions.csv', index=False)
+
+        pair_rows = []
+        for pair, distances in pair_distances.items():
+            pair_rows.append([
+                *pair,
+                len(distances),
+                len(distances) / n_frames if n_frames else 0.0,
+                min(distances),
+                float(np.mean(distances)),
+            ])
+        pair_df = pd.DataFrame(
+            pair_rows,
+            columns=['Cation resid', 'Cation resname', 'Anion resid',
+                     'Anion resname', 'Frames in contact', 'Occupancy',
+                     'Minimum distance (A)', 'Mean distance (A)'],
+        ).sort_values('Occupancy', ascending=False)
+        pair_df.to_csv(file_name + '_ionic_pair_occupancy.csv', index=False)
+        return ca_df
+
     def saltbridges(self, top_file, traj_file):
         """Saltbridges or ionic bonds occur between acidic and basic residues within the protein structure. Here the
         residues and the respective atoms involved are selected and passed to the contacts within cutoff function,
@@ -273,10 +320,11 @@ class TrajStat:
         sel_acidic = "(resname ASP GLU) and (name OE* OD*)"
         basic = u.select_atoms(sel_basic)
         acidic = u.select_atoms(sel_acidic)
-        ca = self.contacts_within_cutoff(u, basic, acidic, radius=4.5)
-        ca_df = pd.DataFrame(ca, columns=['Time (ns)', str(top_file).split('.')[0]])
-        ca_df['Time (ns)'] = ca_df['Time (ns)']/10
-        ca_df.to_csv(str(top_file.split('.')[0] + '_salt_bridges.csv'))
+        ca_df = self._ionic_interaction_metrics(
+            u, basic, acidic, str(top_file.split('.')[0] + '_salt_bridges')
+        )
+        ca_df = ca_df.rename(columns={'Ionic contacts (<4.5 A)': str(top_file).split('.')[0]})
+        ca_df.to_csv(str(top_file.split('.')[0] + '_salt_bridges.csv'), index=False)
         return ca_df
 
     def saltbridges_comp(self, traj_folder, output_dir):
@@ -320,6 +368,51 @@ class TrajStat:
                             bbox_inches='tight', dpi=600)
 
 
+    def _write_hbond_metrics(self, hbonds, file_name, column_name):
+        """Write the documented HydrogenBondAnalysis metrics for one analysis."""
+        df = pd.DataFrame({
+            'Time (ns)': np.asarray(hbonds.times) / 1000.0,
+            column_name: hbonds.count_by_time(),
+        })
+        df.to_csv(file_name + '_hbonds.csv', index=False)
+
+        observations = pd.DataFrame(
+            hbonds.results.hbonds,
+            columns=['Frame', 'Donor index', 'Hydrogen index', 'Acceptor index',
+                     'Distance (A)', 'Angle (degrees)'],
+        )
+        observations.to_csv(file_name + '_hbonds_observations.csv', index=False)
+
+        by_id = pd.DataFrame(
+            hbonds.count_by_ids(),
+            columns=['Donor index', 'Hydrogen index', 'Acceptor index', 'Count'],
+        )
+        by_id.to_csv(file_name + '_hbonds_by_id.csv', index=False)
+
+        by_type_values = np.asarray(hbonds.count_by_type())
+        if by_type_values.ndim == 2 and by_type_values.shape[1] == 3:
+            by_type_columns = ['Donor type', 'Acceptor type', 'Count']
+        else:
+            by_type_columns = [
+                'Donor resname', 'Donor type', 'Acceptor resname',
+                'Acceptor type', 'Count',
+            ]
+        by_type = pd.DataFrame(by_type_values, columns=by_type_columns)
+        by_type.to_csv(file_name + '_hbonds_by_type.csv', index=False)
+
+        if observations.empty or len(hbonds.times) < 2:
+            lifetime = pd.DataFrame(columns=['Tau (frames)', 'Autocorrelation'])
+        else:
+            tau, autocorrelation = hbonds.lifetime(
+                tau_max=min(20, len(hbonds.times) - 1)
+            )
+            lifetime = pd.DataFrame({
+                'Tau (frames)': tau,
+                'Autocorrelation': autocorrelation,
+            })
+        lifetime.to_csv(file_name + '_hbonds_lifetime.csv', index=False)
+        return df
+
     def hbond_calc(self, top_file, traj_file, start_fr):
         """Currently the set of ions and solvent ions have been predefined for this function and will need to be
         expanded upon for further diversity in molecular analyses. Here the script iterates through each of the
@@ -348,10 +441,10 @@ class TrajStat:
                 hbonds.hydrogens_sel = hbonds.guess_hydrogens("protein")
                 hbonds.acceptors_sel = hbonds.guess_acceptors("segid " + str(seg)[1:-1].split(' ')[1])
                 hbonds.run(verbose=True, start=int(start_fr),  step=5)
-                df1 = pd.DataFrame(hbonds.times, columns=['Time (ns)'])
-                df2 = pd.DataFrame(hbonds.count_by_time(), columns=[str(top_file).split('.')[0]])
-                df = pd.concat([df1, df2], axis=1)
-                df.to_csv(str(seg)[1:-1].split(' ')[1].split('_')[2] + '_hbonds.csv')
+                file_name = str(seg)[1:-1].split(' ')[1].split('_')[2]
+                df = self._write_hbond_metrics(
+                    hbonds, file_name, str(top_file).split('.')[0]
+                )
                 hbonds_df = pd.concat([hbonds_df, df], axis=1)
 
     def nucleic_prot_hbonds(self, top_file, traj_file, start_fr):
@@ -362,10 +455,11 @@ class TrajStat:
         hbonds.hydrogens_sel = hbonds.guess_hydrogens("protein")
         hbonds.acceptors_sel = hbonds.guess_acceptors("nucleic")
         hbonds.run(verbose=True, start=int(start_fr), step=5)
-        df1 = pd.DataFrame(hbonds.times, columns=['Time (ns)'])
-        df2 = pd.DataFrame(hbonds.count_by_time(), columns= [str(top_file).split('.')[0] +  str(' Nucleic Acid ')])
-        nucleic_df = pd.concat([df1, df2], axis=1)
-        nucleic_df.to_csv('nucleic_hbonds.csv')
+        nucleic_df = self._write_hbond_metrics(
+            hbonds,
+            'nucleic',
+            str(top_file).split('.')[0] + ' Nucleic Acid ',
+        )
 
     def hbond_comp(self, traj_folder, output_dir, start_fr):
         """This fucntion iterates through each of the systems that were simulated and calls the hbonds
@@ -427,7 +521,6 @@ class TrajStat:
             df = pd.DataFrame()
             for hetatm_data in hetatm_file_pair[key]:
                 hetatm_df = pd.read_csv(hetatm_data)
-                hetatm_df['Time (ns)'] =  hetatm_df['Time (ns)']/1000
                 if df.empty == True:
                     df = hetatm_df.iloc[:,1:]
                 else:
@@ -459,7 +552,6 @@ class TrajStat:
             for file in os.listdir():
                 if str('nucleic') in str(file) and 'hbonds.csv' in str(file):
                     nucleic_hbonds_df = pd.read_csv(file)
-                    nucleic_hbonds_df['Time (ns)'] = nucleic_hbonds_df['Time (ns)']/1000
                     if df.empty == True:
                         df = nucleic_hbonds_df.iloc[:,1:]
                     else:
@@ -487,10 +579,11 @@ class TrajStat:
                     hbonds.hydrogens_sel = hbonds.guess_hydrogens('segid ' + str(mol))
                     hbonds.acceptors_sel = hbonds.guess_acceptors('segid ' + str(mol2))
                     hbonds.run(verbose=True, start=int(start_fr),step=5)
-                    df1 = pd.DataFrame(hbonds.times, columns=['Time (ns)'])
-                    df2 = pd.DataFrame(hbonds.count_by_time(), columns=[str(top_file).split('.')[0]])
-                    df = pd.concat([df1, df2], axis=1)
-                    df.to_csv(str(mol) + str(mol2) + '_hetatm_hbonds.csv')
+                    df = self._write_hbond_metrics(
+                        hbonds,
+                        str(mol) + str(mol2) + '_hetatm',
+                        str(top_file).split('.')[0],
+                    )
                     hbonds_df = pd.concat([hbonds_df, df], axis=1)
             mols.remove(mol)
 
@@ -539,13 +632,15 @@ class TrajStat:
         for figure generation."""
         u = mda.Universe(top_file, traj_file)
         sel_basic = "(resname ARG LYS) and (name NH* NZ)"
-        sel_acidic = "nucleic and (name *P)"
+        sel_acidic = "nucleic and (name OP1 OP2 O1P O2P)"
         group1 = u.select_atoms(sel_basic)
         group2 = u.select_atoms(sel_acidic)
-        ca = self.contacts_within_cutoff(u, group1, group2, radius=4.5)
-        ca_df = pd.DataFrame(ca, columns=['Time (ns)', str(top_file).split('.')[0]])
-        ca_df['Time (ns)'] = ca_df['Time (ns)'] /10
-        ca_df.to_csv(str(top_file.split('.')[0] + '_Nucleic_Acid_saltbridges.csv'))
+        ca_df = self._ionic_interaction_metrics(
+            u, group1, group2,
+            str(top_file.split('.')[0] + '_Nucleic_Acid_saltbridges'),
+        )
+        ca_df = ca_df.rename(columns={'Ionic contacts (<4.5 A)': str(top_file).split('.')[0]})
+        ca_df.to_csv(str(top_file.split('.')[0] + '_Nucleic_Acid_saltbridges.csv'), index=False)
 
     def nucleic_ionic_conts(self, traj_folder):
         for folder in os.listdir(traj_folder):
@@ -611,6 +706,8 @@ if __name__ =='__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--systems", help="Path to the trajectory files have been simulated. ")
     parser.add_argument("--output_dir", help="Path to the directory that the variant systems will be stored in")
+    parser.add_argument("--start_fr", type=int, default=0,
+                        help="Starting frame of trajectory equilibration")
     args = parser.parse_args()
     systems = str(args.systems)
     output_dir = str(args.output_dir)
@@ -640,7 +737,7 @@ if __name__ =='__main__':
     pool4.close()
     pool4.join()
     p.rmsd_na_plot(systems, output_dir)
-    start_fr = input("Enter starting frame of trajectory equilibration:")
+    start_fr = args.start_fr
     for i,j in zip(top_files, traj_files):
         pool.apply_async(p.rmsf_calc, args=(i,j,int(start_fr),))
     pool.close()

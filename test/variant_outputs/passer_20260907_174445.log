@@ -1,0 +1,154 @@
+2026-09-07 17:44:45,887 - INFO - 🚀 Logger initialized.
+2026-09-07 17:44:45,887 - INFO - 📁 Logs will be saved to /home/ingwe/amia/test/variant_outputs/passer_20260907_174445.log
+2026-09-07 17:44:45,888 - INFO - 🔄 PASSer submission workflow started.
+2026-09-07 17:44:45,888 - INFO - 📂 Processing directory: /home/ingwe/amia/test/variant_outputs
+2026-09-07 17:44:45,896 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84M_I113V_K211R_S255G_Y143R_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:44:45,898 - INFO - 📦 Requesting ZIP for I84M_I113V_K211R_S255G_Y143R_auto.pdb (ensemble)
+2026-09-07 17:45:00,781 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84M_I113V_K211R_S255G_Y143R_auto_ensemble.zip
+2026-09-07 17:45:00,781 - INFO - 📦 Requesting ZIP for I84M_I113V_K211R_S255G_Y143R_auto.pdb (automl)
+2026-09-07 17:45:01,135 - INFO - ✅ Received response for I84M_I113V_K211R_S255G_Y143R_auto.pdb (ensemble)
+2026-09-07 17:45:01,136 - INFO - 📝 Written results for I84M_I113V_K211R_S255G_Y143R_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:45:01,137 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84M_I113V_K211R_S255G_Y143R_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:45:12,301 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84M_I113V_K211R_S255G_Y143R_auto_automl.zip
+2026-09-07 17:45:12,302 - INFO - 📦 Requesting ZIP for I84M_I113V_K211R_S255G_Y143R_auto.pdb (rank)
+2026-09-07 17:45:15,640 - INFO - ✅ Received response for I84M_I113V_K211R_S255G_Y143R_auto.pdb (automl)
+2026-09-07 17:45:15,641 - INFO - 📝 Written results for I84M_I113V_K211R_S255G_Y143R_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:45:15,641 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84M_I113V_K211R_S255G_Y143R_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:45:26,769 - INFO - ✅ Received response for I84M_I113V_K211R_S255G_Y143R_auto.pdb (rank)
+2026-09-07 17:45:26,771 - INFO - 📝 Written results for I84M_I113V_K211R_S255G_Y143R_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:45:26,771 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84V_G134N_I135V_V150A_M154I_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:45:26,772 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84M_I113V_K211R_S255G_Y143R_auto_rank.zip
+2026-09-07 17:45:26,773 - INFO - 📦 Requesting ZIP for I84V_G134N_I135V_V150A_M154I_auto.pdb (ensemble)
+2026-09-07 17:45:39,395 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84V_G134N_I135V_V150A_M154I_auto_ensemble.zip
+2026-09-07 17:45:39,395 - INFO - 📦 Requesting ZIP for I84V_G134N_I135V_V150A_M154I_auto.pdb (automl)
+2026-09-07 17:45:40,620 - INFO - ✅ Received response for I84V_G134N_I135V_V150A_M154I_auto.pdb (ensemble)
+2026-09-07 17:45:40,621 - INFO - 📝 Written results for I84V_G134N_I135V_V150A_M154I_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:45:40,622 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84V_G134N_I135V_V150A_M154I_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:45:54,066 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84V_G134N_I135V_V150A_M154I_auto_automl.zip
+2026-09-07 17:45:54,067 - INFO - 📦 Requesting ZIP for I84V_G134N_I135V_V150A_M154I_auto.pdb (rank)
+2026-09-07 17:45:54,067 - INFO - ✅ Received response for I84V_G134N_I135V_V150A_M154I_auto.pdb (automl)
+2026-09-07 17:45:54,068 - INFO - 📝 Written results for I84V_G134N_I135V_V150A_M154I_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:45:54,069 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84V_G134N_I135V_V150A_M154I_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:46:04,976 - INFO - ✅ Received response for I84V_G134N_I135V_V150A_M154I_auto.pdb (rank)
+2026-09-07 17:46:04,977 - INFO - 📝 Written results for I84V_G134N_I135V_V150A_M154I_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:46:04,977 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S24N_S195C_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:46:05,523 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84V_G134N_I135V_V150A_M154I_auto_rank.zip
+2026-09-07 17:46:05,524 - INFO - 📦 Requesting ZIP for S24N_S195C_auto.pdb (ensemble)
+2026-09-07 17:46:18,706 - INFO - ✅ Received response for S24N_S195C_auto.pdb (ensemble)
+2026-09-07 17:46:18,707 - INFO - 📝 Written results for S24N_S195C_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:46:18,708 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S24N_S195C_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:46:18,772 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S24N_S195C_auto_ensemble.zip
+2026-09-07 17:46:18,772 - INFO - 📦 Requesting ZIP for S24N_S195C_auto.pdb (automl)
+2026-09-07 17:46:33,411 - INFO - ✅ Received response for S24N_S195C_auto.pdb (automl)
+2026-09-07 17:46:33,412 - INFO - 📝 Written results for S24N_S195C_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:46:33,412 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S24N_S195C_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:46:33,489 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S24N_S195C_auto_automl.zip
+2026-09-07 17:46:33,490 - INFO - 📦 Requesting ZIP for S24N_S195C_auto.pdb (rank)
+2026-09-07 17:46:44,637 - INFO - ✅ Received response for S24N_S195C_auto.pdb (rank)
+2026-09-07 17:46:44,638 - INFO - 📝 Written results for S24N_S195C_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:46:44,639 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S39C_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:46:45,267 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S24N_S195C_auto_rank.zip
+2026-09-07 17:46:45,267 - INFO - 📦 Requesting ZIP for S39C_auto.pdb (ensemble)
+2026-09-07 17:46:57,535 - INFO - ✅ Received response for S39C_auto.pdb (ensemble)
+2026-09-07 17:46:57,537 - INFO - 📝 Written results for S39C_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:46:57,537 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S39C_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:46:57,706 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S39C_auto_ensemble.zip
+2026-09-07 17:46:57,707 - INFO - 📦 Requesting ZIP for S39C_auto.pdb (automl)
+2026-09-07 17:47:11,438 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S39C_auto_automl.zip
+2026-09-07 17:47:11,438 - INFO - 📦 Requesting ZIP for S39C_auto.pdb (rank)
+2026-09-07 17:47:11,919 - INFO - ✅ Received response for S39C_auto.pdb (automl)
+2026-09-07 17:47:11,920 - INFO - 📝 Written results for S39C_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:47:11,921 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S39C_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:47:22,162 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S39C_auto_rank.zip
+2026-09-07 17:47:22,162 - INFO - 📦 Requesting ZIP for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (ensemble)
+2026-09-07 17:47:23,450 - INFO - ✅ Received response for S39C_auto.pdb (rank)
+2026-09-07 17:47:23,451 - INFO - 📝 Written results for S39C_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:47:23,451 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:47:37,407 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84M_S119P_T206S_T210A_K215N_Y143R_auto_ensemble.zip
+2026-09-07 17:47:37,407 - INFO - 📦 Requesting ZIP for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (automl)
+2026-09-07 17:47:38,267 - INFO - ✅ Received response for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (ensemble)
+2026-09-07 17:47:38,268 - INFO - 📝 Written results for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:47:38,269 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:47:49,297 - INFO - ✅ Received response for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (automl)
+2026-09-07 17:47:49,298 - INFO - 📝 Written results for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:47:49,299 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:47:49,342 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84M_S119P_T206S_T210A_K215N_Y143R_auto_automl.zip
+2026-09-07 17:47:49,343 - INFO - 📦 Requesting ZIP for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (rank)
+2026-09-07 17:48:00,036 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/I84M_S119P_T206S_T210A_K215N_Y143R_auto_rank.zip
+2026-09-07 17:48:00,036 - INFO - 📦 Requesting ZIP for K215N_auto.pdb (ensemble)
+2026-09-07 17:48:01,053 - INFO - ✅ Received response for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (rank)
+2026-09-07 17:48:01,054 - INFO - 📝 Written results for I84M_S119P_T206S_T210A_K215N_Y143R_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:48:01,054 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/K215N_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:48:16,452 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/K215N_auto_ensemble.zip
+2026-09-07 17:48:16,452 - INFO - 📦 Requesting ZIP for K215N_auto.pdb (automl)
+2026-09-07 17:48:16,452 - INFO - ✅ Received response for K215N_auto.pdb (ensemble)
+2026-09-07 17:48:16,453 - INFO - 📝 Written results for K215N_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:48:16,454 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/K215N_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:48:28,151 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/K215N_auto_automl.zip
+2026-09-07 17:48:28,151 - INFO - 📦 Requesting ZIP for K215N_auto.pdb (rank)
+2026-09-07 17:48:28,157 - INFO - ✅ Received response for K215N_auto.pdb (automl)
+2026-09-07 17:48:28,158 - INFO - 📝 Written results for K215N_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:48:28,158 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/K215N_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:48:38,626 - INFO - ✅ Received response for K215N_auto.pdb (rank)
+2026-09-07 17:48:38,626 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/K215N_auto_rank.zip
+2026-09-07 17:48:38,626 - INFO - 📦 Requesting ZIP for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (ensemble)
+2026-09-07 17:48:38,627 - INFO - 📝 Written results for K215N_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:48:38,627 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:48:55,012 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/L63I_V75M_G134N_I135V_T206S_Y143R_auto_ensemble.zip
+2026-09-07 17:48:55,012 - INFO - 📦 Requesting ZIP for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (automl)
+2026-09-07 17:48:55,200 - INFO - ✅ Received response for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (ensemble)
+2026-09-07 17:48:55,201 - INFO - 📝 Written results for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:48:55,201 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:49:05,845 - INFO - ✅ Received response for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (automl)
+2026-09-07 17:49:05,847 - INFO - 📝 Written results for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:49:05,847 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/L63I_V75M_G134N_I135V_T206S_Y143R_auto_automl.zip
+2026-09-07 17:49:05,847 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:49:05,847 - INFO - 📦 Requesting ZIP for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (rank)
+2026-09-07 17:49:16,172 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/L63I_V75M_G134N_I135V_T206S_Y143R_auto_rank.zip
+2026-09-07 17:49:16,173 - INFO - 📦 Requesting ZIP for S24N_K211Q_I220V_auto.pdb (ensemble)
+2026-09-07 17:49:16,215 - INFO - ✅ Received response for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (rank)
+2026-09-07 17:49:16,215 - INFO - 📝 Written results for L63I_V75M_G134N_I135V_T206S_Y143R_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:49:16,216 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S24N_K211Q_I220V_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:49:33,185 - INFO - ✅ Received response for S24N_K211Q_I220V_auto.pdb (ensemble)
+2026-09-07 17:49:33,186 - INFO - 📝 Written results for S24N_K211Q_I220V_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:49:33,186 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S24N_K211Q_I220V_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:49:34,247 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S24N_K211Q_I220V_auto_ensemble.zip
+2026-09-07 17:49:34,247 - INFO - 📦 Requesting ZIP for S24N_K211Q_I220V_auto.pdb (automl)
+2026-09-07 17:49:43,506 - INFO - ✅ Received response for S24N_K211Q_I220V_auto.pdb (automl)
+2026-09-07 17:49:43,507 - INFO - 📝 Written results for S24N_K211Q_I220V_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:49:43,508 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/S24N_K211Q_I220V_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:49:44,328 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S24N_K211Q_I220V_auto_automl.zip
+2026-09-07 17:49:44,328 - INFO - 📦 Requesting ZIP for S24N_K211Q_I220V_auto.pdb (rank)
+2026-09-07 17:49:54,326 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/S24N_K211Q_I220V_auto_rank.zip
+2026-09-07 17:49:54,327 - INFO - 📦 Requesting ZIP for E96D_auto.pdb (ensemble)
+2026-09-07 17:49:54,590 - INFO - ✅ Received response for S24N_K211Q_I220V_auto.pdb (rank)
+2026-09-07 17:49:54,591 - INFO - 📝 Written results for S24N_K211Q_I220V_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:49:54,592 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/E96D_auto.pdb to PASSer with model 'ensemble'
+2026-09-07 17:50:09,908 - INFO - ✅ Received response for E96D_auto.pdb (ensemble)
+2026-09-07 17:50:09,909 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/E96D_auto_ensemble.zip
+2026-09-07 17:50:09,909 - INFO - 📝 Written results for E96D_auto.pdb (ensemble) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:50:09,909 - INFO - 📦 Requesting ZIP for E96D_auto.pdb (automl)
+2026-09-07 17:50:09,909 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/E96D_auto.pdb to PASSer with model 'automl'
+2026-09-07 17:50:20,837 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/E96D_auto_automl.zip
+2026-09-07 17:50:20,837 - INFO - 📦 Requesting ZIP for E96D_auto.pdb (rank)
+2026-09-07 17:50:21,852 - INFO - ✅ Received response for E96D_auto.pdb (automl)
+2026-09-07 17:50:21,853 - INFO - 📝 Written results for E96D_auto.pdb (automl) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:50:21,853 - INFO - 📤 Submitting /home/ingwe/amia/test/variant_outputs/E96D_auto.pdb to PASSer with model 'rank'
+2026-09-07 17:50:35,694 - INFO - ✅ Received response for E96D_auto.pdb (rank)
+2026-09-07 17:50:35,695 - INFO - 📝 Written results for E96D_auto.pdb (rank) to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:50:36,538 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/E96D_auto_rank.zip
+2026-09-07 17:50:36,541 - INFO - 📄 Processing single PDB file: /home/ingwe/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb
+2026-09-07 17:50:36,542 - INFO - 📤 Submitting /home/ingwe/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb to PASSer with model 'ensemble'
+2026-09-07 17:50:49,498 - INFO - ✅ Received response for HIV_IN_1C_ZA_5U1C_model.pdb (ensemble)
+2026-09-07 17:50:49,499 - INFO - 📝 Added ensemble results to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:51:02,888 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/HIV_IN_1C_ZA_5U1C_model_ensemble.zip
+2026-09-07 17:51:02,889 - INFO - 📤 Submitting /home/ingwe/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb to PASSer with model 'automl'
+2026-09-07 17:51:17,602 - INFO - ✅ Received response for HIV_IN_1C_ZA_5U1C_model.pdb (automl)
+2026-09-07 17:51:17,603 - INFO - 📝 Added automl results to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:51:29,404 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/HIV_IN_1C_ZA_5U1C_model_automl.zip
+2026-09-07 17:51:29,404 - INFO - 📤 Submitting /home/ingwe/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb to PASSer with model 'rank'
+2026-09-07 17:51:40,222 - INFO - ✅ Received response for HIV_IN_1C_ZA_5U1C_model.pdb (rank)
+2026-09-07 17:51:40,222 - INFO - 📝 Added rank results to /home/ingwe/amia/test/variant_outputs/passer_all_results.txt
+2026-09-07 17:51:53,443 - INFO - ✅ Saved ZIP to /home/ingwe/amia/test/variant_outputs/HIV_IN_1C_ZA_5U1C_model_rank.zip
+2026-09-07 17:51:53,445 - INFO - 🖥️ Generated HTML summary: /home/ingwe/amia/test/variant_outputs/passer_summary.html
+2026-09-07 17:51:53,445 - INFO - ✅ Workflow complete.

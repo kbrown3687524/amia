@@ -1,62 +1,230 @@
+:root {
+    --ink: #17212b;
+    --paper: #f5f7f4;
+    --surface: #ffffff;
+    --line: #d9e1dc;
+    --brand: #176b67;
+    --brand-dark: #104b49;
+    --accent: #d26b3f;
+    --code: #edf2ef;
+    --shadow: 0 12px 30px rgba(23, 33, 43, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 40px;
-    background-color: #f9f9f9;
-    color: #333;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+}
+
+header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 112px;
+    padding: 18px clamp(20px, 5vw, 72px) !important;
+    background: var(--brand-dark) !important;
+    color: #fff;
+    text-align: left !important;
+}
+
+header > div {
+    display: flex !important;
+    align-items: center;
+    gap: 14px;
+}
+
+header img[alt="AMIA Logo"] {
+    width: auto;
+    height: 72px !important;
+    margin: 0 !important;
+}
+
+header img[alt="UWC Logo"],
+header img[alt="SANBI Logo"] {
+    width: auto;
+    height: 48px !important;
+    margin: 0 !important;
+}
+
+header a,
+footer a { color: inherit; }
+
+.content-wrapper,
+body > div[style*="display: flex"] {
+    display: flex !important;
+    align-items: stretch;
+    flex: 1;
+    min-height: calc(100vh - 112px);
+}
+
+nav {
+    width: 248px !important;
+    flex: 0 0 248px;
+    padding: 28px 18px !important;
+    background: #e8efeb !important;
+    border-right: 1px solid var(--line);
+}
+
+nav ul,
+.toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li { margin: 0 0 6px !important; }
+nav a {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 6px;
+    color: var(--brand-dark) !important;
+    font: 600 0.9rem/1.35 Arial, sans-serif;
+    text-decoration: none !important;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: var(--surface);
+    color: var(--accent) !important;
+}
+
+main {
+    width: min(100%, 980px);
+    flex: 1;
+    margin: 0 !important;
+    padding: clamp(28px, 5vw, 68px) clamp(22px, 6vw, 84px) !important;
+}
+
+body > main { margin: 0 auto !important; }
+
+.standalone-doc {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(28px, 6vw, 72px) clamp(22px, 6vw, 84px);
 }
 
 h1, h2, h3 {
-    color: #333;
+    color: var(--brand-dark);
+    line-height: 1.2;
+}
+
+h1 {
+    max-width: 780px;
+    margin: 0 0 28px;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+h2 {
+    margin-top: 2.4rem;
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+h3 { margin-top: 1.8rem; font-size: 1.2rem; }
+p, li { max-width: 78ch; }
+
+a {
+    color: var(--brand);
+    text-underline-offset: 3px;
+}
+
+a:hover, a:focus-visible { color: var(--accent); }
+ul, ol { padding-left: 1.4rem; }
+li { margin-bottom: 0.55rem; }
+
+code, pre {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 code {
-    background-color: #eee;
-    padding: 2px 5px;
+    padding: 0.15em 0.35em;
+    border: 1px solid var(--line);
     border-radius: 4px;
+    background: var(--code);
+    color: var(--brand-dark);
+    font-size: 0.9em;
 }
 
 pre {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 4px;
+    max-width: 100%;
+    margin: 1.2rem 0;
+    padding: 18px 20px;
     overflow-x: auto;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    background: #202c31;
+    color: #eaf2ed;
+    box-shadow: var(--shadow);
 }
 
-.section {
-    margin-bottom: 30px;
-}
-
+pre code { padding: 0; border: 0; background: transparent; color: inherit; }
+.section, .toc { margin-bottom: 2.5rem; }
 .toc {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 4px;
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
 }
 
-.toc a {
-    text-decoration: none;
-    color: #007BFF;
+.toc h2 { margin-top: 0; font-size: 1.25rem; }
+.toc li { margin-bottom: 0.3rem; }
+
+footer {
+    padding: 28px 24px;
+    background: var(--brand-dark) !important;
+    color: #eaf2ed;
+    text-align: center;
 }
 
-.toc a:hover {
-    text-decoration: underline;
+footer img {
+    width: auto;
+    height: 44px !important;
+    margin: 8px 12px !important;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
+footer p { margin: 0.35rem auto; }
 
-li {
-    margin-bottom: 10px;
-}
+@media (max-width: 760px) {
+    header {
+        align-items: flex-start;
+        gap: 18px;
+        min-height: 92px;
+        padding: 16px 18px !important;
+    }
 
-a {
-    text-decoration: none;
-    color: #007BFF;
-}
+    header img[alt="AMIA Logo"] { height: 54px !important; }
+    header img[alt="UWC Logo"],
+    header img[alt="SANBI Logo"] { height: 32px !important; }
+    header > div:last-child { gap: 8px; }
 
-a:hover {
-    text-decoration: underline;
+    .content-wrapper,
+    body > div[style*="display: flex"] {
+        display: block !important;
+        min-height: 0;
+    }
+
+    nav {
+        width: 100% !important;
+        padding: 10px 12px !important;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    nav ul {
+        display: flex;
+        gap: 4px;
+        overflow-x: auto;
+        padding-bottom: 3px;
+    }
+
+    nav li { flex: 0 0 auto; margin: 0 !important; }
+    nav a { white-space: nowrap; font-size: 0.78rem; }
+    main, .standalone-doc { padding: 32px 20px !important; }
+    h1 { font-size: 2.2rem; }
 }
