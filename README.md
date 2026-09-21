@@ -13,6 +13,7 @@ Detailed documentation (under development and updates) can be found at: [https:/
   - [Test Case](#test-case)  
 - [Checkpointing and Resuming](#checkpointing-and-resuming)  
 - [Trajectory Analyses](#trajectory-analyses)  
+- [Troubleshooting](#troubleshooting)
 - [Queries](#queries)  
 - [Authors](#authors)  
 
@@ -30,32 +31,78 @@ cd amia
 
 ### 2. Create Environment
 ```bash
-conda env create -f amia_environment.yml
+conda env create -f amia_environment_portable.yml
 conda activate amia
 ```
 
+The original `amia_environment.yml` is a Linux-specific export with Linux ABI
+pins and an absolute environment prefix. Use the portable file on Windows,
+macOS, and new Linux installations.
+
 ### 3. Install Package
 ```bash
-pip install .
+python -m pip install .
 ```
 
-### 4. Install MAESTRO (Optional for DStability Analysis)
-MAESTRO (v1.2.35) is a required standalone tool for some analyses. Download and extract it into the main AMIA directory:
+### 4. Install optional native tools
+
+Open Babel and AutoDock Vina are installed by the portable Conda environment.
+FoldX and MAESTRO are separate native applications and are only required when
+their corresponding pipeline steps are enabled. Install a build matching your
+operating system.
 
 ```
+Linux:
 AMIA/
  ├─ MAESTRO_linux_x64/
  │   └─ maestro
+
+OR
+
+Windows:
+AMIA/
+ ├─ MAESTRO_win_x64/
+ │   └─ maestro
 ```
+
+The bundled `MAESTRO_linux_x64` executable is Linux-only. Windows and macOS
+users must install a native MAESTRO build and set `AMIA_MAESTRO` to its full
+path. Set `AMIA_FOLDX` to the native FoldX executable as well.
+
+In Windows PowerShell:
+
+```powershell
+$env:AMIA_MAESTRO = "C:\Users\<user>\amia\MAESTRO_win_x64\maestro.exe"
+$env:AMIA_FOLDX = "C:\Tools\FoldX\foldx.exe"
+```
+
+In Windows Command Prompt:
+
+```cmd
+set "AMIA_MAESTRO=C:\Users\<user>\amia\MAESTRO_win_x64\maestro.exe"
+set "AMIA_FOLDX=C:\Tools\FoldX\foldx.exe"
+```
+
+In macOS/Linux shells:
+
+```bash
+export AMIA_MAESTRO="$HOME/Tools/maestro/maestro"
+export AMIA_FOLDX="$HOME/Tools/FoldX/foldx"
+```
+
+These variables apply only to the current terminal session. To confirm a
+configured executable on Windows, run `Test-Path $env:AMIA_MAESTRO` in
+PowerShell or `if exist "%AMIA_MAESTRO%" echo OK` in Command Prompt.
 
 ---
 
 ## Pipeline Execution
 
-AMIA is executed using the **`run_pipeline.py`** script, which reads a YAML configuration file and manages all pipeline steps automatically.
+AMIA is executed using the installed **`amia`** command, which reads a YAML
+configuration file and manages all pipeline steps automatically.
 
 ```bash
-python run_pipeline.py --config config.yaml
+amia --config config.yaml
 ```
 
 ### Options
@@ -94,19 +141,24 @@ Optional steps:
 - **`trajstat_start_fr`**: Starting trajectory frame for TrajStat analyses.
   Defaults to `0` and avoids interactive input when managed by AMIA.
 
+Relative paths in the configuration file are resolved relative to the directory
+containing that configuration file. This makes the same configuration portable
+between Windows, macOS, and Linux. Avoid machine-specific paths such as
+`/home/user/...` or `C:\Users\...` when sharing a configuration.
+
 #### Example Config
 
 ```yaml
-pdb_file: "/home/user/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
-output_dir: "/home/user/variant_outputs/"
-mutations: "/home/user/amia/test/HIV-1C_ZA/mutations.csv"
+pdb_file: "test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
+output_dir: "variant_outputs"
+mutations: "test/HIV-1C_ZA/mutations.csv"
 mode: "multiple"
 
 run_maestroana: false
 run_passer: true
-passer_dir: "/home/user/variant_outputs"
-passer_txt: "/home/user/variant_outputs/passer_all_results.txt"
-passer_html: "/home/user/variant_outputs/passer_summary.html"
+passer_dir: "variant_outputs"
+passer_txt: "passer_all_results.txt"
+passer_html: "passer_summary.html"
 
 run_docking: true
 smiles: "CC1=NN=C(O1)C(=O)NC(C)(C)C2=NC(=C(C(=O)N2C)O)C(=O)NCC3=CC=C(C=C3)F"
@@ -121,7 +173,7 @@ center: [116.516, 139.229, 142.900]
 Use the example config above to test the pipeline. Run with:
 
 ```bash
-python run_pipeline.py --config config.yaml
+amia --config config.yaml
 ```
 
 Outputs will be stored in `output_dir`, and checkpoints will allow the workflow to resume from the last completed step if interrupted.
@@ -135,7 +187,7 @@ Outputs will be stored in `output_dir`, and checkpoints will allow the workflow 
 - To ignore checkpoints and rerun all steps, use:
 
 ```bash
-python run_pipeline.py --config config.yaml --force
+amia --config config.yaml --force
 ```
 
 ---
@@ -167,6 +219,36 @@ Outputs include:
 - H-bond and salt bridge changes  
 - PCA plots
 - Future updates may include SASA & MM-GBSA/MM-PBSA
+
+---
+
+## Troubleshooting
+
+### `FileNotFoundError` contains `C:\home\...`
+
+The configuration still contains a Linux path such as `/home/...`. Replace it
+with a relative path, or use a valid Windows path. The repository test
+configuration is portable:
+
+```cmd
+amia --config test\HIV-1C_ZA\config.yaml
+```
+
+### `KeyError: 0` in `mutintro.py`
+
+This indicates that an older installed AMIA package is being used. Reinstall
+the current checkout after pulling updates:
+
+```cmd
+python -m pip install --upgrade --force-reinstall .
+```
+
+### MAESTRO cannot be started
+
+Check that `AMIA_MAESTRO` points to the executable file, not only its folder,
+and use the syntax for the shell you are running. PowerShell uses `$env:NAME`,
+Command Prompt uses `set "NAME=value"`, and Git Bash uses `export NAME=value`.
+The Linux MAESTRO executable cannot run on Windows.
 
 ---
 

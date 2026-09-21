@@ -1,20 +1,18 @@
-pdb_file: "/home/ingwe/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
-output_dir: "/home/ingwe/amia/test/variant_outputs/"
-mutations: "/home/ingwe/amia/test/HIV-1C_ZA/mutations.csv"
+pdb_file: "HIV_IN_1C_ZA_5U1C_model.pdb"
+output_dir: "../variant_outputs3"
+mutations: "mutations.csv"
 mode: "multiple"
 
 run_maestroana: true
 
 run_passer: true
 
-passer_dir: "/home/ingwe/amia/test/variant_outputs"
-passer_txt: "/home/ingwe/amia/test/variant_outputs/passer_all_results.txt"
-passer_html: "/home/ingwe/amia/test/variant_outputs/passer_summary.html"
-
+passer_dir: "../variant_outputs3"
+passer_txt: "passer_all_results.txt"
+passer_html: "passer_summary.html"
 run_docking: true
-
 run_trajstat: false
-trajstat_systems: "/home/ingwe/amia/test/variant_outputs/"
+trajstat_systems: "../variant_outputs3"
 trajstat_start_fr: 0
 
 smiles: "CC1=NN=C(O1)C(=O)NC(C)(C)C2=NC(=C(C(=O)N2C)O)C(=O)NCC3=CC=C(C=C3)F"

@@ -2,9 +2,11 @@
 
 import os
 import subprocess
+import sys
 import click
 import yaml
 from pathlib import Path
+from amia.report import generate_report
 
 def get_last_completed(checkpoint_file):
     if checkpoint_file.exists():
@@ -13,6 +15,11 @@ def get_last_completed(checkpoint_file):
 
 def update_last_completed(checkpoint_file, step_name):
     checkpoint_file.write_text(step_name)
+
+
+def _config_path(value, config_dir):
+    path = Path(value).expanduser()
+    return path if path.is_absolute() else config_dir / path
 
 @click.command()
 @click.option('--config', type=click.Path(exists=True), required=True, help="Path to YAML configuration file")
@@ -23,13 +30,15 @@ def run_pipeline(config, force):
     Resumes from the last successful step, unless --force is used.
     """
     # Load config
-    with open(config, 'r') as f:
+    config_path = Path(config).expanduser().resolve()
+    config_dir = config_path.parent
+    with config_path.open('r', encoding='utf-8') as f:
         cfg = yaml.safe_load(f)
 
     # Required input
-    pdb_file = cfg['pdb_file']
-    output_dir = Path(cfg['output_dir'])
-    mutations = cfg['mutations']
+    pdb_file = str(_config_path(cfg['pdb_file'], config_dir))
+    output_dir = _config_path(cfg['output_dir'], config_dir)
+    mutations = str(_config_path(cfg['mutations'], config_dir))
     mode = cfg.get('mode', 'single')
 
     # Optional docking/passser inputs
@@ -41,11 +50,12 @@ def run_pipeline(config, force):
     compound_name = cfg.get('compound_name', 'Ligand')
     center = cfg.get('center', [])
 
-    passer_dir = cfg.get('passer_dir', str(output_dir))
+    passer_dir = str(_config_path(cfg.get('passer_dir', str(output_dir)), config_dir))
     passer_txt = cfg.get('passer_txt', 'passer_all_results.txt')
     passer_html = cfg.get('passer_html', 'passer_summary.html')
-    passer_file = cfg.get('passer_file', '')
-    trajstat_systems = cfg.get('trajstat_systems', str(output_dir))
+    passer_file = (str(_config_path(cfg['passer_file'], config_dir))
+                   if cfg.get('passer_file') else '')
+    trajstat_systems = str(_config_path(cfg.get('trajstat_systems', str(output_dir)), config_dir))
     trajstat_start_fr = cfg.get('trajstat_start_fr', 0)
 
     # Setup paths
@@ -55,6 +65,9 @@ def run_pipeline(config, force):
     last_step_file = checkpoint_dir / "last_completed.txt"
 
     last_completed = None if force else get_last_completed(last_step_file)
+    completed_steps = []
+    if last_completed:
+        completed_steps.append(last_completed)
 
     script_dir = Path(__file__).resolve().parent
 
@@ -93,7 +106,7 @@ def run_pipeline(config, force):
         click.echo(f"\n🔹 Running step {step_index + 1}/{len(pipeline_steps)}: {step_name} ({script_file})")
 
         # Build command
-        cmd = ["python", str(full_script_path), "--output_dir", str(output_dir)]
+        cmd = [sys.executable, str(full_script_path), "--output_dir", str(output_dir)]
 
         if step_name != "trajstat":
             cmd += ["--pdb_file", pdb_file]
@@ -123,14 +136,28 @@ def run_pipeline(config, force):
             ]
 
         # Execute step
-        result = subprocess.run(cmd)
+        try:
+            result = subprocess.run(cmd, check=False)
+        except OSError as error:
+            generate_report(output_dir, config_path, "failed", completed_steps, str(error))
+            raise click.ClickException(f"Unable to start step '{step_name}': {error}") from error
         if result.returncode != 0:
             click.echo(f"❌ Step failed: {step_name}")
-            exit(1)
+            generate_report(
+                output_dir,
+                config_path,
+                "failed",
+                completed_steps,
+                f"Step '{step_name}' returned exit code {result.returncode}.",
+            )
+            raise click.exceptions.Exit(result.returncode)
 
         update_last_completed(last_step_file, step_name)
+        completed_steps.append(step_name)
         click.echo(f"✅ Step complete: {step_name} (checkpoint updated)")
 
+    report_path = generate_report(output_dir, config_path, "complete", completed_steps)
+    click.echo(f"📄 Run report written to: {report_path}")
     click.echo("\n✅ AMIA pipeline fully complete.")
 
 if __name__ == "__main__":
