@@ -18,6 +18,7 @@ setup(
         'scipy>=1.10.1',
         'matplotlib>=3.7.1',
         'networkx>=3.0',
+        'plotly>=5.0',
     ],
     entry_points={
         "console_scripts": [
