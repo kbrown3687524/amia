@@ -47,9 +47,14 @@ python -m pip install .
 MAESTRO (v1.2.35) is a required standalone tool for some analyses. Download and extract it into the main AMIA directory:
 
 ```
+Linux:
 AMIA/
  ├─ MAESTRO_linux_x64/
  │   └─ maestro
+
+OR
+
+Windows:
 AMIA/
  ├─ MAESTRO_win_x64/
  │   └─ maestro
