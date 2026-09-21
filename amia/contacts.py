@@ -9,8 +9,8 @@
 # The project is funded by the Poliomyelitis Research Foundation and the UWC Ada & Bertie Levenstein Bursary Programme
 # Currently any licensing and usage of this software is governed under the regulations of the afore mentioned parties
 #
-#Author:	Keaghan Brown (3687524) - MSc Bioinformatics Candidate (3687524@myuwc.ac.za)
-#Author:	Ruben Cloete (Supervisor) - Lecturer at South African National Bioinformatics Institute (ruben@sanbi.ac.za)
+#Author:    Keaghan Brown (3687524) - MSc Bioinformatics Candidate (3687524@myuwc.ac.za)
+#Author:    Ruben Cloete (Supervisor) - Lecturer at South African National Bioinformatics Institute (ruben@sanbi.ac.za)
 
 from pymol import cmd
 import pymol
@@ -234,13 +234,25 @@ class ContactAnalysis:
                 for index2 in res2:
                     edit_contact2.setdefault('Macromolecules', []).append(index2)
                     edit_contact2.setdefault('Variant Surrounding Residues Contact(s)', []).append(res2[index2])
+                
                 wt_contacts_df = pd.DataFrame.from_dict(edit_contact)
                 var_contacts_df = pd.DataFrame.from_dict(edit_contact2)
-                horizontal_concat = pd.merge(wt_contacts_df, var_contacts_df, on = "Macromolecules", how = "inner")
-                horizontal_concat['Contact Difference'] = horizontal_concat.apply(lambda x: x['Variant Surrounding Residues Contact(s)'] - x['WT Surrounding Residues Contact(s)'], axis=1)
+                
+                # Safe merge with fallback initialization to prevent UnboundLocalError
+                if not wt_contacts_df.empty and not var_contacts_df.empty and "Macromolecules" in wt_contacts_df.columns and "Macromolecules" in var_contacts_df.columns:
+                    horizontal_concat = pd.merge(wt_contacts_df, var_contacts_df, on="Macromolecules", how="inner")
+                else:
+                    horizontal_concat = pd.DataFrame(columns=['Macromolecules', 'WT Surrounding Residues Contact(s)', 'Variant Surrounding Residues Contact(s)'])
+                
+                if not horizontal_concat.empty and 'Variant Surrounding Residues Contact(s)' in horizontal_concat.columns and 'WT Surrounding Residues Contact(s)' in horizontal_concat.columns:
+                    horizontal_concat['Contact Difference'] = horizontal_concat.apply(lambda x: x['Variant Surrounding Residues Contact(s)'] - x['WT Surrounding Residues Contact(s)'], axis=1)
+                else:
+                    horizontal_concat['Contact Difference'] = []
+
                 variant_df = pd.concat([var_df, horizontal_concat], axis=1)
                 df1 = variant_df.replace(np.nan, '', regex=True)
                 variants_dataframe = pd.concat([variants_dataframe, df1], axis=0)
+
         result = variants_dataframe.to_html(index=False, border=2)
         text_file = open("macromolecules_index.html", "w")
         text_file.write(result)
@@ -256,9 +268,11 @@ class ContactAnalysis:
                         '\n' + '}' +
                         '\n' + '</style>')
         text_file.close()
+        
         with open("macromolecules_index.html", 'r', encoding='utf-8') as file:
             data = file.readlines()
-        data[2] = '    <tr style="text-align: center; background: #1abc9c;">\n'
+        if len(data) > 2:
+            data[2] = '    <tr style="text-align: center; background: #1abc9c;">\n'
         with open("macromolecules_index.html", 'w', encoding='utf-8') as file:
             file.writelines(data)
         file.close()
@@ -282,4 +296,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

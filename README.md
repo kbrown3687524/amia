@@ -87,6 +87,12 @@ Optional steps:
 - **`smiles`**: SMILES string of the ligand.  
 - **`compound_name`**: Descriptive ligand name.  
 - **`center`**: `[X, Y, Z]` docking grid center coordinates.
+- **`run_trajstat`**: Boolean controlling whether trajectory analysis is run as
+  an optional checkpointed AMIA stage.
+- **`trajstat_systems`**: Directory containing system subdirectories with
+  topology and trajectory files. Defaults to `output_dir` when omitted.
+- **`trajstat_start_fr`**: Starting trajectory frame for TrajStat analyses.
+  Defaults to `0` and avoids interactive input when managed by AMIA.
 
 #### Example Config
 

@@ -35,6 +35,7 @@ def run_pipeline(config, force):
     # Optional docking/passser inputs
     run_docking = cfg.get('run_docking', False)
     run_passer = cfg.get('run_passer', False)
+    run_trajstat = cfg.get('run_trajstat', False)
 
     smiles = cfg.get('smiles', '')
     compound_name = cfg.get('compound_name', 'Ligand')
@@ -44,6 +45,8 @@ def run_pipeline(config, force):
     passer_txt = cfg.get('passer_txt', 'passer_all_results.txt')
     passer_html = cfg.get('passer_html', 'passer_summary.html')
     passer_file = cfg.get('passer_file', '')
+    trajstat_systems = cfg.get('trajstat_systems', str(output_dir))
+    trajstat_start_fr = cfg.get('trajstat_start_fr', 0)
 
     # Setup paths
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -70,6 +73,8 @@ def run_pipeline(config, force):
         pipeline_steps.append(("passer", "autoallo.py"))
     if run_docking:
         pipeline_steps.append(("docking", "autodock.py"))
+    if run_trajstat:
+        pipeline_steps.append(("trajstat", "trajstat.py"))
 
     step_names = [name for name, _ in pipeline_steps]
 
@@ -88,7 +93,10 @@ def run_pipeline(config, force):
         click.echo(f"\n🔹 Running step {step_index + 1}/{len(pipeline_steps)}: {step_name} ({script_file})")
 
         # Build command
-        cmd = ["python", str(full_script_path), "--pdb_file", pdb_file, "--output_dir", str(output_dir)]
+        cmd = ["python", str(full_script_path), "--output_dir", str(output_dir)]
+
+        if step_name != "trajstat":
+            cmd += ["--pdb_file", pdb_file]
 
         if step_name == "mutintro":
             cmd += ["--mutations", mutations, "--mode", mode]
@@ -108,6 +116,11 @@ def run_pipeline(config, force):
                 "--compound_name", compound_name,
                 "--center"
             ] + [str(c) for c in center]
+        elif step_name == "trajstat":
+            cmd += [
+                "--systems", str(trajstat_systems),
+                "--start_fr", str(trajstat_start_fr),
+            ]
 
         # Execute step
         result = subprocess.run(cmd)

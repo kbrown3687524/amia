@@ -1,0 +1,261 @@
+digraph AMIA_Pipeline {
+
+    // ============================================================
+    // GLOBAL GRAPH SETTINGS
+    // ============================================================
+
+    rankdir=TB;
+    newrank=true;
+
+    nodesep=0.65;
+    ranksep=0.8;
+
+    splines=polyline;
+
+    graph [
+        bgcolor="white",
+        pad=0.2
+    ];
+
+    node [
+        fontname="Times New Roman",
+        fontsize=12,
+        margin=0.25
+    ];
+
+    edge [
+        fontname="Times New Roman",
+        fontsize=12
+    ];
+
+
+    // ============================================================
+    // MAIN EXECUTING NODES — GREEN
+    // ============================================================
+
+    node [
+        shape=box,
+        style="rounded,filled",
+        fillcolor="#d9ead3",
+        color="#93c47d"
+    ];
+
+    MutIntro [
+        label="Mutation Introduction"
+    ];
+
+    ContactCalc [
+        label="Contact Difference\nCalculation"
+    ];
+
+    StabCalc [
+        label="Stability Change\nCalculation"
+    ];
+
+
+    // ============================================================
+    // OPTIONAL EXECUTING NODES — YELLOW / CUSTOM
+    // ============================================================
+
+    node [
+        shape=box,
+        style="rounded,filled",
+        fillcolor="#fff2cc",
+        color="#d6b656"
+    ];
+
+    AlloBind [
+        label="Allosteric Binding Site\nDetermination"
+    ];
+
+    PDBDock [
+        label="PDB Automated Docking"
+    ];
+
+    MDSim [
+        label="Molecular Dynamics Simulations",
+        fillcolor="#d5a6bd", // Light red-purple fill
+        color="#a64d79"      // Darker red-purple border
+    ];
+
+    RMSD [
+        label="Root Mean Square Deviation"
+    ];
+
+    RMSF [
+        label="Root Mean Square Fluctuation"
+    ];
+
+    RoG [
+        label="Radius of Gyration"
+    ];
+
+    PCA [
+        label="Principal Component Analysis"
+    ];
+
+    HBond [
+        label="Hydrogen Bond Changes"
+    ];
+
+    Ionic [
+        label="Ionic Interaction Changes"
+    ];
+
+
+    // ============================================================
+    // DATA NODES — BLUE
+    // ============================================================
+
+    node [
+        shape=ellipse,
+        style=filled,
+        fillcolor="#c9daf8",
+        color="#6d9eeb"
+    ];
+
+    WTPDB [
+        label="WT PDB File"
+    ];
+
+    MutFile [
+        label="Mutation File"
+    ];
+
+    WTVarPDB [
+        label="WT & Variant PDB Structures"
+    ];
+
+    PocketData [
+        label="Pocket Analyses"
+    ];
+
+    DockedStructs [
+        label="AutoDocked Structures"
+    ];
+
+    ContactData [
+        label="Contact Difference Data"
+    ];
+
+    StabData [
+        label="Stability Change Data"
+    ];
+
+    TopTraj [
+        label="Topologies & Trajectories"
+    ];
+
+    TrajStats [
+        label="Trajectory Statistics\nand Figures"
+    ];
+
+
+    // ============================================================
+    // START / END NODES — WHITE
+    // ============================================================
+
+    node [
+        shape=oval,
+        style=filled,
+        fillcolor=white,
+        color=black
+    ];
+
+    Start [
+        label="Start"
+    ];
+
+    End [
+        label="End"
+    ];
+
+
+    // ============================================================
+    // MD ANALYSIS GROUP (Parallel display only)
+    // ============================================================
+
+    {
+        rank=same;
+        RMSD;
+        RMSF;
+        RoG;
+        PCA;
+        HBond;
+        Ionic;
+    }
+
+
+    // ============================================================
+    // COMPULSORY CONNECTIONS — SOLID
+    // ============================================================
+
+    edge [
+        color="#333333",
+        style=solid,
+        penwidth=1.5
+    ];
+
+    Start -> MutIntro;
+
+    MutIntro -> WTPDB;
+    MutIntro -> MutFile;
+
+    WTPDB -> WTVarPDB;
+    MutFile -> WTVarPDB;
+
+    WTVarPDB -> ContactCalc;
+    ContactCalc -> ContactData;
+
+    WTVarPDB -> StabCalc;
+    StabCalc -> StabData;
+
+    MDSim -> TopTraj;
+
+    TopTraj -> RMSD;
+    TopTraj -> RMSF;
+    TopTraj -> RoG;
+    TopTraj -> PCA;
+    TopTraj -> HBond;
+    TopTraj -> Ionic;
+
+    RMSD -> TrajStats;
+    RMSF -> TrajStats;
+    RoG -> TrajStats;
+    PCA -> TrajStats;
+    HBond -> TrajStats;
+    Ionic -> TrajStats;
+
+
+    // ============================================================
+    // OPTIONAL CONNECTIONS — DASHED
+    // ============================================================
+
+    edge [
+        color="#666666",
+        style=dashed,
+        penwidth=1.0
+    ];
+
+    WTVarPDB -> AlloBind;
+    AlloBind -> PocketData;
+    PocketData -> DockedStructs;
+    
+    WTPDB -> PDBDock;
+    WTVarPDB -> PDBDock;
+    PDBDock -> DockedStructs;
+
+    // Connections feeding into MD Simulations
+    WTVarPDB -> MDSim;
+    StabData -> MDSim;
+    ContactData -> MDSim;
+    DockedStructs -> MDSim;
+
+    // Terminations to End node
+    DockedStructs -> End;
+    PocketData -> End;
+    ContactData -> End;
+    StabData -> End;
+    TrajStats -> End;
+
+}
