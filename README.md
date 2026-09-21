@@ -50,6 +50,9 @@ MAESTRO (v1.2.35) is a required standalone tool for some analyses. Download and 
 AMIA/
  ├─ MAESTRO_linux_x64/
  │   └─ maestro
+AMIA/
+ ├─ MAESTRO_win_x64/
+ │   └─ maestro
 ```
 
 The bundled Maestro executable is Linux-only. Install a native build for
@@ -57,14 +60,12 @@ Windows or macOS and set `AMIA_MAESTRO` to its full path. Set `AMIA_FOLDX` to
 the native FoldX executable as well. In PowerShell:
 
 ```powershell
-$env:AMIA_FOLDX = "C:\Tools\foldx\foldx.exe"
-$env:AMIA_MAESTRO = "C:\Tools\maestro\maestro.exe"
+$env:AMIA_MAESTRO = "C:\AMIA\MAESTRO_win_x64\maestro.exe"
 ```
 
 In macOS/Linux shells:
 
 ```bash
-export AMIA_FOLDX="$HOME/Tools/foldx/foldx"
 export AMIA_MAESTRO="$HOME/Tools/maestro/maestro"
 ```
 
