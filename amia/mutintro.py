@@ -48,8 +48,9 @@ class MutationIntro:
                 df2 = pd.DataFrame(mutant_df[str(col)])
                 system = str(col)
                 for row in df2.iterrows():
-                    if str(row[1][0]) != 'nan':
-                        mutation = str(row[1][0])
+                    mutation_value = row[1].iloc[0]
+                    if str(mutation_value).lower() != 'nan':
+                        mutation = str(mutation_value)
                         single_list.setdefault(system, []).append(mutation)
                         multi_list.setdefault(system, []).append(mutation)
         return single_list, multi_list
