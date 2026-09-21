@@ -6,6 +6,7 @@ import sys
 import click
 import yaml
 from pathlib import Path
+from amia.report import generate_report
 
 def get_last_completed(checkpoint_file):
     if checkpoint_file.exists():
@@ -61,6 +62,9 @@ def run_pipeline(config, force):
     last_step_file = checkpoint_dir / "last_completed.txt"
 
     last_completed = None if force else get_last_completed(last_step_file)
+    completed_steps = []
+    if last_completed:
+        completed_steps.append(last_completed)
 
     script_dir = Path(__file__).resolve().parent
 
@@ -122,14 +126,25 @@ def run_pipeline(config, force):
         try:
             result = subprocess.run(cmd, check=False)
         except OSError as error:
+            generate_report(output_dir, config_path, "failed", completed_steps, str(error))
             raise click.ClickException(f"Unable to start step '{step_name}': {error}") from error
         if result.returncode != 0:
             click.echo(f"❌ Step failed: {step_name}")
+            generate_report(
+                output_dir,
+                config_path,
+                "failed",
+                completed_steps,
+                f"Step '{step_name}' returned exit code {result.returncode}.",
+            )
             raise click.exceptions.Exit(result.returncode)
 
         update_last_completed(last_step_file, step_name)
+        completed_steps.append(step_name)
         click.echo(f"✅ Step complete: {step_name} (checkpoint updated)")
 
+    report_path = generate_report(output_dir, config_path, "complete", completed_steps)
+    click.echo(f"📄 Run report written to: {report_path}")
     click.echo("\n✅ AMIA pipeline fully complete.")
 
 if __name__ == "__main__":
