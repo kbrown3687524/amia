@@ -97,17 +97,14 @@
 
             <h2>2. Set Up the Conda Virtual Environment</h2>
             <p>Create and activate a Conda environment using the provided environment file:</p>
-            <pre><code>conda env create -f amia_environment.yml
+            <pre><code>conda env create -f amia_environment_portable.yml
 conda activate amia</code></pre>
 
-            <h2>3. Install FoldX</h2>
-            <p>Download and extract FoldX (version 4.0) into the main AMIA directory. Ensure the directory structure looks like this:</p>
-            <pre><code>|-- AMIA Folder:
-|  
-|-- foldx:
-    |-- foldx_4
-    |-- yasaraPlugin.zip
-    |-- rotabase.txt</code></pre>
+            <h2>3. Install the package</h2>
+            <pre><code>python -m pip install .</code></pre>
+
+            <h2>4. Install optional native tools</h2>
+            <p>Install native builds of FoldX and MAESTRO for your operating system. Set <code>AMIA_FOLDX</code> and <code>AMIA_MAESTRO</code> to their executable paths. The bundled <code>MAESTRO_linux_x64</code> build is Linux-only and cannot run on Windows or macOS.</p>
         </main>
     </div>
     <footer>

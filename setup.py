@@ -8,8 +8,9 @@ setup(
     author_email='3687524@myuwc.ac.za',
     packages=['amia'],
     install_requires=[
+        'click>=8.1',
+        'PyYAML>=6.0',
         'biopython>=1.79',
-        'pymol>=2.3.0',
         'MDAnalysis[analysis]>=2.4.0',
         'MDAnalysisTests',
         'pandas>=1.5.3',
@@ -27,7 +28,9 @@ setup(
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
-        'Operating System :: POSIX :: Linux',        
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX :: MacOS',
+        'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.9'
     ],

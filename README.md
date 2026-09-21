@@ -30,13 +30,17 @@ cd amia
 
 ### 2. Create Environment
 ```bash
-conda env create -f amia_environment.yml
+conda env create -f amia_environment_portable.yml
 conda activate amia
 ```
 
+The original `amia_environment.yml` is a Linux-specific export with Linux ABI
+pins and an absolute environment prefix. Use the portable file on Windows,
+macOS, and new Linux installations.
+
 ### 3. Install Package
 ```bash
-pip install .
+python -m pip install .
 ```
 
 ### 4. Install MAESTRO (Optional for Docking/Analysis)
@@ -48,6 +52,22 @@ AMIA/
  │   └─ maestro
 ```
 
+The bundled Maestro executable is Linux-only. Install a native build for
+Windows or macOS and set `AMIA_MAESTRO` to its full path. Set `AMIA_FOLDX` to
+the native FoldX executable as well. In PowerShell:
+
+```powershell
+$env:AMIA_FOLDX = "C:\Tools\foldx\foldx.exe"
+$env:AMIA_MAESTRO = "C:\Tools\maestro\maestro.exe"
+```
+
+In macOS/Linux shells:
+
+```bash
+export AMIA_FOLDX="$HOME/Tools/foldx/foldx"
+export AMIA_MAESTRO="$HOME/Tools/maestro/maestro"
+```
+
 ---
 
 ## Pipeline Execution
@@ -55,7 +75,7 @@ AMIA/
 AMIA is executed using the **`run_pipeline.py`** script, which reads a YAML configuration file and manages all pipeline steps automatically.
 
 ```bash
-python run_pipeline.py --config config.yaml
+amia --config config.yaml
 ```
 
 ### Options
@@ -91,16 +111,16 @@ Optional steps:
 #### Example Config
 
 ```yaml
-pdb_file: "/home/user/amia/test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
-output_dir: "/home/user/variant_outputs/"
-mutations: "/home/user/amia/test/HIV-1C_ZA/mutations.csv"
+pdb_file: "test/HIV-1C_ZA/HIV_IN_1C_ZA_5U1C_model.pdb"
+output_dir: "variant_outputs"
+mutations: "test/HIV-1C_ZA/mutations.csv"
 mode: "multiple"
 
 run_maestroana: false
 run_passer: true
-passer_dir: "/home/user/variant_outputs"
-passer_txt: "/home/user/variant_outputs/passer_all_results.txt"
-passer_html: "/home/user/variant_outputs/passer_summary.html"
+passer_dir: "variant_outputs"
+passer_txt: "passer_all_results.txt"
+passer_html: "passer_summary.html"
 
 run_docking: true
 smiles: "CC1=NN=C(O1)C(=O)NC(C)(C)C2=NC(=C(C(=O)N2C)O)C(=O)NCC3=CC=C(C=C3)F"
@@ -115,7 +135,7 @@ center: [116.516, 139.229, 142.900]
 Use the example config above to test the pipeline. Run with:
 
 ```bash
-python run_pipeline.py --config config.yaml
+amia --config config.yaml
 ```
 
 Outputs will be stored in `output_dir`, and checkpoints will allow the workflow to resume from the last completed step if interrupted.
@@ -129,7 +149,7 @@ Outputs will be stored in `output_dir`, and checkpoints will allow the workflow 
 - To ignore checkpoints and rerun all steps, use:
 
 ```bash
-python run_pipeline.py --config config.yaml --force
+amia --config config.yaml --force
 ```
 
 ---

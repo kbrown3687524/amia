@@ -27,15 +27,36 @@ class MaestroRunner:
         self.maestro_exe = self.find_and_prepare_maestro()
 
     def find_and_prepare_maestro(self):
-        maestro_dir = self.base_dir / "amia" / "MAESTRO_linux_x64"
-        if not maestro_dir.exists():
-            raise FileNotFoundError(f"Directory not found: {maestro_dir}")
-        for file in maestro_dir.iterdir():
-            if file.is_file() and "maestro" in file.name.lower():
-                os.chmod(file, file.stat().st_mode | stat.S_IXUSR)
-                print(f"✅ Maestro executable prepared: {file}")
-                return file.resolve()
-        raise FileNotFoundError(f"Maestro executable not found in: {maestro_dir}")
+        configured_exe = os.environ.get("AMIA_MAESTRO")
+        if configured_exe:
+            maestro_exe = Path(configured_exe).expanduser().resolve()
+            if maestro_exe.is_file():
+                return maestro_exe
+            raise FileNotFoundError(f"AMIA_MAESTRO does not point to a file: {maestro_exe}")
+
+        platform_names = {
+            "linux": "MAESTRO_linux_x64",
+            "darwin": "MAESTRO_macos_x64",
+            "win32": "MAESTRO_windows_x64",
+        }
+        platform_dir = platform_names.get(sys.platform)
+        roots = [self.base_dir / "amia", self.base_dir]
+        search_dirs = [root / platform_dir for root in roots if platform_dir]
+        search_dirs += [root / "MAESTRO" for root in roots]
+        search_dirs += [root / "MAESTRO_linux_x64" for root in roots]
+        for maestro_dir in search_dirs:
+            if not maestro_dir.is_dir():
+                continue
+            for file in maestro_dir.iterdir():
+                if file.is_file() and file.name.lower().startswith("maestro"):
+                    if os.name != "nt":
+                        os.chmod(file, file.stat().st_mode | stat.S_IXUSR)
+                    print(f"✅ Maestro executable prepared: {file}")
+                    return file.resolve()
+        raise FileNotFoundError(
+            "Maestro executable not found. Install a native build and set AMIA_MAESTRO "
+            "to its full path. The repository bundle is Linux-only."
+        )
 
     def parse_mutations(self, mutation_lines):
         mutations = []
@@ -236,9 +257,20 @@ def main():
             print("❌ Could not infer base_dir because 'amia' not found in pdb_file or mutations file path.")
             exit(1)
 
-    config_file = base_dir / "amia" / "MAESTRO_linux_x64" / "config.xml"
-    if not config_file.exists():
-        print(f"❌ Config file not found: {config_file}")
+    platform_names = {
+        "linux": "MAESTRO_linux_x64",
+        "darwin": "MAESTRO_macos_x64",
+        "win32": "MAESTRO_windows_x64",
+    }
+    maestro_roots = [base_dir / "amia", base_dir]
+    maestro_dirs = [root / platform_names[sys.platform] for root in maestro_roots
+                    if sys.platform in platform_names]
+    maestro_dirs += [root / "MAESTRO" for root in maestro_roots]
+    maestro_dirs += [root / "MAESTRO_linux_x64" for root in maestro_roots]
+    config_file = next((directory / "config.xml" for directory in maestro_dirs
+                        if (directory / "config.xml").exists()), None)
+    if config_file is None:
+        print("❌ Maestro config.xml not found. Install a native Maestro bundle.")
         exit(1)
 
     print("🕒 Start time:", datetime.datetime.now())

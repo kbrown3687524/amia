@@ -2,6 +2,7 @@
 
 import os
 import subprocess
+import sys
 import click
 import yaml
 from pathlib import Path
@@ -14,6 +15,11 @@ def get_last_completed(checkpoint_file):
 def update_last_completed(checkpoint_file, step_name):
     checkpoint_file.write_text(step_name)
 
+
+def _config_path(value, config_dir):
+    path = Path(value).expanduser()
+    return path if path.is_absolute() else config_dir / path
+
 @click.command()
 @click.option('--config', type=click.Path(exists=True), required=True, help="Path to YAML configuration file")
 @click.option('--force', is_flag=True, default=False, help="Force rerun all steps, ignoring checkpoints")
@@ -23,13 +29,15 @@ def run_pipeline(config, force):
     Resumes from the last successful step, unless --force is used.
     """
     # Load config
-    with open(config, 'r') as f:
+    config_path = Path(config).expanduser().resolve()
+    config_dir = config_path.parent
+    with config_path.open('r', encoding='utf-8') as f:
         cfg = yaml.safe_load(f)
 
     # Required input
-    pdb_file = cfg['pdb_file']
-    output_dir = Path(cfg['output_dir'])
-    mutations = cfg['mutations']
+    pdb_file = str(_config_path(cfg['pdb_file'], config_dir))
+    output_dir = _config_path(cfg['output_dir'], config_dir)
+    mutations = str(_config_path(cfg['mutations'], config_dir))
     mode = cfg.get('mode', 'single')
 
     # Optional docking/passser inputs
@@ -40,10 +48,11 @@ def run_pipeline(config, force):
     compound_name = cfg.get('compound_name', 'Ligand')
     center = cfg.get('center', [])
 
-    passer_dir = cfg.get('passer_dir', str(output_dir))
+    passer_dir = str(_config_path(cfg.get('passer_dir', str(output_dir)), config_dir))
     passer_txt = cfg.get('passer_txt', 'passer_all_results.txt')
     passer_html = cfg.get('passer_html', 'passer_summary.html')
-    passer_file = cfg.get('passer_file', '')
+    passer_file = (str(_config_path(cfg['passer_file'], config_dir))
+                   if cfg.get('passer_file') else '')
 
     # Setup paths
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -88,7 +97,7 @@ def run_pipeline(config, force):
         click.echo(f"\n🔹 Running step {step_index + 1}/{len(pipeline_steps)}: {step_name} ({script_file})")
 
         # Build command
-        cmd = ["python", str(full_script_path), "--pdb_file", pdb_file, "--output_dir", str(output_dir)]
+        cmd = [sys.executable, str(full_script_path), "--pdb_file", pdb_file, "--output_dir", str(output_dir)]
 
         if step_name == "mutintro":
             cmd += ["--mutations", mutations, "--mode", mode]
@@ -110,10 +119,13 @@ def run_pipeline(config, force):
             ] + [str(c) for c in center]
 
         # Execute step
-        result = subprocess.run(cmd)
+        try:
+            result = subprocess.run(cmd, check=False)
+        except OSError as error:
+            raise click.ClickException(f"Unable to start step '{step_name}': {error}") from error
         if result.returncode != 0:
             click.echo(f"❌ Step failed: {step_name}")
-            exit(1)
+            raise click.exceptions.Exit(result.returncode)
 
         update_last_completed(last_step_file, step_name)
         click.echo(f"✅ Step complete: {step_name} (checkpoint updated)")
