@@ -43,7 +43,7 @@ macOS, and new Linux installations.
 python -m pip install .
 ```
 
-### 4. Install MAESTRO (Optional for Docking/Analysis)
+### 4. Install MAESTRO (Optional for DStability Analysis)
 MAESTRO (v1.2.35) is a required standalone tool for some analyses. Download and extract it into the main AMIA directory:
 
 ```
