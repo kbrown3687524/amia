@@ -73,21 +73,18 @@ In Windows PowerShell:
 
 ```powershell
 $env:AMIA_MAESTRO = "C:\Users\<user>\amia\MAESTRO_win_x64\maestro.exe"
-$env:AMIA_FOLDX = "C:\Tools\FoldX\foldx.exe"
 ```
 
 In Windows Command Prompt:
 
 ```cmd
 set "AMIA_MAESTRO=C:\Users\<user>\amia\MAESTRO_win_x64\maestro.exe"
-set "AMIA_FOLDX=C:\Tools\FoldX\foldx.exe"
 ```
 
 In macOS/Linux shells:
 
 ```bash
 export AMIA_MAESTRO="$HOME/Tools/maestro/maestro"
-export AMIA_FOLDX="$HOME/Tools/FoldX/foldx"
 ```
 
 These variables apply only to the current terminal session. To confirm a
