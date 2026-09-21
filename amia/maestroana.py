@@ -234,17 +234,20 @@ def main():
 
     output_dir.mkdir(parents=True, exist_ok=True)
     log_file = output_dir / "maestro_run.log"
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s",
-                        handlers=[logging.FileHandler(log_file, mode='w'), logging.StreamHandler(sys.stdout)])
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-    class LoggerWriter:
-        def __init__(self, level): self.level = level
-        def write(self, message): 
-            if message.strip(): self.level(message.strip())
-        def flush(self): pass
-
-    sys.stdout = LoggerWriter(logging.info)
-    sys.stderr = LoggerWriter(logging.error)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        handlers=[
+            logging.FileHandler(log_file, mode="w", encoding="utf-8"),
+            logging.StreamHandler(sys.stdout),
+        ],
+        force=True,
+    )
 
     print(f"📄 Logging output to: {log_file}")
 
